@@ -14,7 +14,7 @@
 # define FILLIT_H
 # define FILE_LENGTH (26 * 21 + 1)
 
-# include "./libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
 typedef struct	s_map
 {

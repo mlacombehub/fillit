@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:22:23 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/13 14:22:25 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/01/21 16:56:36 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 #include <fcntl.h>
 
 int		main(int argc, char **argv)
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 			originmap = read(fd, map, FILE_LENGTH);
 			map[FILE_LENGTH + 1] = '\0';
 			binmap = ft_checking(originmap, map);
-			finalmap = print_map(binmap);
+			finalmap = ft_print_map(binmap);
 			close (originmap);
 		}
 		else
@@ -37,44 +37,45 @@ int		main(int argc, char **argv)
 	return (0);
 }
 
-int		ft_checking(int origin, char *map)
+int		ft_checking(int originmap, char *map)
 {
-	;
-}
-
-int		ft_testchecking(int origin, char *map)
-{
-	char		buff[22];
+	char		buff[20];
 	char		checker;
 	size_t		n_piece;
-	int			map;
+	int			binmap;
 
-	n_piece = 0;
-//	while (buff == (read(fd, piece, 21)))
-	{
+	n_piece = 1;
+	while (originmap != n_piece++ * 21)
+	{	
+		*buff = originmap + (n_piece - 1) * 21;
 		checker = buff[0];
-		if((buff[5] && buff[10] && buff[15] && buff[20]) == '\n' && (buff[21] == ('\n' || '\0')) && n_piece <= FILE_LENGTH)
+		if((buff[4] && buff[9] && buff[14] && buff[19] && buff[20]) == '\n' && n_piece <= 27)
 		{
-			while (checker++ != buff[22])
+			while (checker++ != buff[20])
 				if (checker != '#' || checker != '.' || checker != '\n')
 					return (0);
-			map = ft_checker(*buff, n_piece);
-			n_piece++;
+			map[(n_piece - 1) * 20] = ft_char_to_biner(*buff, n_piece);
 		}
+		else if (buff[0] == '\0')
+			return(binmap = *map);
 		else
 			return (0);
-		n_piece++;
 	}
 }
 
-int		ft_checker(char *buff, size_t n_piece)
+int		ft_char_to_biner(char *buff, size_t n_piece)
 {
-	int	i;
+	int		i;
+	char	*ret;
 
 	i = 1;
 	while (buff[i++] != '\0')
-		return ((buff[i - 1] != '\n' && (buff[i - 1] != '#' && buff[i - 1] != '.') && (buff[i - 1] != '#')) ? 1 : 0);
-	return (((buff[i] != '\0') || !(n_piece = ft_verification(buff))) ? 1 : 0);
+	{
+		if (!(n_piece = ft_verification(buff)))
+			return (0);
+	}
+	ft_memcpy(ret, buff, ft_strlen(20 * n_piece) + 1);
+	return (ret);
 }
 
 int		ft_verification(char *buff)
@@ -103,7 +104,7 @@ int		ft_verification(char *buff)
 
 t_piece		ft_buff_to_piece(char *buff)
 {
-	t_piece	piece;
+	t_piece	*piece;
 	int		i;
 	int		j;
 
