@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/21 15:22:22 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/21 15:36:26 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILLIT_H
 # define FILE_LENGTH (26 * 21 + 1)
 
-# include "./libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
 typedef struct	s_map
 {
