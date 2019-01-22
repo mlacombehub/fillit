@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 	int		originmap;
 	int		binmap;
 	int		finalmap;
-
+ 
 	if (argc == 2)
 		if (fd = open(argv[1], O_RDONLY))
 		{
@@ -54,27 +54,30 @@ int		ft_checking(int originmap, char *map)
 			while (checker++ != buff[20])
 				if (checker != '#' || checker != '.' || checker != '\n')
 					return (0);
-			map[(n_piece - 1) * 20] = ft_char_to_biner(*buff, n_piece);
+			map[(n_piece - 1) * 20] = ft_char_to_bin(*buff, n_piece);
 		}
 		else if (buff[0] == '\0')
 			return(binmap = *map);
 		else
 			return (0);
 	}
+	free (map);
 }
 
-int		ft_char_to_biner(char *buff, size_t n_piece)
+int		ft_char_to_bin(char *buff, size_t n_piece)
 {
 	int		i;
 	char	*ret;
+	t_piece	*piece;
 
 	i = 1;
 	while (buff[i++] != '\0')
 	{
 		if (!(n_piece = ft_verification(buff)))
 			return (0);
+		piece = ft_buff_to_map(buff);
 	}
-	ft_memcpy(ret, buff, ft_strlen(20 * n_piece) + 1);
+	ft_strcpy(ret, buff);
 	return (ret);
 }
 
@@ -102,33 +105,29 @@ int		ft_verification(char *buff)
 	return ((n_conn == 6 || n_conn == 8) ? 1 : 0);
 }
 
-t_piece		ft_buff_to_piece(char *buff)
+t_piece		*ft_buff_to_piece(char *buff)
 {
 	t_piece	*piece;
-	int		i;
-	int		j;
+	size_t		i;
+	int			j;
+	uint16_t	binmap;
 
 	i = 19;
-	while (i)
+	binmap = NULL;
+	while (i--)
 	{
 		if (buff[i] = '#')
-			buff[i] = 1;
+			binmap = 1;
 		else if (buff[i] = '.')
-			buff[i] = 0;
-		i--;
-		if (i % 5 == 4)
-		{
-			j = i + 4;
-			while (j < 5)
-				piece.l0 = buff[j--];
-			while (5 <= j && j <= 10)
-				piece.l1 = buff[j--];
-			while (11 <= j && j <= 15)
-				piece.l2 = buff[j--];
-			while (16 <= j && j < 20)
-				piece.l3 = buff[j--];
-		}
+			binmap = 0;
+		binmap << 1;
 	}
+	while ()
+	{
+		if ((buff[i - 2] && buff[i - 3] && buff[i - 4] && buff[i - 5]) == 0)
+			;
+	}
+	piece->binary = binmap;
 	return (piece);
 }
 
