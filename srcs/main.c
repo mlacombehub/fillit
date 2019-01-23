@@ -121,9 +121,9 @@ t_piece		*ft_buff_to_binary(char *buff)
 	while ((binmap[15] && binmap[14] && binmap[13] && binmap[12]) == 0)
 	{
 		binmap[15] << 16;
-		binmap[15] << 15;
-		binmap[14] << 14;
-		binmap[13] << 13;
+		binmap[14] << 15;
+		binmap[13] << 14;
+		binmap[12] << 13;
 	}
 	while ((binmap[15] && binmap[11] && binmap[7] && binmap[3]) == 0)
 	{
