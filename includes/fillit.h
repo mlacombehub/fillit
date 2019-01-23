@@ -26,9 +26,8 @@ typedef struct	s_map
 
 typedef struct	s_piece
 {
-	int		position;
-	int		width;
-	int		height;
+	size_t	n_piece;
+	char	binary;
 }				t_piece;
 
 #endif
