@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 19:07:31 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/23 23:44:23 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 00:03:34 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,21 @@
 ** #define b4  0x0010 etc.. 
 ** 
 ** add to libft a ft_bin_as_str_to_int
+**
+** CAREFUL we should rather use unsigned int or size_t to avoid any 
+** fishy business with shifting in negative numbers
 */
 
-int    ft_bitcompact(int bitmino)
-{
+/*
+** takes a bit and assuming column number is squareSide will shift it up and left
+*/
 
+int    ft_bitcompact(int bitmino, int squareSide)
+{
+    // if first col empty, shift by 1
+    // need to create a mask of col 
+    // if first row empty shift by row size squareSide
+    // we shoudl go max to squareSide loop but can stop before
     return (bitmino);
 }
 
