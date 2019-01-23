@@ -122,7 +122,7 @@ t_piece		*ft_buff_to_piece(char *buff)
 			binmap = 0;
 		binmap << 1;
 	}
-	while ()
+	while (xxxxxxx)
 	{
 		if ((buff[i - 2] && buff[i - 3] && buff[i - 4] && buff[i - 5]) == 0)
 			;
