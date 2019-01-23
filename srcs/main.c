@@ -14,7 +14,7 @@
 #include <fcntl.h>
 
 
-//test test ceci est un test
+//test test ceci est un test...
 int		main(int argc, char **argv)
 {
 	char	*map[FILE_LENGTH + 1];
