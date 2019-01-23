@@ -6,13 +6,17 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 22:35:44 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/23 23:46:14 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 00:07:27 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/includes/libft.h"
 #define CHAR_AS_BIT '1'
 #define FT_BIG_ENDIAN 0
+
+/*
+** to compile as "gcc FLAGS srcs/ft_bitwise.c libft/libft.a main_tester.c"
+*/
 
 int     ft_charToBit(char *c, char b, int bigEnd);
 int     ft_rightCharToBit(char *c, char b);
