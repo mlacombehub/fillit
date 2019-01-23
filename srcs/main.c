@@ -6,14 +6,15 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:22:23 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/23 12:07:36 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/21 16:56:36 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 #include <fcntl.h>
-// need to split the whole in func files
 
+
+//test test ceci est un test
 int		main(int argc, char **argv)
 {
 	char	*map[FILE_LENGTH + 1];
@@ -123,7 +124,7 @@ t_piece		*ft_buff_to_piece(char *buff)
 			binmap = 0;
 		binmap << 1;
 	}
-	while (xxxxxxx)
+	while ()
 	{
 		if ((buff[i - 2] && buff[i - 3] && buff[i - 4] && buff[i - 5]) == 0)
 			;
