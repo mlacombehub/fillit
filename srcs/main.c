@@ -6,12 +6,13 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:22:23 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/21 16:56:36 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/23 12:07:36 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 #include <fcntl.h>
+// need to split the whole in func files
 
 int		main(int argc, char **argv)
 {
