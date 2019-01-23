@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 19:07:31 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/23 23:15:14 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/23 23:44:23 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int     ft_revCharToBit(char *c, char theBitChar)
 ** "1010" gives 10
 */
 
-int     ft_charToBit(char *c, char theBitChar)
+int     ft_rightCharToBit(char *c, char theBitChar)
 {
     int k;
     int intBit;
@@ -74,6 +74,34 @@ int     ft_charToBit(char *c, char theBitChar)
         if (c[k] == theBitChar)
             intBit = intBit + power;
         power = power * 2;
+    }
+    return intBit;
+}
+
+/*
+** takes a string and for every n char as theBitChar 
+** sets the n bit as 1
+** passes the big or little endian
+*/
+
+int     ft_charToBit(char *c, char theBitChar, int bigEndian)
+{
+    int k;
+    int intBit;
+    int power;
+
+    intBit = 0;
+    k = (bigEndian ? ft_strlen(c) : 0);
+    power = 1;
+    while ((bigEndian == 1 && k != 0) || (bigEndian == 0 && c[k] != '\0'))
+    {
+        if (c[k] == theBitChar)
+            intBit = intBit + power;
+        power = power * 2;
+        if (bigEndian == 1)
+            k--; 
+        else
+            k++;
     }
     return intBit;
 }
