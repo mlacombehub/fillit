@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 18:08:34 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 18:09:47 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		ft_bitcompact(int bitmino, int sidesize)
 	// we shoudl go max to sidesize loop but can stop before
 	while (!(bitmino&4371))
 		bitmino >> 1;
-
+	while (!(bitmino&15))
+		bitmino >> sidesize;
 	return (bitmino);
 }
 
