@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 11:50:40 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 12:14:42 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@
 */
 
 /*
+** bitcompact : compacts a tetrimino : psuhes it up and left
 ** takes a bit and assuming column number is squareSide will
 ** shift it up and left
+**
 */
 
-int		ft_bitcompact(int bitmino, int squareSide)
+int		ft_bitcompact(int bitmino, int sidesize)
 {
 	// if first col empty, shift by 1
 	// need to create a mask of col
-	// if first row empty shift by row size squareSide
-	// we shoudl go max to squareSide loop but can stop before
+	// if first row empty shift by row size sidesize
+	// we shoudl go max to sidesize loop but can stop before
 	return (bitmino);
 }
 
