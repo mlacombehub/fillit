@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 18:03:36 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 18:08:34 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 // /*
 // **	 AND (mask : x) = x then can shift
-// **
 // **
 // ** in header macro define #define b0  0x0001
 // ** #define b1  0x0002
@@ -41,7 +40,9 @@ int		ft_bitcompact(int bitmino, int sidesize)
 	// need to create a mask of col
 	// if first row empty shift by row size sidesize
 	// we shoudl go max to sidesize loop but can stop before
-	(void) sidesize;
+	while (!(bitmino&4371))
+		bitmino >> 1;
+
 	return (bitmino);
 }
 
@@ -65,7 +66,8 @@ int		ft_rev_chartobit(char *c, char thebitchar)
 	{
 		if (c[k] == thebitchar)
 			intbit = intbit + power;
-		power = power * 2;
+		if(c[k] != '\n')
+			power = power * 2;
 		k++;
 	}
 	return (intbit);
