@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 12:22:10 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 14:16:27 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		ft_bitcompact(int bitmino, int sidesize)
 }
 
 /*
+** this is the valid function //
 ** takes a string and for every char thebitchar
 ** sets the reversed n bit as 1.
 ** "1010" gives 5, so does "101"
@@ -70,6 +71,7 @@ int		ft_rev_chartobit(char *c, char thebitchar)
 }
 
 /*
+** ignore this function, it skips too many zeroes
 ** takes a string and for every n char as thebitchar
 ** sets the n bit as 1
 ** "1010" gives 10
@@ -94,6 +96,7 @@ int		ft_right_chartobit(char *c, char thebitchar)
 }
 
 /*
+** ignore this function, it skips too many zeroes
 ** takes a string and for every n char as thebitchar
 ** sets the n bit as 1
 ** passes the big or little endian
