@@ -6,12 +6,12 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 22:35:44 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 12:12:01 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 14:08:46 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/includes/libft.h"
-#define CHAR_AS_BIT '1'
+#define CHAR_AS_BIT '#'
 #define FT_BIG_ENDIAN 0
 
 /*
