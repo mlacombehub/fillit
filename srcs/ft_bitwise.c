@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 14:16:27 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 14:31:45 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int		ft_rev_chartobit(char *c, char thebitchar)
 	{
 		if (c[k] == thebitchar)
 			intbit = intbit + power;
-		power = power * 2;
+		if(c[k] != '\n')
+			power = power * 2;
 		k++;
 	}
 	return (intbit);
