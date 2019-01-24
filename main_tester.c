@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 22:35:44 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 18:23:25 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 18:48:52 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int     ft_chartobit(char *c, char b, int bigEnd);
 int     ft_right_chartobit(char *c, char b);
 int     ft_rev_chartobit(char *c, char b);
 void    ft_printmino(int mino, int sidesize);
+int		ft_bitcompact(int bitmino, int sidesize);
 
 int     main(int argc, char **argv)
 {
     if (argc == 2)
     {
-        
+
         char *c;
         int n;
+        int m;
         c = argv[1];
         /*
         ft_putendl("big endian:");
@@ -44,7 +46,9 @@ int     main(int argc, char **argv)
         ft_putnbr(ft_right_chartobit(c, CHAR_AS_BIT));
         */
         n = ft_atoi(c);
-        ft_printmino(int n, int 4);
+        ft_printmino(n, 4);
+        m = ft_bitcompact(n, 4);
+        ft_printmino(m, 4);
     }
     else
     {
