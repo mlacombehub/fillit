@@ -127,10 +127,10 @@ t_piece		*ft_buff_to_binary(char *buff)
 	}
 	while ((binmap[15] && binmap[11] && binmap[7] && binmap[3]) == 0)
 	{
-		binmap[15] >> 4;
-		binmap[11] >> 4;
-		binmap[7] >> 4;
-		binmap[3] >> 4;
+		binmap[15] << 4;
+		binmap[11] << 4;
+		binmap[7] << 4;
+		binmap[3] << 4;
 	}
 	return (binmap);
 }
