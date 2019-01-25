@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 19:59:54 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/25 15:10:56 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_bitcompact(int bitmino, int sidesize)
 {
 	while ((bitmino&(0b1111)) == 0)
 		bitmino = bitmino >> sidesize;
-	while ((bitmino&0b1000100010001000) == 0)
+	while ((bitmino&4369) == 0)
 		bitmino = bitmino >> 1;
 	return (bitmino);
 }
