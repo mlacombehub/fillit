@@ -6,36 +6,13 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/01/25 15:05:37 by xbarthe          ###   ########.fr       */
-=======
-/*   Updated: 2019/01/25 15:10:56 by xbarthe          ###   ########.fr       */
->>>>>>> e0392322ca074582a435cc4bad15829142c13952
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 
 /*
-<<<<<<< HEAD
-**	AND (mask : x) = x then can shift
-**
-**	in header macro define #define b0  0x0001
-**	#define b1  0x0002
-**	#define b2  0x0004
-**	#define b3  0x0008
-**	#define b4  0x0010 etc..
-**
-**	add to libft a ft_bin_as_str_to_int
-**
-**	CAREFUL we should rather use unsigned int or size_t to avoid any
-**	fishy business with shifting in negative numbers
-**	bitcompact : compacts a tetrimino : psuhes it up and left
-**	takes a bit and assuming column number is squareSide will
-**	shift it up and left
-**
-********************************************************
-=======
 **	 AND (mask : x) = x then can shift
 **
 ** in header macro define #define b0  0x0001
@@ -54,7 +31,6 @@
 ** bitcompact : compacts a tetrimino : psuhes it up and left
 ** takes a bit and assuming column number is squareSide will
 ** shift it up and left
->>>>>>> e0392322ca074582a435cc4bad15829142c13952
 **
 ** 	if first col empty, shift by 1
 **	need to create a mask of col
@@ -64,16 +40,10 @@
 
 int		ft_bitcompact(int bitmino, int sidesize)
 {
-<<<<<<< HEAD
-	while (!(bitmino & 4371))
-		bitmino >> 1;
-
-=======
-	while ((bitmino&(0b1111)) == 0)
+	while ((bitmino & (0b1111)) == 0)
 		bitmino = bitmino >> sidesize;
-	while ((bitmino&4369) == 0)
+	while ((bitmino & 4369) == 0)
 		bitmino = bitmino >> 1;
->>>>>>> e0392322ca074582a435cc4bad15829142c13952
 	return (bitmino);
 }
 
