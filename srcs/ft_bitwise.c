@@ -6,41 +6,40 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/24 18:08:34 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/24 18:24:27 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 
-// /*
-// **	 AND (mask : x) = x then can shift
-// **
-// ** in header macro define #define b0  0x0001
-// ** #define b1  0x0002
-// ** #define b2  0x0004
-// ** #define b3  0x0008
-// ** #define b4  0x0010 etc..
-// **
-// ** add to libft a ft_bin_as_str_to_int
-// **
-// ** CAREFUL we should rather use unsigned int or size_t to avoid any
-// ** fishy business with shifting in negative numbers
-// */
-
 /*
-** bitcompact : compacts a tetrimino : psuhes it up and left
-** takes a bit and assuming column number is squareSide will
-** shift it up and left
+**	AND (mask : x) = x then can shift
 **
+**	in header macro define #define b0  0x0001
+**	#define b1  0x0002
+**	#define b2  0x0004
+**	#define b3  0x0008
+**	#define b4  0x0010 etc..
+**
+**	add to libft a ft_bin_as_str_to_int
+**
+**	CAREFUL we should rather use unsigned int or size_t to avoid any
+**	fishy business with shifting in negative numbers
+**	bitcompact : compacts a tetrimino : psuhes it up and left
+**	takes a bit and assuming column number is squareSide will
+**	shift it up and left
+**
+********************************************************
+**
+** 	if first col empty, shift by 1
+**	need to create a mask of col
+**	if first row empty shift by row size sidesize
+**	we shoudl go max to sidesize loop but can stop before
 */
 
 int		ft_bitcompact(int bitmino, int sidesize)
 {
-	// if first col empty, shift by 1
-	// need to create a mask of col
-	// if first row empty shift by row size sidesize
-	// we shoudl go max to sidesize loop but can stop before
-	while (!(bitmino&4371))
+	while (!(bitmino & 4371))
 		bitmino >> 1;
 
 	return (bitmino);
@@ -66,7 +65,7 @@ int		ft_rev_chartobit(char *c, char thebitchar)
 	{
 		if (c[k] == thebitchar)
 			intbit = intbit + power;
-		if(c[k] != '\n')
+		if (c[k] != '\n')
 			power = power * 2;
 		k++;
 	}

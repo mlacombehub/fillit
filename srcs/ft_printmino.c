@@ -18,7 +18,7 @@
 
 void    ft_printmino(int mino, int sidesize)
 {
-    int newino;
+    int newmino;
     int k;
 
     newmino = mino;

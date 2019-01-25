@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/21 15:36:26 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/25 14:47:17 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,15 @@
 # define FILE_LENGTH (26 * 21 + 1)
 
 # include "../libft/includes/libft.h"
-
-typedef struct	s_map
-{
-	unsigned short int	l0: 4;
-	unsigned short int	l1: 4;
-	unsigned short int	l2: 4;
-	unsigned short int	l3: 4;
-}				t_map;
+// faudra revoir cette struct voire la supprimer
 
 typedef struct	s_piece
 {
-	size_t	n_piece;
-	char	binary;
+	char		*n_piece;
+	int			oposition;
+	int			width;
+	int			height;
+	uint16_t	binary;
 }				t_piece;
 
 #endif

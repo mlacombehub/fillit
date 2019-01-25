@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:22:23 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/21 16:56:36 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/25 15:05:55 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,24 @@ int		ft_checking(int originmap, char *map)
 	int			binmap;
 	t_piece		piece;
 
-	piece.n_piece = 1;
-	while (originmap != piece.n_piece++ * 21)
+	*piece.n_piece = 'A';
+	while (originmap != *piece.n_piece++ * 21)
 	{
-		*buff = originmap + (piece.n_piece - 1) * 21;
+		piece = ft_piece_creator(binmap, piece.n_piece);
+		*buff = originmap + (*piece.n_piece - 1) * 21;
 		checker = buff[0];
 		if ((buff[4] && buff[9] && buff[14] && buff[19] && buff[20]) == '\n' && piece.n_piece <= 27)
 		{
 			while (checker++ != buff[20])
 				if (checker != '#' || checker != '.' || checker != '\n')
 					return (0);
-			map[(piece.n_piece - 1) * 20] = ft_char_to_bin(*buff, piece);
+			//map[(*piece.n_piece - 1) * 20] = ft_char_to_bin(*buff, piece);
 		}
 		else if (buff[0] == '\0')
 			return (binmap = *map);
 		else
 			return (0);
+		
 	}
 	free(map);
 }
@@ -74,7 +76,7 @@ int		ft_char_to_bin(char *buff, t_piece piece)
 	{
 		if (!(buff = ft_verification(buff)))
 			return (0);
-		piece.binary = ft_buff_to_map(buff);
+		piece.binary = ft_buff_to_binary(buff);
 	}
 	return (ret);
 }
@@ -103,7 +105,7 @@ int		ft_verification(char *buff)
 	return ((n_conn == 6 || n_conn == 8) ? 1 : 0);
 }
 
-t_piece		*ft_buff_to_binary(char *buff)
+uint16_t		*ft_buff_to_binary(char *buff)
 {
 	size_t	i;
 	size_t	j;
@@ -135,9 +137,45 @@ t_piece		*ft_buff_to_binary(char *buff)
 	return (binmap);
 }
 
-char	ft_solve()
+t_piece	ft_piece_creator(char *buff, char letter)
+{
+	t_piece	piece;
+
+	piece.n_piece = letter;
+	piece.width = ;
+	piece.height = ;
+	piece.oposition = ;
+
+	return (piece);
+}
+
+int		weight_height_init()
 {
 
+}
+
+void	ft_solve()
+{
+	long	map;
+	t_piece	piece;
+	int		size_map;
+
+	size_map = ft_sizeofmap(map);
+	
+}
+
+int		ft_sizeofmap(int ret)
+{
+	size_t	i;
+	int		min;
+
+	i = 0;
+	min = ret * 4;
+	
+	while (i++)
+		if (i * i >= min)
+			break;
+	return (i);
 }
 
 int		ft_print_map()
