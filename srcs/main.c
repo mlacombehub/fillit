@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:22:23 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/25 15:05:55 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/25 15:07:02 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int		ft_checking(int originmap, char *map)
 	*piece.n_piece = 'A';
 	while (originmap != *piece.n_piece++ * 21)
 	{
-		piece = ft_piece_creator(binmap, piece.n_piece);
 		*buff = originmap + (*piece.n_piece - 1) * 21;
+		piece = ft_piece_creator(buff, piece.n_piece);
 		checker = buff[0];
 		if ((buff[4] && buff[9] && buff[14] && buff[19] && buff[20]) == '\n' && piece.n_piece <= 27)
 		{
@@ -140,6 +140,7 @@ uint16_t		*ft_buff_to_binary(char *buff)
 t_piece	ft_piece_creator(char *buff, char letter)
 {
 	t_piece	piece;
+	
 
 	piece.n_piece = letter;
 	piece.width = ;
@@ -149,8 +150,11 @@ t_piece	ft_piece_creator(char *buff, char letter)
 	return (piece);
 }
 
-int		weight_height_init()
+int		width_height_init(char *buff)
 {
+	int	i;
+	
+	i = 0;
 
 }
 
