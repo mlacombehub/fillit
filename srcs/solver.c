@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/25 18:52:15 by xbarthe          ###   ########.fr       */
+/*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
+/*   Updated: 2019/01/25 17:48:07 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# define FILE_LENGTH (26 * 21 + 1)
+#include "../includes/fillit.h"
 
-# include "../libft/includes/libft.h"
-
-typedef struct	s_piece
+int		ft_sizeofmap(int ret)
 {
-	char		*n_piece;
-	int			oposition;
-	int			width;
-	int			height;
-	uint16_t	referencebinary;
-	uint64_t	movedbinary;
-}				t_piece;
+	size_t	i;
+	int		min;
 
-typedef	struct s_map
+	i = 0;
+	min = ret * 4;
+	
+	while (i++)
+		if (i * i >= min)
+			break;
+	return (i);
+}
+
+void	ft_solver()
 {
-	uint16_t	mappart[4];
-	char		mapinletters[256];
-}				t_map;
+	long	map;
+	t_piece	piece;
+	int		size_map;
 
-#endif
+	size_map = ft_sizeofmap(map);
+	
+}

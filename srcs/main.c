@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:22:23 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/25 15:07:02 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/25 18:03:15 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 	int				finalmap;
 
 	if (argc == 2)
-		if (fd = open(argv[1], O_RDONLY))
+		if (fd == open(argv[1], O_RDONLY))
 		{
 			originmap = read(fd, map, FILE_LENGTH);
 			map[FILE_LENGTH + 1] = '\0';
@@ -33,13 +33,13 @@ int		main(int argc, char **argv)
 		else
 			ft_putendl_fd(2, "error");
 	else
-		ft_putendl_fd(2, "usage: ./fillit [source_file]");
+		ft_putendl_fd(2, "usage: ./fillit [input_file]");
 	return (0);
 }
 
 int		ft_checking(int originmap, char *map)
 {
-	char		buff[20];
+	char		buff[22];
 	char		checker;
 	int			binmap;
 	t_piece		piece;
@@ -48,20 +48,19 @@ int		ft_checking(int originmap, char *map)
 	while (originmap != *piece.n_piece++ * 21)
 	{
 		*buff = originmap + (*piece.n_piece - 1) * 21;
-		piece = ft_piece_creator(buff, piece.n_piece);
 		checker = buff[0];
 		if ((buff[4] && buff[9] && buff[14] && buff[19] && buff[20]) == '\n' && piece.n_piece <= 27)
 		{
 			while (checker++ != buff[20])
 				if (checker != '#' || checker != '.' || checker != '\n')
 					return (0);
+			piece = ft_piece_creator(buff, piece.n_piece);
 			//map[(*piece.n_piece - 1) * 20] = ft_char_to_bin(*buff, piece);
 		}
 		else if (buff[0] == '\0')
 			return (binmap = *map);
 		else
 			return (0);
-		
 	}
 	free(map);
 }
@@ -114,72 +113,39 @@ uint16_t		*ft_buff_to_binary(char *buff)
 	i = 19;
 	j = 16;
 	while (i--)
-	{
-		if (buff[i] = '#')
+		if (buff[i] == '#')
 			binmap[j--] = 1;
-		else if (buff[i] = '.')
+		else if (buff[i] == '.')
 			binmap[j--] = 0;
-	}
-	while ((binmap[15] && binmap[14] && binmap[13] && binmap[12]) == 0)
-	{
-		binmap[15] << 16;
-		binmap[14] << 15;
-		binmap[13] << 14;
-		binmap[12] << 13;
-	}
-	while ((binmap[15] && binmap[11] && binmap[7] && binmap[3]) == 0)
-	{
-		binmap[15] << 4;
-		binmap[11] << 4;
-		binmap[7] << 4;
-		binmap[3] << 4;
-	}
+	// while ((binmap[15] && binmap[14] && binmap[13] && binmap[12]) == 0)
+	// {
+	// 	binmap[15] << 16;
+	// 	binmap[14] << 15;
+	// 	binmap[13] << 14;
+	// 	binmap[12] << 13;
+	// }
+	// while ((binmap[15] && binmap[11] && binmap[7] && binmap[3]) == 0)
+	// 	(binmap[15] && binmap[11] && binmap[7] && binmap[3]) << 4;
 	return (binmap);
 }
 
 t_piece	ft_piece_creator(char *buff, char letter)
 {
 	t_piece	piece;
-	
+	int i;
 
+	i = 0;
 	piece.n_piece = letter;
-	piece.width = ;
-	piece.height = ;
-	piece.oposition = ;
-
+	piece.width = 1;
+	piece.height = 1;
+	while (buff[i++])
+	{
+		if ((buff[i] == buff[i + 1]) && buff[i] != '.')
+			piece.width++;
+		else if ((buff[i] == buff [i + 5]) && buff[i] != '.')
+			piece.height++;
+	}
 	return (piece);
-}
-
-int		width_height_init(char *buff)
-{
-	int	i;
-	
-	i = 0;
-
-}
-
-void	ft_solve()
-{
-	long	map;
-	t_piece	piece;
-	int		size_map;
-
-	size_map = ft_sizeofmap(map);
-	
-}
-
-int		ft_sizeofmap(int ret)
-{
-	size_t	i;
-	int		min;
-
-	i = 0;
-	min = ret * 4;
-	
-	while (i++)
-		if (i * i >= min)
-			break;
-	return (i);
 }
 
 int		ft_print_map()
