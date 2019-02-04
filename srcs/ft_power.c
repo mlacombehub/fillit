@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/25 18:52:15 by xbarthe          ###   ########.fr       */
+/*   Created: 2019/01/25 17:39:44 by xbarthe           #+#    #+#             */
+/*   Updated: 2019/01/25 17:41:36 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# define FILE_LENGTH (26 * 21 + 1)
-
-# include "../libft/includes/libft.h"
-
-typedef struct	s_piece
+uint16_t		ft_power(uint16_t nb, int power)
 {
-	char		*n_piece;
-	int			oposition;
-	int			width;
-	int			height;
-	uint16_t	referencebinary;
-	uint64_t	movedbinary;
-}				t_piece;
+	int i;
+	int result;
 
-typedef	struct s_map
-{
-	uint16_t	mappart[4];
-	char		mapinletters[256];
-}				t_map;
-
-#endif
+	i = 1;
+	result = nb;
+	if (power < 0)
+		return (0);
+	if (power == 0 && nb == 0)
+		return (1);
+	if (power == 0)
+		return (1);
+	while (i++ < power)
+		result = result * nb;
+	return (result);
+}

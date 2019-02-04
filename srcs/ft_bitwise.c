@@ -6,12 +6,14 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 11:48:24 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/01/25 15:05:37 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/01/25 18:06:42 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
+#include "../includes/fillit.h"
 
+uint16_t		ft_power(uint16_t nb, int power);
 /*
 **	 AND (mask : x) = x then can shift
 **
@@ -54,10 +56,10 @@ int		ft_bitcompact(int bitmino, int sidesize)
 ** "1010" gives 5, so does "101"
 */
 
-int		ft_rev_chartobit(char *c, char thebitchar)
+uint16_t	ft_rev_chartobit(char *c, char thebitchar)
 {
 	int k;
-	int intbit;
+	uint16_t intbit;
 	int power;
 
 	intbit = 0;
@@ -74,56 +76,52 @@ int		ft_rev_chartobit(char *c, char thebitchar)
 	return (intbit);
 }
 
-/*
-** ignore this function, it skips too many zeroes
-** takes a string and for every n char as thebitchar
-** sets the n bit as 1
-** "1010" gives 10
-*/
-
-int		ft_right_chartobit(char *c, char thebitchar)
+int		ft_putpiece(t_map * map, uint16_t piece)
 {
-	int k;
-	int intbit;
-	int power;
+	// try and put piece in map 0
+	if ( (map->mappart[1] & piece)== 0) // can be matched as no overlap
+		map->mappart[1] = map->mappart[1] | piece; // add it with OR
+	else // try and move the piece sideway
+		(void)1;
+	// check map is not too large
+	// try and move down
+	// check map not too high
+	return (1);
 
-	intbit = 0;
-	k = ft_strlen(c);
-	power = 1;
-	while (k-- != 0)
-	{
-		if (c[k] == thebitchar)
-			intbit = intbit + power;
-		power = power * 2;
-	}
-	return (intbit);
 }
 
-/*
-** ignore this function, it skips too many zeroes
-** takes a string and for every n char as thebitchar
-** sets the n bit as 1
-** passes the big or little endian
-*/
-
-int		ft_chartobit(char *c, char thebitchar, int bigendian)
+int		ft_measurewidth(uint16_t stuff, size_t s)
 {
-	int k;
-	int intbit;
-	int power;
+	size_t		k;
+	uint16_t 	col_mask;
+	int			w;
 
-	intbit = 0;
-	k = (bigendian ? ft_strlen(c) : 0);
-	power = 1;
-	while ((bigendian == 1 && k != 0) || (bigendian == 0 && c[k] != '\0'))
+	col_mask = 1;
+	w = 0;
+	//colmask = 0b1000000000000000100000000000000010000000000000001;
+	k = sizeof(stuff) / s;
+	while ( k-- != 0)
+			col_mask = col_mask + ft_power(2, k);
+	while ((stuff & col_mask) != 0)
 	{
-		if (c[k] == thebitchar)
-			intbit = intbit + power;
-		power = power * 2;
-		if (bigendian == 1)
-			k--;
-		else
-			k++;
+		w++;
+		col_mask = col_mask >> 1;
 	}
-	return (intbit);
+	return (w);
+}
+
+int		ft_measureheight(uint16_t stuff, size_t s)
+{
+	uint16_t	row_mask;
+	int			h;
+
+	h = 0;
+	//rowmask = 0b1111111111111111;
+	row_mask = ft_power(2, s) - 1;
+	while ((stuff & row_mask) != 0)
+	{
+		h++;
+		row_mask = row_mask >> s;
+	}
+	return (h);
 }

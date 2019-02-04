@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+         #
+#    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/13 14:01:25 by mlacombe          #+#    #+#              #
-#    Updated: 2019/01/13 14:01:39 by mlacombe         ###   ########.fr        #
+#    Updated: 2019/01/25 17:51:22 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -Rf
 
-SRC = main.c solver.c map.c
+SRC = main.c solver.c
 INCLUDES = fillit.h
 
 SRC_DIR = srcs/
