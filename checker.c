@@ -19,21 +19,23 @@ int		ft_verification(char *buff)
 
 	n_conn = 0;
 	i = 0;
-	while (i++ < 20)
+	while (i < 20)
 	{
 		if (buff[i] == '#')
 		{
 			if (i + 1 < 20 && buff[i + 1] == '#')
 				n_conn++;
-			if (i - 1 < 20 && buff[i - 1] == '#')
+			if (i - 1 >= 0 && buff[i - 1] == '#')
 				n_conn++;
 			if (i + 5 < 20 && buff[i + 5] == '#')
 				n_conn++;
-			if (i - 5 < 20 && buff[i - 5] == '#')
+			if (i - 5 >= 0 && buff[i - 5] == '#')
 				n_conn++;
 		}
+		i++;
+		ft_putnbr(n_conn);
+		ft_putendl("");
 	}
-	ft_putnbr(n_conn);
 	return ((n_conn == 6 || n_conn == 8) ? 1 : 0);
 }
 
