@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/07 17:04:25 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/07 17:06:59 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ int		main(int argc, char **argv)
 	feed[feedsize + 1] = '\0';
 	if (ft_check_originalfeed(feed, feedsize) == 0)
 		return(ft_puterror("error"));
-
+	return(ft_puterror("perfect"));
 }
