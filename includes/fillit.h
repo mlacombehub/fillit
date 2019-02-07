@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/07 17:33:20 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/07 19:44:53 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 typedef struct	s_piece
 {
 	int			num_piece;
-	char 		*tetriminchar[22];
 	int			origposition;
 	int			width;
 	int			height;
 	uint16_t	referencebinary;
 	uint64_t	movedbinary;
+	char 		tetriminchar[22];
 }				t_piece;
 
 typedef	struct s_map
