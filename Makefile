@@ -3,61 +3,90 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+         #
+#    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/01/13 14:01:25 by mlacombe          #+#    #+#              #
-#    Updated: 2019/01/13 14:01:39 by mlacombe         ###   ########.fr        #
+#    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
+#    Updated: 2019/02/07 17:28:17 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit.a
+# program name
+TARGET= fillit
 
-CC = gcc 
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -Rf
+# compiler
+CC= gcc
+CFLAGS= -Wall -Wextra -Werror
+DFLAGS= -g
+SUFFIX= c
+LIB=ft
+DEPENDANCY= libft
+DEP_NAME= ft
+DEP_PREFIX= lib
+DEP_SUFFIX = .a
 
-SRC = main.c solver.c map.c
-INCLUDES = fillit.h
+# resources
+SRC_PATH= ./
+INCL_PATH= ./includes/
 
-SRC_DIR = srcs/
-OBJ_DIR = objects/
-INC_DIR = includes/
+# files
+SRC= 	main.c \
+#		get_next_line.c \
 
-OBJ := $(addprefix $(OBJ_DIR),$(SRC:.c=.o))
-SRC := $(addprefix $(SRC_DIR),$(SRC))
-INCLUDES := $(addprefix $(INC_DIR),$(INCLUDES))
+# sources and objects construction
+SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX) )
+OBJ= $(SRC:.$(SUFFIX)=.o)
+OBJ_D= $(SRC:.$(SUFFIX)=_debug.o)
 
-all: $(NAME)
+TARGET_D=$(TARGET)_debug
 
-$(OBJ_DIR):
-	mkdir $@
+# rules
 
-$(SRC_DIR):
-	mkdir $@
-	cp $(SRC) $@
-	rm $(SRC)
 
-$(INC_DIR):
-	mkdir $@
-	cp $(INCLUDES) $@
-	rm $(INCLUDES)
 
-$(OBL_DIR)%.o: $(SRC_DIR)%.c
-	$(CC) $(FLAG) -o $@ -c $< -I $(INCLUDES)
+# default rule
+all: $(TARGET) $(DEPENDANCY)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+#dependancy
 
+$(DEPENDANCY):
+	@cd $(DEP_FOLDER) && $(MAKE) && cp ./$(DEPENDANCY) ../ && cp ./$(LIB_HEAD) ../
+	@echo "-- Library " $(DEPENDANCY) " generated and copied with header"
+
+
+# program creation
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+
+# object creation
+%.o: $(SRC_PATH)%.cpp
+	$(CC) $(CFLAGS) -c -I$(INCL_PATH) $<
+
+#debug rule
+debug: $(TARGET_D)
+
+# debug program creation
+$(TARGET_D): clean $(OBJ)
+	$(CC) $(CFLAGS) -g -o $(TARGET_D) $(OBJ)
+
+# debug object creation
+%.o: $(SRC_PATH)%.cpp
+	$(CC) $(CFLAGS) -g -c -I$(INCL_PATH) $<
+
+
+# diagnostic
+test:
+	@echo "binary name: " $(TARGET)
+	@echo "sources: " $(SRCFILES)
+	@echo "obj:" $(OBJ)
+	@echo "------"
+	@echo "debug binary name: " $(TARGET_D)
+# clean the object files
 clean:
-	$(RM) $(OBJ) $(OBJ_DIR)
-	cp -R $(SRC_DIR) ./
-	$(RM) $(SRC_DIR)
-	cp -R $(INC_DIR) ./
-	$(RM) $(INC_DIR)
+	/bin/rm -rf $(OBJ)
 
+# clean program and objects
 fclean: clean
-	$(RM) $(NAME)
+	/bin/rm -f $(TARGET) $(TARGET)_debug
 
+# clean ALL and remake all
 re: fclean all
-
-.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/07 16:31:48 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/07 17:33:20 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILLIT_H
 # define FILE_MAX_LENGTH (26 * 21)
 
+# include <fcntl.h>
 # include "../libft/includes/libft.h"
 
 /*
