@@ -33,8 +33,6 @@ int		ft_verification(char *buff)
 				n_conn++;
 		}
 		i++;
-		ft_putnbr(n_conn);
-		ft_putendl("");
 	}
 	return ((n_conn == 6 || n_conn == 8) ? 1 : 0);
 }
@@ -49,8 +47,11 @@ int		ft_checkfeed(char *feed, int feedsize)
 	int	k;
 	int hcount;
 
-	if (feedsize / 21 < 1 || (feedsize) / 21 > 27 || feedsize % 21 != 0)
+	if (feedsize / 21 < 1 || (feedsize) / 21 > 26 || feedsize % 21 != 0)
 		return (0);
+	ft_putnbr(feedsize);
+	ft_putendl("");
+	ft_putnbr(feedsize / 21);
 	while (*feed)
 	{
 		k = 0;

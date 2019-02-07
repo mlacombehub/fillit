@@ -40,7 +40,7 @@ int		main(int argc, char **argv)
 		return (ft_puterror("usage: ./fillit [input_file]"));
 	if ((fd = open(argv[1], O_RDONLY)) <= 0)
 		return (ft_puterror("error"));
-	feedsize = read(fd, feed, FILE_MAX_LENGTH);
+	feedsize = read(fd, feed, FILE_MAX_LENGTH + 1);
 	feed[feedsize] = '\0';
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
