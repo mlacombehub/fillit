@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:37:37 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/10 14:52:13 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/08 13:28:40 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ char			*ft_strndup(const char *s, size_t n);
 size_t			ft_strnlen(const char *src, size_t n);
 int				ft_min(int a, int b);
 int				ft_max(int a, int b);
+void			ft_putendl_nbr(int nbr);
+void			ft_putendl_nbr_fd(int nbr, int fd);
 
 #endif

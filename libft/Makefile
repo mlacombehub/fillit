@@ -6,7 +6,7 @@
 #    By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 16:32:14 by mlacombe          #+#    #+#              #
-#    Updated: 2019/01/10 14:48:56 by mlacombe         ###   ########.fr        #
+#    Updated: 2019/02/08 13:30:19 by mlacombe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,9 @@ SRC =	ft_bzero.c\
 		ft_strnlen.c\
 		ft_min.c\
 		ft_max.c\
-		get_next_line.c
+		get_next_line.c\
+		ft_putendl_nbr.c\
+		ft_putendl_nbr_fd.c
 
 SRC_DIR = srcs/
 OBJ_DIR = objects/
