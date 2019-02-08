@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/08 12:41:15 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/08 18:02:28 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC= 	main.c \
 		checker.c \
 		slicer.c \
 		utilities.c \
+		libft_add.c \
 
 
 # sources and objects construction

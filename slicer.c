@@ -6,10 +6,9 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 13:27:31 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 18:02:52 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 # include "./includes/fillit.h"
 
@@ -23,20 +22,13 @@ int			ft_measurewidth(uint16_t binsrc, size_t s)
 {
 	size_t		k;
 	uint16_t 	col_mask;
-	int			w;
 
-	col_mask = 1;
-	w = 0;
-	//colmask = 0b1000000000000000100000000000000010000000000000001;
-	k = sizeof(binsrc) / s;
-	while ( k-- != 0)
-			col_mask = col_mask + ft_power(2, k);
-	while ((binsrc & col_mask) != 0)
-	{
-		w++;
+	k = s;
+	while (k-- != 0)
+			col_mask = ft_power(2, s - 1) + (col_mask << s);
+	while ((binsrc & col_mask) == 0 && s--)
 		col_mask = col_mask >> 1;
-	}
-	return (w);
+	return (s);
 }
 
 /*
@@ -49,38 +41,37 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 {
 	uint16_t	row_mask;
 	int			h;
+	int 		k;
 
-	h = 0;
-	//rowmask = 0b1111111111111111;
+	h = s;
+	k = s;
 	row_mask = ft_power(2, s) - 1;
-	while ((binsrc & row_mask) != 0)
-	{
-		h++;
+	while (k-- != 1)
+		row_mask = row_mask << s;
+	while ((binsrc & row_mask) == 0 && h--)
 		row_mask = row_mask >> s;
-	}
 	return (h);
 }
 
+
 /*
-** calculates 'nb' to the power 'power'
+** bitcompact : compacts a tetrimino : psuhes it up and left
+** takes a bit and assuming column number is squareSide will
+** shift it up and left
+**
+** 	if first col empty, shift by 1
+**	need to create a mask of col
+**	if first row empty shift by row size sidesize
+**	we shoudl go max to sidesize loop but can stop before
 */
 
-uint16_t	ft_power(uint16_t nb, int power)
+int		ft_bitcompact(int bitmino, int sidesize)
 {
-	int	i;
-	int	result;
-
-	i = 1;
-	result = nb;
-	if (power < 0)
-		return (0);
-	if (power == 0 && nb == 0)
-		return (1);
-	if (power == 0)
-		return (1);
-	while (i++ < power)
-		result = result * nb;
-	return (result);
+	while ((bitmino & (0b1111)) == 0)
+		bitmino = bitmino >> sidesize;
+	while ((bitmino & 0b1000100010001) == 0)
+		bitmino = bitmino >> 1;
+	return (bitmino);
 }
 
 /*
@@ -123,22 +114,23 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	k = 0;
 	while (*feed)
 	{
-		ft_putstr("\n mino no ");
-		ft_putendl_nbr(k);
+		ft_putstr("\n mino no ");//
+		ft_putendl_nbr(k);//
 		tab[k].num_piece = k;
 		ft_strcpy(tab[k].tetchar, ft_strsub(feed, 0, 21));
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		ft_putendl(tab[k].tetchar); 
-		ft_putstr(" => equals ");
-		ft_putendl_nbr(tab[k].refbin);
-		tab[k].width = ft_measurewidth(tab[k].refbin, 4);
-		tab[k].height = ft_measureheight(tab[k].refbin, 4);
-		ft_putstr("w = ");
+		ft_putendl(tab[k].tetchar);//
+		ft_putstr(" => equals ");//
+		ft_putendl_nbr(tab[k].refbin);//
+		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
+		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
+		tab[k].height = ft_measureheight(tab[k].compbin, 4);
+		ft_putstr("w = ");//
 		ft_putendl_nbr(tab[k].width);
-		ft_putstr("h = ");
-		ft_putendl_nbr(tab[k].height);
+		ft_putstr("h = ");//
+		ft_putendl_nbr(tab[k].height);//
+		ft_printmino(tab[k].compbin, 4);
 		k++;
 		feed += 21;
-		ft_printmino(tab[k].refbin, 4);
 	}
 }

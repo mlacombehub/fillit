@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/08 13:03:35 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 18:02:12 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_piece
 	int			origpos;
 	int			width;
 	int			height;
+	uint16_t	compbin;
 	uint16_t	refbin;
 	uint64_t	movbin;
 	char 		tetchar[22];
@@ -50,16 +51,22 @@ int			ft_checkfeed(char *feed, int feedsize);
 ** slicer.c functions
 */
 
-uint16_t	ft_power(uint16_t nb, int power);
 uint16_t	ft_rev_chartobit(char *c, char thebitchar);
+int		ft_bitcompact(int bitmino, int sidesize);
 int		ft_measurewidth(uint16_t stuff, size_t s);
 int		ft_measureheight(uint16_t stuff, size_t s);
 void	ft_feedtopieces(t_piece *tab, char *feed);
 
 /*
-** utiities.c functions (for debug)
+** utilities.c functions (for debug)
 */
 
 void    ft_printmino(int mino, int sidesize);
+
+/*
+** lifbt_add.c functions (should be added to libft)
+*/
+
+uint16_t	ft_power(uint16_t nb, int power);
 
 #endif
