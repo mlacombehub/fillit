@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/07 17:28:17 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/08 12:41:15 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS= -Wall -Wextra -Werror
 DFLAGS= -g
 SUFFIX= c
 LIB=ft
-DEPENDANCY= libft
+DEPENDANCY= libft.a
 DEP_NAME= ft
 DEP_PREFIX= lib
 DEP_SUFFIX = .a
@@ -30,7 +30,10 @@ INCL_PATH= ./includes/
 
 # files
 SRC= 	main.c \
-#		get_next_line.c \
+		checker.c \
+		slicer.c \
+		utilities.c \
+
 
 # sources and objects construction
 SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX) )
@@ -44,7 +47,7 @@ TARGET_D=$(TARGET)_debug
 
 
 # default rule
-all: $(TARGET) $(DEPENDANCY)
+all: $(DEPENDANCY) $(TARGET)
 
 #dependancy
 
@@ -55,11 +58,11 @@ $(DEPENDANCY):
 
 # program creation
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ) $(DEPENDANCY)
 
 # object creation
 %.o: $(SRC_PATH)%.cpp
-	$(CC) $(CFLAGS) -c -I$(INCL_PATH) $<
+	$(CC) $(CFLAGS) $(DEPENDANCY) -c -I$(INCL_PATH) $<
 
 #debug rule
 debug: $(TARGET_D)

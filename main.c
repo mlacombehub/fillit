@@ -6,34 +6,23 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/07 19:45:09 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 13:02:20 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
-#include "checker.c"
 
-/*
-t_piece		*ft_feedtopieces(char *feed)
+int		ft_puterror(char *msg)
 {
-	t_piece 	*tabpieces;
-	int 		k;
-
-	while (*feed)
-	{
-		tabpieces[k].tetriminchar = ft_strsub(feed, 0, 21);
-		tabpieces[k].width = ;
-		tabpieces[k].width = ;
-		feed += 21;
-		k++;
-	}
-
+	ft_putendl_fd(msg, 2);
+	return (0);
 }
-*/
+
 int		main(int argc, char **argv)
 {
 	int				fd;
 	int				feedsize;
+	t_piece 		tab[26];
 	char			feed[FILE_MAX_LENGTH + 1];
 
 	if (argc != 2)
@@ -44,5 +33,6 @@ int		main(int argc, char **argv)
 	feed[feedsize] = '\0';
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
+	ft_feedtopieces(tab, feed);
 	return (0);
 }
