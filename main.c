@@ -6,17 +6,15 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 13:02:20 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 18:25:22 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
 
-int		ft_puterror(char *msg)
-{
-	ft_putendl_fd(msg, 2);
-	return (0);
-}
+/*
+** no malloc, creates a table for the tetriminos
+*/
 
 int		main(int argc, char **argv)
 {
