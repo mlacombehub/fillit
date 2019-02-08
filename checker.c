@@ -6,11 +6,11 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 19:43:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/07 19:50:49 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 12:20:33 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./libft/includes/libft.h"
+# include "./includes/fillit.h"
 
 int		ft_verification(char *buff)
 {
@@ -49,9 +49,6 @@ int		ft_checkfeed(char *feed, int feedsize)
 
 	if (feedsize / 21 < 1 || (feedsize) / 21 > 26 || feedsize % 21 != 0)
 		return (0);
-	ft_putnbr(feedsize);
-	ft_putendl("");
-	ft_putnbr(feedsize / 21);
 	while (*feed)
 	{
 		k = 0;
@@ -72,8 +69,3 @@ int		ft_checkfeed(char *feed, int feedsize)
 	return (1);
 }
 
-int		ft_puterror(char *msg)
-{
-	ft_putendl_fd(msg, 2);
-	return (0);
-}

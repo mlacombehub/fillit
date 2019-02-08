@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/07 19:44:53 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 12:12:38 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 ** n_piece : the printed char (order of reading a b c ...)
 **
 */
-
 
 typedef struct	s_piece
 {
@@ -39,5 +38,8 @@ typedef	struct s_map
 	uint16_t	mappart[4];
 	char		mapinletters[256];
 }				t_map;
+
+int		ft_verification(char *buff);
+int		ft_checkfeed(char *feed, int feedsize);
 
 #endif
