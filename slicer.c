@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 18:02:52 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 18:13:11 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 ** bitcompact : compacts a tetrimino : psuhes it up and left
 ** takes a bit and assuming column number is squareSide will
 ** shift it up and left
-**
 ** 	if first col empty, shift by 1
 **	need to create a mask of col
 **	if first row empty shift by row size sidesize
@@ -67,9 +66,19 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 
 int		ft_bitcompact(int bitmino, int sidesize)
 {
-	while ((bitmino & (0b1111)) == 0)
+	uint16_t 	col_mask;
+	uint16_t	row_mask;
+	int 		k;
+
+	row_mask = ft_power(2, sidesize) - 1;
+	k = sidesize;
+	while (k-- != 0)
+			col_mask = 1 + (col_mask << sidesize);
+	//while ((bitmino & (0b1111)) == 0)
+	while ((bitmino & row_mask) == 0)
 		bitmino = bitmino >> sidesize;
-	while ((bitmino & 0b1000100010001) == 0)
+	//while ((bitmino & 0b1000100010001) == 0)
+	while ((bitmino & col_mask) == 0)
 		bitmino = bitmino >> 1;
 	return (bitmino);
 }
@@ -129,7 +138,8 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		ft_putendl_nbr(tab[k].width);
 		ft_putstr("h = ");//
 		ft_putendl_nbr(tab[k].height);//
-		ft_printmino(tab[k].compbin, 4);
+		ft_printmino(tab[k].refbin, 4);//
+		ft_printmino(tab[k].compbin, 4);//
 		k++;
 		feed += 21;
 	}
