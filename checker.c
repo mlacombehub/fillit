@@ -68,4 +68,3 @@ int		ft_checkfeed(char *feed, int feedsize)
 	}
 	return (1);
 }
-

@@ -123,19 +123,22 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	k = 0;
 	while (*feed)
 	{
-		ft_putstr("\n mino no ");ft_putnbr(k); ft_putendl("");//
+		ft_putstr("\n mino no ");
+		ft_putendl_nbr(k);
 		tab[k].num_piece = k;
 		ft_strcpy(tab[k].tetchar, ft_strsub(feed, 0, 21));
-
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		ft_putendl(tab[k].tetchar); ft_putstr(" => equals ");
-		ft_putnbr(tab[k].refbin);ft_putendl("");//
+		ft_putendl(tab[k].tetchar); 
+		ft_putstr(" => equals ");
+		ft_putendl_nbr(tab[k].refbin);
 		tab[k].width = ft_measurewidth(tab[k].refbin, 4);
 		tab[k].height = ft_measureheight(tab[k].refbin, 4);
-		ft_putstr("w = ");ft_putnbr(tab[k].width);ft_putendl("");//
-		ft_putstr("h = ");ft_putnbr(tab[k].height);ft_putendl("");//
+		ft_putstr("w = ");
+		ft_putendl_nbr(tab[k].width);
+		ft_putstr("h = ");
+		ft_putendl_nbr(tab[k].height);
 		k++;
 		feed += 21;
-		ft_printmino(tab[k].refbin, 4);//
+		ft_printmino(tab[k].refbin, 4);
 	}
 }
