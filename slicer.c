@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 18:13:40 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 18:40:03 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 
 
 /*
-** bitcompact : compacts a tetrimino : psuhes it up and left
-** takes a bit and assuming column number is squareSide will
-** shift it up and left
+** bitcompact : compacts a tetriminoin binary :
+** pushes it up and left
+** takes a bit and assuming column / row number is sidesize
 ** 	if first col empty, shift by 1
-**	need to create a mask of col
 **	if first row empty shift by row size sidesize
-**	we shoudl go max to sidesize loop but can stop before
+**	we should go max to sidesize loop but can stop before
+**	for size 4 mask col = 0b1000100010001 mask row = 0b1111
 */
 
 int		ft_bitcompact(int bitmino, int sidesize)
@@ -74,17 +74,15 @@ int		ft_bitcompact(int bitmino, int sidesize)
 	k = sidesize;
 	while (k-- != 0)
 			col_mask = 1 + (col_mask << sidesize);
-	//while ((bitmino & (0b1111)) == 0)
 	while ((bitmino & row_mask) == 0)
 		bitmino = bitmino >> sidesize;
-	//while ((bitmino & 0b1000100010001) == 0)
 	while ((bitmino & col_mask) == 0)
 		bitmino = bitmino >> 1;
 	return (bitmino);
 }
 
 /*
-** takes a string and for every char thebitchar
+** takes a string and for every n-th char thebitchar
 ** sets the reversed n bit as 1.
 ** "1010" gives 5, so does "101"
 */
@@ -118,29 +116,36 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 {
 	int 		k;
 
-//ft_putnbr(ft_rev_chartobit("..##\n..##", '#'));ft_putendl("");//
-
 	k = 0;
 	while (*feed)
 	{
-		ft_putstr("\n mino no ");//
-		ft_putendl_nbr(k);//
 		tab[k].num_piece = k;
 		ft_strcpy(tab[k].tetchar, ft_strsub(feed, 0, 21));
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		ft_putendl(tab[k].tetchar);//
-		ft_putstr(" => equals ");//
-		ft_putendl_nbr(tab[k].refbin);//
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
 		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
 		tab[k].height = ft_measureheight(tab[k].compbin, 4);
-		ft_putstr("w = ");//
-		ft_putendl_nbr(tab[k].width);
-		ft_putstr("h = ");//
-		ft_putendl_nbr(tab[k].height);//
-		ft_printmino(tab[k].refbin, 4);//
-		ft_printmino(tab[k].compbin, 4);//
+		//ft_putstr("\n mino no ");//
+		//ft_putendl_nbr(k);//
+		//ft_putendl(tab[k].tetchar);//
+		//ft_putstr(" => equals ");//
+		//ft_putendl_nbr(tab[k].refbin);//
+		//ft_putstr("w = ");//
+		//ft_putendl_nbr(tab[k].width);//
+		//ft_putstr("h = ");//
+		//ft_putendl_nbr(tab[k].height);//
+		//ft_printmino(tab[k].refbin, 4);//
+		//ft_printmino(tab[k].compbin, 4);//
 		k++;
 		feed += 21;
 	}
+
+	while (k-- != 0)
+	{
+		ft_putchar('A' + k);
+		ft_putendl("");
+		ft_putendl(tab[k].tetchar);
+	}
+
+
 }
