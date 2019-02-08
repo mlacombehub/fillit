@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/08 12:19:11 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/08 12:41:15 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,9 @@ INCL_PATH= ./includes/
 # files
 SRC= 	main.c \
 		checker.c \
+		slicer.c \
+		utilities.c \
+
 
 # sources and objects construction
 SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX) )

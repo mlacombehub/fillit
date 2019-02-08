@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/08 12:12:38 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 13:03:35 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 typedef struct	s_piece
 {
 	int			num_piece;
-	int			origposition;
+	int			origpos;
 	int			width;
 	int			height;
-	uint16_t	referencebinary;
-	uint64_t	movedbinary;
-	char 		tetriminchar[22];
+	uint16_t	refbin;
+	uint64_t	movbin;
+	char 		tetchar[22];
 }				t_piece;
 
 typedef	struct s_map
@@ -39,7 +39,27 @@ typedef	struct s_map
 	char		mapinletters[256];
 }				t_map;
 
-int		ft_verification(char *buff);
-int		ft_checkfeed(char *feed, int feedsize);
+/*
+** checker.c functions
+*/
+
+int			ft_verification(char *buff);
+int			ft_checkfeed(char *feed, int feedsize);
+
+/*
+** slicer.c functions
+*/
+
+uint16_t	ft_power(uint16_t nb, int power);
+uint16_t	ft_rev_chartobit(char *c, char thebitchar);
+int		ft_measurewidth(uint16_t stuff, size_t s);
+int		ft_measureheight(uint16_t stuff, size_t s);
+void	ft_feedtopieces(t_piece *tab, char *feed);
+
+/*
+** utiities.c functions (for debug)
+*/
+
+void    ft_printmino(int mino, int sidesize);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 12:14:19 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/08 13:02:20 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		main(int argc, char **argv)
 {
 	int				fd;
 	int				feedsize;
+	t_piece 		tab[26];
 	char			feed[FILE_MAX_LENGTH + 1];
 
 	if (argc != 2)
@@ -32,5 +33,6 @@ int		main(int argc, char **argv)
 	feed[feedsize] = '\0';
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
+	ft_feedtopieces(tab, feed);
 	return (0);
 }
