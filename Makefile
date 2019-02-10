@@ -33,7 +33,6 @@ SRC= 	main.c \
 		checker.c \
 		slicer.c \
 		utilities.c \
-		libft_add.c \
 
 
 # sources and objects construction

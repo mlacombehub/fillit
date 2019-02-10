@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_nbr_fd.c                                :+:      :+:    :+:   */
+/*   ft_puterror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 13:24:33 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/10 19:23:07 by mlacombe         ###   ########.fr       */
+/*   Created: 2019/02/10 19:16:22 by mlacombe          #+#    #+#             */
+/*   Updated: 2019/02/10 19:16:51 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_nbr_fd(int nbr, int fd)
+int		ft_puterror(char *msg)
 {
-	if (fd >= 0)
-	{
-		ft_putnbr_fd(nbr, fd);
-		ft_putchar_fd('\n', fd);
-	}
+	ft_putendl_fd(msg, 2);
+		return (0);
 }

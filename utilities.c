@@ -37,7 +37,7 @@ void    ft_printmino(int mino, int sidesize)
         }
         else
         {
-            ft_putnbr(newmino&1);
+            ft_putendl_nbr(newmino&1);
             newmino = newmino >> 1;
         }
     }

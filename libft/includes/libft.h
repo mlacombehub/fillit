@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:37:37 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/08 13:28:40 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/10 19:20:50 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,7 @@ int				ft_min(int a, int b);
 int				ft_max(int a, int b);
 void			ft_putendl_nbr(int nbr);
 void			ft_putendl_nbr_fd(int nbr, int fd);
+uint16_t		ft_power(uint16_t nb, int power);
+int				ft_puterror(char *msg);
 
 #endif
