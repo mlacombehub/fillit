@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/08 18:02:28 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/11 14:54:44 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ DEPENDANCY= libft.a
 DEP_NAME= ft
 DEP_PREFIX= lib
 DEP_SUFFIX = .a
+LIB_HEAD = $(DEP_PREFIX)$(DEP_NAME).h
 
 # resources
 SRC_PATH= ./
@@ -32,6 +33,7 @@ INCL_PATH= ./includes/
 SRC= 	main.c \
 		checker.c \
 		slicer.c \
+		solver.c \
 		utilities.c \
 
 
@@ -61,7 +63,7 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ) $(DEPENDANCY)
 
 # object creation
-%.o: $(SRC_PATH)%.cpp
+%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) $(DEPENDANCY) -c -I$(INCL_PATH) $<
 
 #debug rule
@@ -72,7 +74,7 @@ $(TARGET_D): clean $(OBJ)
 	$(CC) $(CFLAGS) -g -o $(TARGET_D) $(OBJ)
 
 # debug object creation
-%.o: $(SRC_PATH)%.cpp
+%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -g -c -I$(INCL_PATH) $<
 
 

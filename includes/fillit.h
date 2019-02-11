@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/08 18:52:04 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/11 16:50:18 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ typedef struct	s_piece
 	char 		tetchar[22];
 }				t_piece;
 
+// remove this
+/*
 typedef	struct s_map
 {
-	uint16_t	mappart[4];
+	uint16_t	mappart[16];
 	char		mapinletters[256];
 }				t_map;
+*/
 
 /*
 ** checker.c functions
@@ -57,17 +60,17 @@ int				ft_measurewidth(uint16_t stuff, size_t s);
 int				ft_measureheight(uint16_t stuff, size_t s);
 void			ft_feedtopieces(t_piece *tab, char *feed);
 
+
+/*
+** solver.c functions
+*/
+
+void ft_backtrack(t_piece *tab, int pieceqty, t_map *map );
+
 /*
 ** utilities.c functions (for debug)
 */
 
 void    		ft_printmino(int mino, int sidesize);
-
-/*
-** lifbt_add.c functions (should be added to libft)
-*/
-
-uint16_t		ft_power(uint16_t nb, int power);
-int				ft_puterror(char *msg);
 
 #endif

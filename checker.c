@@ -6,11 +6,17 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 19:43:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 12:52:55 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/11 14:18:02 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "./includes/fillit.h"
+
+/*
+** Function checking that the # have proper neighbours
+** to build a legitimate tetrimino
+** (we expect between 6 and 8 'connections' between # )
+*/
 
 int		ft_verification(char *buff)
 {

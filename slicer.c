@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/08 18:40:03 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/11 18:41:37 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ uint16_t	ft_rev_chartobit(char *src, char thebitchar)
 
 /*
 ** takes a string and splits it into all the pieces
-** returns a table of pieces structs
+** updates the pointer to a table of pieces structs
 */
 
 void		ft_feedtopieces(t_piece *tab, char *feed)
@@ -119,23 +119,12 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	k = 0;
 	while (*feed)
 	{
-		tab[k].num_piece = k;
+		tab[k].num_piece = k + 'A';
 		ft_strcpy(tab[k].tetchar, ft_strsub(feed, 0, 21));
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
 		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
 		tab[k].height = ft_measureheight(tab[k].compbin, 4);
-		//ft_putstr("\n mino no ");//
-		//ft_putendl_nbr(k);//
-		//ft_putendl(tab[k].tetchar);//
-		//ft_putstr(" => equals ");//
-		//ft_putendl_nbr(tab[k].refbin);//
-		//ft_putstr("w = ");//
-		//ft_putendl_nbr(tab[k].width);//
-		//ft_putstr("h = ");//
-		//ft_putendl_nbr(tab[k].height);//
-		//ft_printmino(tab[k].refbin, 4);//
-		//ft_printmino(tab[k].compbin, 4);//
 		k++;
 		feed += 21;
 	}
