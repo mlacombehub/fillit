@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/11 18:42:06 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/12 13:18:28 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_placer(t_piece piece, uint16_t *map)
 	line3 0b1111000000000000
 	*/
 
-	int j; // mask quarterincrement
+	int j; // mask quarter increment
 	int k; // abscisse shift
 	int l; // line number between 0 and 15
 
@@ -57,10 +57,17 @@ void	ft_placer(t_piece piece, uint16_t *map)
 	k = 0;
 	//cut the piece in 4 lines
 	// put it on the map
+	// try and put on line 1, then 1 2 3
+	// on first fail increment rightwise
 
-	if ( (0b1111 << j*4) << k & piece.compbin) & map[l]  )
+	//while ( j < 4 && k < (sizeof(piece.compbin)* 8 - piece.width) && l < )
+	while (k < (16 - piece.width) && l < (16 - piece.height))
 	{
-		j++;
+		while ( j < 4 )
+			if ( (0b1111 << j*4) << k & piece.compbin) & map[l] && j < 4 )
+				j++;
+		j = 0;
+		k++;
 	}
 
 
