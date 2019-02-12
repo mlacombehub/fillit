@@ -65,7 +65,7 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 ** solver.c functions
 */
 
-void ft_backtrack(t_piece *tab, int pieceqty, t_map *map );
+uint16_t ft_backtrack(t_piece *tab, int pieceqty, uint16_t *map);
 
 /*
 ** utilities.c functions (for debug)

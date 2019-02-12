@@ -12,34 +12,16 @@
 
 #include "../includes/fillit.h"
 
-/*
-** We verify the minimal map size
-*/
-
-int		ft_sizeofmap(int ret)
+void	ft_remover(t_piece piece, uint16_t *map)
 {
-	size_t	i;
-	int		min;
 
-	i = 0;
-	min = ret * 4;
-
-	while (i++)
-		if (i * i >= min)
-			break;
-	return (i);
 }
 
-
- void	ft_remover(t_piece piece, uint16_t *map)
- {
-
- }
 /*
 ** We solve the placement of tetrimini on the map
 */
 
-void	ft_placer(t_piece piece, uint16_t *map)
+int	ft_placer(t_piece *tab, size_t map_side, uint16_t *map)
 {
 	/*
 	line0 0b1111
@@ -55,16 +37,14 @@ void	ft_placer(t_piece piece, uint16_t *map)
 	i = 0;
 	j = 0;
 	k = 0;
+
 	//cut the piece in 4 lines
 	// put it on the map
 
-	if ( (0b1111 << j*4) << k & piece.compbin) & map[l]  )
+	if ( (0b1111 << j*4) << k & piece.compbin) & map[l])
 	{
 		j++;
 	}
-
-
-
 }
 
 
@@ -73,22 +53,16 @@ void	ft_placer(t_piece piece, uint16_t *map)
 ** We take the map, and put the pieces inside
 */
 
-void ft_backtrack(t_piece *tab, int pieceqty, uint16_t *map)
+uint16_t ft_backtrack(t_piece *tab, int pieceqty, uint16_t *map)
 {
-	int i;
-	int	j;
-	int	map_side;
+	size_t	map_side;
 
-	i = 0;
-	j = 1;
-	// take piece 0 and put it on the map
-
-	map_side = ft_sizeofmap(pieceqty);
-	while ()
+	while (map_side * map_side < 4 * pieceqty)
+		map_side++;
+	while (!ft_placer(tab, map_side, map) && map_side < 17)
 	{
+		ft_bzero(map, sizeof(map) * 16);
 		map_side++;
 	}
-
-
-
+	return ();
 }

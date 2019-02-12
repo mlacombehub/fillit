@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/11 14:54:44 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/08 18:02:28 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,22 +23,21 @@ DEPENDANCY= libft.a
 DEP_NAME= ft
 DEP_PREFIX= lib
 DEP_SUFFIX = .a
-LIB_HEAD = $(DEP_PREFIX)$(DEP_NAME).h
 
 # resources
-SRC_PATH= ./
+SRC_PATH= ./srcs/
 INCL_PATH= ./includes/
+OBJ_PATH= ./objects/
 
 # files
 SRC= 	main.c \
 		checker.c \
 		slicer.c \
-		solver.c \
 		utilities.c \
 
 
 # sources and objects construction
-SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX) )
+SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX))
 OBJ= $(SRC:.$(SUFFIX)=.o)
 OBJ_D= $(SRC:.$(SUFFIX)=_debug.o)
 
@@ -63,7 +62,7 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ) $(DEPENDANCY)
 
 # object creation
-%.o: $(SRC_PATH)%.c
+%.o: $(SRC_PATH)%.cpp
 	$(CC) $(CFLAGS) $(DEPENDANCY) -c -I$(INCL_PATH) $<
 
 #debug rule
@@ -74,7 +73,7 @@ $(TARGET_D): clean $(OBJ)
 	$(CC) $(CFLAGS) -g -o $(TARGET_D) $(OBJ)
 
 # debug object creation
-%.o: $(SRC_PATH)%.c
+%.o: $(SRC_PATH)%.cpp
 	$(CC) $(CFLAGS) -g -c -I$(INCL_PATH) $<
 
 
@@ -95,3 +94,5 @@ fclean: clean
 
 # clean ALL and remake all
 re: fclean all
+
+.PHONY : debug all clean fclean test re
