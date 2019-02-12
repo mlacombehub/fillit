@@ -33,8 +33,8 @@ OBJ_PATH= ./objects/
 SRC= 	main.c \
 		checker.c \
 		slicer.c \
+		solver.c \
 		utilities.c \
-
 
 # sources and objects construction
 SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX))

@@ -10,24 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "./includes/fillit.h"
 
 /*
 ** We check if the piece can be placed on map
 */
 
-void		ft_checker(t_piece piece, uint16_t *map)
+void		ft_checker(t_piece *tab, uint16_t map)
 {
-	return (0);
+	*tab = ;
+	map = NULL;
 }
 
 /*
 **  We remove the piece if it is not possible to make it go inside the map
 */
 
-void		ft_remover(t_piece piece, uint16_t *map)
+void		ft_remover(t_piece *tab, uint16_t map)
 {
-	return (0);
+	*tab = ;
+	map = NULL;
 }
 
 /*
@@ -71,10 +73,11 @@ int			ft_placer(t_piece *tab, size_t map_side, uint16_t *map)
 ** We take the map, and put the pieces inside
 */
 
-uint16_t	ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map)
+uint16_t	*ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map)
 {
 	size_t	map_side;
 
+	map_side = 2;
 	while (map_side * map_side < 4 * pieceqty)
 		map_side++;
 	while (!ft_placer(tab, map_side, map) && map_side < 17)
