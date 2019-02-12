@@ -26,24 +26,23 @@ int     ft_chartobit(char *c, char b, int bigEnd);
 int     ft_right_chartobit(char *c, char b);
 int     ft_rev_chartobit(char *c, char b);
 void    ft_printmino(int mino, int sidesize);
-int		ft_bitcompact(int bitmino, int sidesize);
+int     ft_bitcompact(int bitmino, int sidesize);
 
 int     main(int argc, char **argv)
 {
     if (argc == 2)
     {
-
         char *c;
         int n;
         int m;
         c = argv[1];
         /*
-        ft_putendl("big endian:");
-        ft_putnbr(ft_chartobit(c, CHAR_AS_BIT, FT_BIG_ENDIAN));
-        ft_putendl("\nrev:");
-        ft_putnbr(ft_rev_chartobit(c, CHAR_AS_BIT));
-        ft_putendl("\nright:");
-        ft_putnbr(ft_right_chartobit(c, CHAR_AS_BIT));
+        **ft_putendl("big endian:");
+        **ft_putnbr(ft_chartobit(c, CHAR_AS_BIT, FT_BIG_ENDIAN));
+        **ft_putendl("\nrev:");
+        **ft_putnbr(ft_rev_chartobit(c, CHAR_AS_BIT));
+        **ft_putendl("\nright:");
+        **ft_putnbr(ft_right_chartobit(c, CHAR_AS_BIT));
         */
         n = ft_atoi(c);
         ft_printmino(n, 4);

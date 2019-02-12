@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./includes/fillit.h"
+#include "./includes/fillit.h"
 
 /*
 ** takes a char representing a tetrimino on a map
@@ -21,11 +21,11 @@
 int			ft_measurewidth(uint16_t binsrc, size_t s)
 {
 	size_t		k;
-	uint16_t 	col_mask;
+	uint16_t	col_mask;
 
 	k = s;
 	while (k-- != 0)
-			col_mask = ft_power(2, s - 1) + (col_mask << s);
+		col_mask = ft_power(2, s - 1) + (col_mask << s);
 	while ((binsrc & col_mask) == 0 && s--)
 		col_mask = col_mask >> 1;
 	return (s);
@@ -41,7 +41,7 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 {
 	uint16_t	row_mask;
 	int			h;
-	int 		k;
+	int			k;
 
 	h = s;
 	k = s;
@@ -53,7 +53,6 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 	return (h);
 }
 
-
 /*
 ** bitcompact : compacts a tetriminoin binary :
 ** pushes it up and left
@@ -64,16 +63,16 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 **	for size 4 mask col = 0b1000100010001 mask row = 0b1111
 */
 
-int		ft_bitcompact(int bitmino, int sidesize)
+int			ft_bitcompact(int bitmino, int sidesize)
 {
-	uint16_t 	col_mask;
+	uint16_t	col_mask;
 	uint16_t	row_mask;
-	int 		k;
+	int			k;
 
 	row_mask = ft_power(2, sidesize) - 1;
 	k = sidesize;
 	while (k-- != 0)
-			col_mask = 1 + (col_mask << sidesize);
+		col_mask = 1 + (col_mask << sidesize);
 	while ((bitmino & row_mask) == 0)
 		bitmino = bitmino >> sidesize;
 	while ((bitmino & col_mask) == 0)
@@ -89,9 +88,9 @@ int		ft_bitcompact(int bitmino, int sidesize)
 
 uint16_t	ft_rev_chartobit(char *src, char thebitchar)
 {
-	int 		k;
-	uint16_t 	intbit;
-	int 		power;
+	int			k;
+	uint16_t	intbit;
+	int			power;
 
 	intbit = 0;
 	k = 0;
@@ -114,7 +113,7 @@ uint16_t	ft_rev_chartobit(char *src, char thebitchar)
 
 void		ft_feedtopieces(t_piece *tab, char *feed)
 {
-	int 		k;
+	int k;
 
 	k = 0;
 	while (*feed)
@@ -128,13 +127,10 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		k++;
 		feed += 21;
 	}
-
 	while (k-- != 0)
 	{
 		ft_putchar('A' + k);
 		ft_putendl("");
 		ft_putendl(tab[k].tetchar);
 	}
-
-
 }

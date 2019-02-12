@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./includes/fillit.h"
+#include "./includes/fillit.h"
 
 /*
 ** Function checking that the # have proper neighbours

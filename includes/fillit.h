@@ -19,7 +19,6 @@
 
 /*
 ** n_piece : the printed char (order of reading a b c ...)
-**
 */
 
 typedef struct	s_piece
@@ -31,17 +30,8 @@ typedef struct	s_piece
 	uint16_t	compbin;
 	uint16_t	refbin;
 	uint64_t	movbin;
-	char 		tetchar[22];
+	char		tetchar[22];
 }				t_piece;
-
-// remove this
-/*
-typedef	struct s_map
-{
-	uint16_t	mappart[16];
-	char		mapinletters[256];
-}				t_map;
-*/
 
 /*
 ** checker.c functions
@@ -60,17 +50,15 @@ int				ft_measurewidth(uint16_t stuff, size_t s);
 int				ft_measureheight(uint16_t stuff, size_t s);
 void			ft_feedtopieces(t_piece *tab, char *feed);
 
-
 /*
 ** solver.c functions
 */
 
-uint16_t ft_backtrack(t_piece *tab, int pieceqty, uint16_t *map);
+uint16_t		ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map);
 
 /*
 ** utilities.c functions (for debug)
 */
 
-void    		ft_printmino(int mino, int sidesize);
-
+void			ft_printmino(int mino, int sidesize);
 #endif

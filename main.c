@@ -33,6 +33,7 @@ int		main(int argc, char **argv)
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
 	ft_feedtopieces(tab, feed);
-	ft_backtrack(tab, feedsize / 21, map);
+	map = NULL;
+	ft_mapbuilder(tab, feedsize / 21, map);
 	return (0);
 }

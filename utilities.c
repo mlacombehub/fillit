@@ -10,11 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include "./libft/includes/libft.h"
+#include "./libft/includes/libft.h"
 
 /*
 ** takes an int and print it out as square
+*/
+
+/*
+** do a >> shift of squareside and set above squareside to 0
+*/
+
+/*
+** bit masking to set the bigger bit above squareSide to 0
+** complement by 0s if the number is missing left 0s
 */
 
 void    ft_printmino(int mino, int sidesize)
@@ -25,11 +33,8 @@ void    ft_printmino(int mino, int sidesize)
     newmino = mino;
     k = 0;
     ft_putendl("this should print the tetrimino as represented by the bit with a side of square side");
-    // do a >> shift of squareside and set above squareside to 0
     while (newmino > 0)
     {
-        // bit masking to set the bigger bit above squareSide to 0
-        // complement by 0s if the number is missing left 0s
         k++;
         if (k != 0 && k % (sidesize + 1) == 0)
         {

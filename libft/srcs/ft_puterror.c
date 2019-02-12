@@ -15,5 +15,5 @@
 int		ft_puterror(char *msg)
 {
 	ft_putendl_fd(msg, 2);
-		return (0);
+	return (0);
 }

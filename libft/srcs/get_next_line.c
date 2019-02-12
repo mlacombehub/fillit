@@ -72,7 +72,7 @@ int				get_next_line(int fd, char **line)
 	t_list			*lstline;
 
 	if (fd < 0 || !line || read(fd, buff, 0) < 0 ||
-			!(lstline = line_creator(fd, &lines)) || BUFF_SIZE <= 0 )
+			!(lstline = line_creator(fd, &lines)) || BUFF_SIZE <= 0)
 		return (-1);
 	tmp = lstline->content;
 	i = reader(fd, &tmp);
