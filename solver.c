@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/13 18:18:58 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/13 18:38:39 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,26 +106,25 @@ int ft_piececanbeput(t_piece *tab, int num_piece, uint16_t *map, int map_side)
 	mask_increment = 0;
 	shift_column = 0;
 	shift_line = 0;
-	if ( (tab[num_piece].size.x + shift_column) < map_side )
+	while ((tab[num_piece].size.y + shift_line) < map_side)
+	{
+		while ((tab[num_piece].size.x + shift_column) < map_side )
+		{
 			while (mask_increment < 4)
-			{
-				if ( ( ((0b1111 << mask_increment * 4) & tab[num_piece].compbin) << shift_column) & map[l + mask_increment])
-						mask_increment++;
+				if ((((0b1111 << mask_increment * 4) & tab[num_piece].compbin) << shift_column) & map[l + mask_increment++])
+				{
+					if (mask_increment == 3)
+						return(1);
+				}
 				else
 				{
 					shift_column++;
 					mask_increment = 0;
 					break;
 				}
-			}
-	else
-	{
-
+		}
 		shift_line++;
-	}
-
-
-				// save position of piece on map
+	}				// save position of piece on map
 	return (0);
 }
 
