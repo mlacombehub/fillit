@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/11 18:41:37 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/13 18:00:42 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
 		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
 		tab[k].height = ft_measureheight(tab[k].compbin, 4);
+		tab[k].size.x = ft_measurewidth(tab[k].compbin, 4);
+		tab[k].size.x = ft_measureheight(tab[k].compbin, 4);
 		k++;
 		feed += 21;
 	}

@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/11 16:50:18 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/13 18:19:00 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <fcntl.h>
 # include "../libft/includes/libft.h"
 
+typedef struct	s_point
+{
+	int			x;
+	int			y;
+}				t_point;
+
+
 /*
 ** n_piece : the printed char (order of reading a b c ...)
 */
@@ -24,9 +31,10 @@
 typedef struct	s_piece
 {
 	int			num_piece;
-	int			origpos;
-	int			width;
-	int			height;
+	t_point		origpos;
+	t_point		size;
+	int			width;//to remove
+	int			height;//to remove
 	uint16_t	compbin;
 	uint16_t	refbin;
 	uint64_t	movbin;
@@ -54,8 +62,8 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 ** solver.c functions
 */
 
-uint16_t		ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map);
-
+uint16_t		*ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map);
+int				ft_place(t_piece *tab, size_t map_side, uint16_t *map, int pieceqty);
 /*
 ** utilities.c functions (for debug)
 */
