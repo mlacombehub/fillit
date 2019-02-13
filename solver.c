@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/11 18:42:06 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/13 15:07:59 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			ft_placer(t_piece *tab, size_t map_side, uint16_t *map)
 	while (((0b1111 << j*4) << k & tab[i].compbin) & map[l])
 	{
 		while ( j < 4 )
-			if (((0b1111 << j*4) << k & tab[i].compbin) & map[l] && j < 4)
+			if (((0b1111 << j*4) << k & tab[i].compbin) & map[l])
 				j++;
 		j = 0;
 		k++;

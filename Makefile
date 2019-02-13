@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/12 17:48:16 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/13 14:40:58 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,11 +79,12 @@ $(TARGET_D): clean $(OBJ)
 
 # diagnostic
 test:
-	@echo "binary name: " $(TARGET)
-	@echo "sources: " $(SRCFILES)
-	@echo "obj:" $(OBJ)
-	@echo "------"
-	@echo "debug binary name: " $(TARGET_D)
+	@echo "--- What will we compile ---"
+	@echo "binary name: 		" $(TARGET)
+	@echo "sources: 		" $(SRCFILES)
+	@echo "obj:			" $(OBJ)
+	@echo "--- Debug options ---"
+	@echo "debug binary name: 	" $(TARGET_D)
 # clean the object files
 clean:
 	/bin/rm -rf $(OBJ)
