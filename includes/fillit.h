@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/14 13:17:02 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/14 13:31:16 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,4 @@ void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
 */
 
 void			ft_printmino(int mino, int sidesize);
-
 #endif
