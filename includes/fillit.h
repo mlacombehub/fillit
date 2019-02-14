@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/14 13:04:20 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/14 13:17:02 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 
 uint16_t		*ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map);
 void 			ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size);
-void			ft_putpiece(t_piece *tab, int num_piece, uint16_t *map, int shift_column, int shift_line);
-void			ft_removepiece(t_piece *tab, int num_piece, uint16_t *map);
+void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
+void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
 
 /*
 ** utilities.c functions (for debug)
 */
 
 void			ft_printmino(int mino, int sidesize);
+
 #endif
