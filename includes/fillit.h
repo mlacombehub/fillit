@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/13 18:19:00 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/14 13:04:20 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct	s_point
 
 typedef struct	s_piece
 {
-	int			num_piece;
-	t_point		origpos;
+	int			p_id;
+	t_point		pos;
 	t_point		size;
 	int			width;//to remove
 	int			height;//to remove
@@ -63,7 +63,10 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 */
 
 uint16_t		*ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map);
-int				ft_place(t_piece *tab, size_t map_side, uint16_t *map, int pieceqty);
+void 			ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size);
+void			ft_putpiece(t_piece *tab, int num_piece, uint16_t *map, int shift_column, int shift_line);
+void			ft_removepiece(t_piece *tab, int num_piece, uint16_t *map);
+
 /*
 ** utilities.c functions (for debug)
 */
