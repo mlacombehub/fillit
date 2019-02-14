@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/14 13:31:16 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/14 18:33:31 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 ** solver.c functions
 */
 
-uint16_t		*ft_mapbuilder(t_piece *tab, int pieceqty, uint16_t *map);
-void 			ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size);
+uint16_t		*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map);
+int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
 
