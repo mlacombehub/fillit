@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/14 18:34:11 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/14 18:42:12 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,28 +93,38 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 ** If at end of max map size no result, we start anew BUT we shift first piece
 */
 
-int			ft_placer(t_piece *tab, int p_id, size_t m_size, uint16_t *map)
+int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
 	int			i;
 	t_point		prevpos;
+	int			p_id;
 
+	p_id = 0;
 	while (i++ < tab[p_id].width)
 	{
-		ft_piececanbeput(tab, p_id, map , m_size);
-		if (tab[p_id].pos.x == -1)
+		if (ft_piececanbeput(tab, p_id, map , m_size))
 		{
-			prevpos = tab[p_id -1].pos;
-			ft_removepiece(tab, p_id - 1, map);
-			tab[p_id -1].pos = prevpos;
-			tab[p_id - 1].pos.x++;
-			ft_placer(tab, p_id - 1, m_size, map);
-		}
-		else
-		{
+
 			ft_putpiece(tab, p_id, map);
-			return (1);
+
 		}
 	}
+	// {
+	// 	ft_piececanbeput(tab, p_id, map , m_size);
+	// 	if (tab[p_id].pos.x == -1)
+	// 	{
+	// 		prevpos = tab[p_id -1].pos;
+	// 		ft_removepiece(tab, p_id - 1, map);
+	// 		tab[p_id -1].pos = prevpos;
+	// 		tab[p_id - 1].pos.x++;
+	// 		ft_placer(tab, p_id - 1, m_size, map);
+	// 	}
+	// 	else
+	// 	{
+	// 		ft_putpiece(tab, p_id, map);
+	// 		return (1);
+	// 	}
+	// }
 	return (0);
 }
 
