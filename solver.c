@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 19:02:35 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 19:12:36 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
 		while (((tab[p_id].size.x + tab[p_id].pos.x) < m_size
 		&& tab[p_id].pos.y++) && (mask < 4))
 			if ((((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x)
-			& map[tab[p_id].pos.y + mask++] && mask <= 3)
+			& map[tab[p_id].pos.y + mask] && mask++ <= 3)
 				return(1);//exit if no return
 			else if ((((0b1111 << mask * 4) & tab[p_id].compbin)
 			<< tab[p_id].pos.x) & map[tab[p_id].pos.y + mask])
@@ -140,8 +140,8 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
-	int			i;
-	t_point		prevpos;
+	//int			i;
+	//t_point		prevpos;
 	int			p_id;
 
 	p_id = 0;
@@ -171,7 +171,7 @@ int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 
 uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 {
-	size_t	m_size;
+	int	m_size;
 
 	m_size = 2;
 	while (m_size * m_size < 4 * p_qty)
