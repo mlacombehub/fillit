@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 17:27:47 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 17:28:41 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
 	// so we don't go one further
 
 	while ((tab[p_id].size.y + l) < m_size && l++)
+	{
 		while ((tab[p_id].size.x + c) < m_size && c++)
 		{
 			map64 = (uint64_t)map[l];
@@ -50,6 +51,8 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
 					return (0);
 				}
 			}
+		}
+	}
 }
 
 /*
