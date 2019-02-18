@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 16:32:40 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 18:04:25 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				ft_bitcompact(int bitmino, int sidesize);
 int				ft_measurewidth(uint16_t stuff, size_t s);
 int				ft_measureheight(uint16_t stuff, size_t s);
 void			ft_feedtopieces(t_piece *tab, char *feed);
-int				ft_bit16to64(int compbit, int sidesize)
+uint64_t		ft_bit16to64(int compbit, int sidesize);
 
 /*
 ** solver.c functions
@@ -75,7 +75,7 @@ uint16_t		*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map);
 int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
-int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
+int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty);
 /*
 ** utilities.c functions (for debug)
 */

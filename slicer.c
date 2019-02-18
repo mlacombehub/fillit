@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/18 15:09:40 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 18:04:36 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			ft_bitcompact(int bitmino, int sidesize)
 ** each 4 pix, shift by 12
 */
 
-int			ft_bit16to64(int compbit, int sidesize)
+uint64_t	ft_bit16to64(int compbit, int sidesize)
 {
 	uint64_t	longbit;
 	int			k;
@@ -93,7 +93,7 @@ int			ft_bit16to64(int compbit, int sidesize)
 	k = 0;
 	longbit = 0;
 	while (k < sidesize)
-		longbit += (((0b1111 << k * 4) & compbit) << 16 * k)
+		longbit += (((0b1111 << k * 4) & compbit) << 16 * k);
 	return (longbit);
 }
 
@@ -151,7 +151,7 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		k++;
 		feed += 21;
 	}
-	//below is display, can be removed (or activate with debug 1)
+	//below is debug display, can be removed (or activate with debug 1)
 	while (k-- != 0)
 	{
 		ft_putchar('A' + k);

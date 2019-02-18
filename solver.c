@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 17:28:41 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 18:52:48 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** this way we just mask over the first 4 lines started at the map first line (int16)
 */
 
-int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
+int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 {
 	int			l;//line
 	int			c;//column
@@ -27,11 +27,10 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
 
 	l = 0;
 	c = 0;
-
 	// check we are at the last piece
-	// SO WE NEED TO KNOW MAX p_id
+	if (p_id > p_qty - 'A')
+		return (1);
 	// so we don't go one further
-
 	while ((tab[p_id].size.y + l) < m_size && l++)
 	{
 		while ((tab[p_id].size.x + c) < m_size && c++)
@@ -39,20 +38,23 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
 			map64 = (uint64_t)map[l];
 			if ((tab[p_id].movbin << c) && map64)
 			{
+				tab[p_id].pos.x = c;
+				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
 				//can be put here
-				if	(ft_put64piece(tab,  p_id + 1, map, m_size))
+				if	(ft_put64piece(tab,  p_id + 1, map, m_size, p_qty))
 				{
 					return (1);
 				}
 				else
 				{
 					ft_removepiece(tab, p_id, map);
-					return (0);
+					break;
 				}
 			}
 		}
 	}
+	return(0);
 }
 
 /*
@@ -147,9 +149,7 @@ int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 	{
 		if (ft_piececanbeput(tab, p_id, map , m_size))
 		{
-
 			ft_putpiece(tab, p_id, map);
-
 		}
 	}
 	// {
