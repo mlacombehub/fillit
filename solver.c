@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 18:52:48 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 19:02:35 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,13 +145,7 @@ int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 	int			p_id;
 
 	p_id = 0;
-	while (i++ < tab[p_id].width)
-	{
-		if (ft_piececanbeput(tab, p_id, map , m_size))
-		{
-			ft_putpiece(tab, p_id, map);
-		}
-	}
+	ft_put64piece(tab, p_id, map, m_size,p_qty);
 	// {
 	// 	ft_piececanbeput(tab, p_id, map , m_size);
 	// 	if (tab[p_id].pos.x == -1)
