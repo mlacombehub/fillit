@@ -6,11 +6,51 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/14 18:42:12 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 17:27:47 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
+
+
+
+/*
+** easier : put the mino into a 64 int
+** this way we just mask over the first 4 lines started at the map first line (int16)
+*/
+
+int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
+{
+	int			l;//line
+	int			c;//column
+	uint64_t	map64;
+
+	l = 0;
+	c = 0;
+
+	// check we are at the last piece
+	// SO WE NEED TO KNOW MAX p_id
+	// so we don't go one further
+
+	while ((tab[p_id].size.y + l) < m_size && l++)
+		while ((tab[p_id].size.x + c) < m_size && c++)
+		{
+			map64 = (uint64_t)map[l];
+			if ((tab[p_id].movbin << c) && map64)
+			{
+				ft_putpiece(tab, p_id, map);
+				//can be put here
+				if	(ft_put64piece(tab,  p_id + 1, map, m_size))
+				{
+					return (1);
+				}
+				else
+				{
+					ft_removepiece(tab, p_id, map);
+					return (0);
+				}
+			}
+}
 
 /*
 ** cut the piece in 4 lines

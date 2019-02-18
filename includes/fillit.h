@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/14 18:33:31 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 16:32:40 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@ typedef struct	s_point
 
 
 /*
-** n_piece : the printed char (order of reading a b c ...)
+** a struct representing the piece's various elements
+** p_id : the piece letter 0 + 'A'
+** pos : position where we put the pice on the map
+** size : w and h of the piece
+** compbin : mino compacted up to left
+** refbin : initial piece put into bin
+** movbin : the piece exploded over 64 bits
+** tetchar : the piece as char as received
 */
 
 typedef struct	s_piece
@@ -50,6 +57,7 @@ int				ft_checkfeed(char *feed, int feedsize);
 
 /*
 ** slicer.c functions
+** TODO remve one function, too long
 */
 
 uint16_t		ft_rev_chartobit(char *c, char thebitchar);
@@ -57,6 +65,7 @@ int				ft_bitcompact(int bitmino, int sidesize);
 int				ft_measurewidth(uint16_t stuff, size_t s);
 int				ft_measureheight(uint16_t stuff, size_t s);
 void			ft_feedtopieces(t_piece *tab, char *feed);
+int				ft_bit16to64(int compbit, int sidesize)
 
 /*
 ** solver.c functions
@@ -66,7 +75,7 @@ uint16_t		*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map);
 int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
-
+int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size)
 /*
 ** utilities.c functions (for debug)
 */

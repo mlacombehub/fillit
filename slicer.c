@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/14 13:22:38 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/18 15:09:40 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,24 @@ int			ft_bitcompact(int bitmino, int sidesize)
 }
 
 /*
+** ft_bit16to64 : takes a compact 16 bit and expand it over 64 :
+** each 4 pix, shift by 12
+*/
+
+int			ft_bit16to64(int compbit, int sidesize)
+{
+	uint64_t	longbit;
+	int			k;
+
+	k = 0;
+	longbit = 0;
+	while (k < sidesize)
+		longbit += (((0b1111 << k * 4) & compbit) << 16 * k)
+	return (longbit);
+}
+
+
+/*
 ** takes a string and for every n-th char thebitchar
 ** sets the reversed n bit as 1.
 ** "1010" gives 5, so does "101"
@@ -109,6 +127,7 @@ uint16_t	ft_rev_chartobit(char *src, char thebitchar)
 /*
 ** takes a string and splits it into all the pieces
 ** updates the pointer to a table of pieces structs
+** TODO remove the debug output
 */
 
 void		ft_feedtopieces(t_piece *tab, char *feed)
@@ -122,6 +141,7 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		ft_strcpy(tab[k].tetchar, ft_strsub(feed, 0, 21));
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
+		tab[k].movbin = ft_bit16to64(tab[k].compbin, 4);
 		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
 		tab[k].height = ft_measureheight(tab[k].compbin, 4);
 		tab[k].size.x = ft_measurewidth(tab[k].compbin, 4);
@@ -131,6 +151,7 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		k++;
 		feed += 21;
 	}
+	//below is display, can be removed (or activate with debug 1)
 	while (k-- != 0)
 	{
 		ft_putchar('A' + k);
