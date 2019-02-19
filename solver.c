@@ -28,23 +28,27 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 	l = 0;
 	ft_putendl("impression de la map");//
 	ft_printmap(tab, m_size, p_qty);
-	ft_putendl("p_id :");//
+	ft_putendl("\np_id :");//
 	ft_putendl_nbr(p_id);//
 	ft_putendl("p_qty :");//
 	ft_putendl_nbr(p_qty);//
 	if (p_id >= p_qty)
 		return (1);
-	ft_putendl("entree dans la boucle de backtrack");//
+	ft_putendl("\nentree dans la boucle de backtrack");//
 	// so we don't go one further
-	while ((tab[p_id].size.y + l) < m_size)
+	ft_putstr("tab[p_id].size.y : ");//
+	ft_putendl_nbr(tab[p_id].size.y);//
+	ft_putstr("l : ");//
+	ft_putendl_nbr(l);//
+	while ((tab[p_id].size.y + l) <= m_size)
 	{
-		printf("tab[p_id].size.y : %i\n", tab[p_id].size.y);//
-		printf("l : %i\n", l);//
 		c = 0;
-		while ((tab[p_id].size.x + c) < m_size)
+		ft_putstr("tab[p_id].size.x : ");//
+		ft_putendl_nbr(tab[p_id].size.x);//
+		ft_putstr("c : ");//
+		ft_putendl_nbr(c);//
+		while ((tab[p_id].size.x + c) <= m_size)
 		{
-			printf("tab[p_id].size.x : %i\n", tab[p_id].size.x);//
-			printf("c : %i\n\n", l);//
 			map64 = (uint64_t)map[l];
 			if (((tab[p_id].movbin << c) & map64) == 0)
 			{
@@ -151,7 +155,7 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
-	printf("entree dans ft_placer :\n");//
+	ft_putendl("entree dans ft_placer :");//
 	return (ft_put64piece(tab, 0, map, m_size,p_qty));
 }
 	/*

@@ -24,7 +24,7 @@ int		main(int argc, char **argv)
 	char			feed[FILE_MAX_LENGTH + 1];
 	uint16_t		map[16];
 
-	ft_putendl("test des arguments");//
+	ft_putendl("\ntest des arguments");//
 	if (argc != 2)
 		return (ft_puterror("usage: ./fillit [input_file]"));
 	ft_putendl("pas d'erreur, test d'ouverture de testfill");//

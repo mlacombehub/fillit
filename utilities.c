@@ -63,10 +63,9 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
             map[k] = '.';
     }
     k--;
-    ft_putendl("Map size :");//
+    ft_putendl("\nMap size :");//
     ft_putendl_nbr(m_size);//
-    ft_putendl("");
-    ft_putendl("Map empty is");//
+    ft_putendl("\nMap empty is");//
     ft_putendl(map);//
     while (--p_qty >= 0)
     {   
@@ -82,10 +81,9 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
             {
                 ft_putstr("letter index : ");//
                 ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)); //                   
-                map[((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
+                map[((tab[p_qty].pos.y + (k + 1) / 4) * (m_size + 1)) + (tab[p_qty].pos.x + (k + 1) % 4)] = p_qty + 'A';
             }
         }
-        k = 0;
     }
     ft_putendl("\nMap full is");//
     ft_putendl(map);

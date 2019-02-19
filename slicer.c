@@ -140,25 +140,27 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	int k;
 
 	k = 0;
-	printf("feed :\n%s\nk : %i\n", feed, k);//
+	ft_putendl("\nfeed :");//
+	ft_putendl(feed);//
+	ft_putendl_nbr(k);//
 	while (feed && *feed)
 	{
-		printf("arrivee dans feedtopieces, lancement de la creation de tab\n");//
+		ft_putendl("arrivee dans feedtopieces, lancement de la creation de tab");//
 		tab[k].p_id = k + 'A';
 		ft_strncpy(tab[k].tetchar, feed, 21);
-		printf("ecriture dans refbin\n");
+		ft_putendl("ecriture dans refbin");//
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		printf("ecriture dans compbin\n");
+		ft_putendl("ecriture dans compbin");//
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
-		printf("ecriture dans movbin\n");
+		ft_putendl("ecriture dans movbin");//
 		tab[k].movbin = ft_bit16to64(tab[k].compbin, 4);
-		printf("ecriture dans width\n");
+		ft_putendl("ecriture dans width");//
 		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
-		printf("ecriture dans height\n");
+		ft_putendl("ecriture dans height");//
 		tab[k].height = ft_measureheight(tab[k].compbin, 4);
-		printf("ecriture dans size.x\n");
+		ft_putendl("ecriture dans size.x");//
 		tab[k].size.x = ft_measurewidth(tab[k].compbin, 4);
-		printf("ecriture dans size.y\n");
+		ft_putendl("ecriture dans size.y");//
 		tab[k].size.y = ft_measureheight(tab[k].compbin, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
@@ -168,9 +170,11 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	//below is debug display, can be removed (or activate with debug 1)
 	while (k-- != 0)
 	{
-		ft_putchar('A' + k);
-		ft_putendl("");
-		ft_putendl(tab[k].tetchar);
-		printf("movbin :\n%llu\n", tab[k].movbin);
+		ft_putendl("");//
+		ft_putchar('A' + k);//
+		ft_putendl("");//
+		ft_putendl(tab[k].tetchar);//
+		ft_putendl("movbin");//
+		ft_putendl_nbr(tab[k].movbin);//
 	}
 }
