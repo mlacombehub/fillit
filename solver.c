@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/19 14:16:28 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/19 16:52:30 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 	uint64_t	map64;
 
 	l = 0;
-	// check we are at the last piece
-	printf("p_id : %i\n", p_id);//
-	printf("p_qty : %i\n", p_qty);//
+	ft_putendl("impression de la map");//
+	ft_printmap(tab, m_size, p_qty);
+	ft_putendl("p_id :");//
+	ft_putendl_nbr(p_id);//
+	ft_putendl("p_qty :");//
+	ft_putendl_nbr(p_qty);//
 	if (p_id >= p_qty)
 		return (1);
-	printf("entree dans la boucle de backtrack\n");//
+	ft_putendl("entree dans la boucle de backtrack");//
 	// so we don't go one further
 	while ((tab[p_id].size.y + l) < m_size)
 	{
@@ -45,7 +48,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 			map64 = (uint64_t)map[l];
 			if (((tab[p_id].movbin << c) & map64) == 0)
 			{
-				printf("entree dans le test de recursivite\n");//
+				ft_putendl("entree dans le test de recursivite");//
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
@@ -54,7 +57,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 					return (1);
 				else
 				{
-					printf("remove piece\n");//
+					ft_putendl("remove piece\n");//
 					ft_removepiece(tab, p_id, map);
 					c++;
 				}
@@ -159,18 +162,18 @@ uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 {
 	int	m_size;
 
-	printf("calcul m_size min :\n");//
+	ft_putendl("\ncalcul m_size min :");//
 	m_size = 2;
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
-	printf("%i\n", m_size);//
-	//while (!ft_placer(tab, p_qty, m_size, map) && m_size <= 16)
+	ft_putendl_nbr(m_size);//
 	while (!(ft_put64piece(tab,  0, map, m_size, p_qty)) && m_size <= 16)
 	{
-		printf("remise a zero de la map\n");//
+		ft_putendl("\nremise a zero de la map");//
 		ft_bzero(map, sizeof(*map) * 16);
 		m_size++;
-		printf("augmentation de la taille de map, m_size: %i\n", m_size);//
+		ft_putendl("augmentation de la taille de map, m_size :");//
+		ft_putendl_nbr(m_size);//
 	}
 	return (map);
 }

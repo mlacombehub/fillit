@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 18:04:25 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/19 15:24:48 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qt
 */
 
 void			ft_printmino(int mino, int sidesize);
+void			ft_printmap(t_piece *piece, int m_size, int p_qty);
 #endif
