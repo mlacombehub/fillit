@@ -47,3 +47,9 @@ void    ft_printmino(int mino, int sidesize)
         }
     }
 }
+
+void    ft_printmap(t_piece *piece)
+{
+    (void)piece;
+    return (0);
+}

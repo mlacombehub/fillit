@@ -26,22 +26,26 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 	uint64_t	map64;
 
 	l = 0;
-	c = 0;
 	// check we are at the last piece
 	printf("p_id : %i\n", p_id);//
 	printf("p_qty : %i\n", p_qty);//
-	if (p_id > p_qty)
+	if (p_id >= p_qty)
 		return (1);
+	printf("entree dans la boucle de backtrack\n");//
 	// so we don't go one further
-	while ((tab[p_id].size.y + l) < m_size && l++)
+	while ((tab[p_id].size.y + l) < m_size)
 	{
-		printf("deplacement ligne : %i\n", l);//
-		while ((tab[p_id].size.x + c) < m_size && c++)
+		printf("tab[p_id].size.y : %i\n", tab[p_id].size.y);//
+		printf("l : %i\n", l);//
+		c = 0;
+		while ((tab[p_id].size.x + c) < m_size)
 		{
-			printf("deplacement colonnr : %i\n", c);//
+			printf("tab[p_id].size.x : %i\n", tab[p_id].size.x);//
+			printf("c : %i\n\n", l);//
 			map64 = (uint64_t)map[l];
-			if ((tab[p_id].movbin << c) && map64)
+			if (((tab[p_id].movbin << c) & map64) == 0)
 			{
+				printf("entree dans le test de recursivite\n");//
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
@@ -50,12 +54,13 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 					return (1);
 				else
 				{
+					printf("remove piece\n");//
 					ft_removepiece(tab, p_id, map);
-					break;
+					c++;
 				}
-
 			}
 		}
+		l++;
 	}
 	return(0);
 }
