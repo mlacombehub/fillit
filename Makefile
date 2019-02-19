@@ -51,7 +51,6 @@ TARGET_D=$(TARGET)_debug
 all: $(DEPENDANCY) $(TARGET)
 
 #dependancy
-
 $(DEPENDANCY):
 	@cd $(DEP_FOLDER) && $(MAKE) && cp ./$(DEPENDANCY) ../ && cp ./$(LIB_HEAD) ../
 	@echo "-- Library " $(DEPENDANCY) " generated and copied with header"
@@ -66,15 +65,15 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) $(DEPENDANCY) -c -I$(INCL_PATH) $<
 
 #debug rule
-debug: $(TARGET_D)
+debug: $(DEPENDANCY) $(TARGET_D)
 
 # debug program creation
 $(TARGET_D): clean $(OBJ)
-	$(CC) $(CFLAGS) -g -o $(TARGET_D) $(OBJ)
+	$(CC) $(CFLAGS) -g -o $(TARGET_D) $(OBJ) $(DEPENDANCY)
 
 # debug object creation
 %.o: $(SRC_PATH)%.cpp
-	$(CC) $(CFLAGS) -g -c -I$(INCL_PATH) $<
+	$(CC) $(CFLAGS) $(DEPENDANCY) -g -c -I$(INCL_PATH) $<
 
 
 # diagnostic

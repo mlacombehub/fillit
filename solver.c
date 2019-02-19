@@ -43,14 +43,13 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 				ft_putpiece(tab, p_id, map);
 				//can be put here
 				if	(ft_put64piece(tab,  p_id + 1, map, m_size, p_qty))
-				{
 					return (1);
-				}
 				else
 				{
 					ft_removepiece(tab, p_id, map);
 					break;
 				}
+				
 			}
 		}
 	}
@@ -140,28 +139,7 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
-	//int			i;
-	//t_point		prevpos;
-	int			p_id;
-
-	p_id = 0;
-	ft_put64piece(tab, p_id, map, m_size,p_qty);
-	// {
-	// 	ft_piececanbeput(tab, p_id, map , m_size);
-	// 	if (tab[p_id].pos.x == -1)
-	// 	{
-	// 		prevpos = tab[p_id -1].pos;
-	// 		ft_removepiece(tab, p_id - 1, map);
-	// 		tab[p_id -1].pos = prevpos;
-	// 		tab[p_id - 1].pos.x++;
-	// 		ft_placer(tab, p_id - 1, m_size, map);
-	// 	}
-	// 	else
-	// 	{
-	// 		ft_putpiece(tab, p_id, map);
-	// 		return (1);
-	// 	}
-	// }
+	return (ft_put64piece(tab, 0, map, m_size,p_qty));
 	return (0);
 }
 
