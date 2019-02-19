@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/18 18:04:36 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/19 13:57:41 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,18 @@ int			ft_bitcompact(int bitmino, int sidesize)
 
 uint64_t	ft_bit16to64(int compbit, int sidesize)
 {
+	uint64_t	longcomp;
 	uint64_t	longbit;
 	int			k;
 
 	k = 0;
 	longbit = 0;
+	longcomp = (uint64_t)compbit;
 	while (k < sidesize)
-		longbit += (((0b1111 << k * 4) & compbit) << 16 * k);
+	{
+		longbit = longbit + (((0b1111 << (k * sidesize)) & longcomp ) << ((16 - sidesize) * k));
+		k++;
+	}
 	return (longbit);
 }
 
@@ -166,5 +171,6 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		ft_putchar('A' + k);
 		ft_putendl("");
 		ft_putendl(tab[k].tetchar);
+		printf("movbin :\n%llu\n", tab[k].movbin);
 	}
 }

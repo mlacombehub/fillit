@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/11 16:49:52 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/19 14:07:48 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 	int				feedsize;
 	t_piece 		tab[26];
 	char			feed[FILE_MAX_LENGTH + 1];
-	uint16_t		*map;
+	uint16_t		map[16];
 
 	printf("pas d'erreur, test des arguments\n");//
 	if (argc != 2)
@@ -38,7 +38,7 @@ int		main(int argc, char **argv)
 		return (ft_puterror("error"));
 	printf("pas d'erreur, lancement feed to pieces\n");//
 	ft_feedtopieces(tab, feed);
-	map = NULL;
+	printf("pas d'erreur, lancement mapbuilder\n");//
 	ft_mapbuilder(tab, feedsize / 21, map);
 	return (0);
 }

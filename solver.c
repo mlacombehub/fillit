@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/18 19:12:36 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/19 14:09:57 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 	l = 0;
 	c = 0;
 	// check we are at the last piece
-	if (p_id > p_qty - 'A')
+	printf("p_id : %i\n", p_id);//
+	printf("p_qty : %i\n", p_qty);//
+	if (p_id > p_qty)
 		return (1);
 	// so we don't go one further
 	while ((tab[p_id].size.y + l) < m_size && l++)
 	{
+		printf("deplacement ligne : %i\n", l);//
 		while ((tab[p_id].size.x + c) < m_size && c++)
 		{
+			printf("deplacement colonnr : %i\n", c);//
 			map64 = (uint64_t)map[l];
 			if ((tab[p_id].movbin << c) && map64)
 			{
@@ -49,7 +53,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 					ft_removepiece(tab, p_id, map);
 					break;
 				}
-				
+
 			}
 		}
 	}
@@ -139,8 +143,8 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
-	return (ft_put64piece(tab, 0, map, m_size,p_qty));
-	return (0);
+	printf("entree dans ft_placer :\n");//
+	return (ft_put64piece(tab, 0, map, m_size,p_qty) ? 1 : 0);
 }
 
 /*
@@ -151,13 +155,17 @@ uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 {
 	int	m_size;
 
+	printf("calcul m_size min :\n");//
 	m_size = 2;
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
-	while (!ft_placer(tab, p_qty, m_size, map))
+	printf("%i\n", m_size);//
+	while (!ft_placer(tab, p_qty, m_size, map) && m_size <= 16)
 	{
-		ft_bzero(map, sizeof(map) * 16);
+		printf("remise a zero de la map\n");//
+		ft_bzero(map, sizeof(*map) * 16);
 		m_size++;
+		printf("augmentation de la taille de map, m_size: %i\n", m_size);//
 	}
 	return (map);
 }
