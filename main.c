@@ -24,14 +24,19 @@ int		main(int argc, char **argv)
 	char			feed[FILE_MAX_LENGTH + 1];
 	uint16_t		*map;
 
+	printf("pas d'erreur, test des arguments\n");//
 	if (argc != 2)
 		return (ft_puterror("usage: ./fillit [input_file]"));
+	printf("pas d'erreur, test d'ouverture de testfill\n");//
 	if ((fd = open(argv[1], O_RDONLY)) <= 0)
 		return (ft_puterror("error"));
+	printf("pas d'erreur, lecture de testfill\n");//
 	feedsize = read(fd, feed, FILE_MAX_LENGTH + 1);
 	feed[feedsize] = '\0';
+	printf("pas d'erreur, lancement du checkfeed\n");//
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
+	printf("pas d'erreur, lancement feed to pieces\n");//
 	ft_feedtopieces(tab, feed);
 	map = NULL;
 	ft_mapbuilder(tab, feedsize / 21, map);
