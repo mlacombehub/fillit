@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/19 14:09:57 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/19 14:16:28 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,9 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
 	printf("entree dans ft_placer :\n");//
-	return (ft_put64piece(tab, 0, map, m_size,p_qty) ? 1 : 0);
+	return (ft_put64piece(tab, 0, map, m_size,p_qty));
 }
-
-/*
+	/*
 ** We take the map, and put the pieces inside
 */
 
@@ -160,7 +159,8 @@ uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
 	printf("%i\n", m_size);//
-	while (!ft_placer(tab, p_qty, m_size, map) && m_size <= 16)
+	//while (!ft_placer(tab, p_qty, m_size, map) && m_size <= 16)
+	while (!(ft_put64piece(tab,  0, map, m_size, p_qty)) && m_size <= 16)
 	{
 		printf("remise a zero de la map\n");//
 		ft_bzero(map, sizeof(*map) * 16);
