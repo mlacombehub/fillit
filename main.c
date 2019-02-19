@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 {
 	int				fd;
 	int				feedsize;
-	t_piece 		tab[26];
+	t_piece			tab[26];
 	char			feed[FILE_MAX_LENGTH + 1];
 	uint16_t		map[16];
 

@@ -14,13 +14,7 @@
 
 /*
 ** takes an int and print it out as square
-*/
-
-/*
 ** do a >> shift of squareside and set above squareside to 0
-*/
-
-/*
 ** bit masking to set the bigger bit above squareSide to 0
 ** complement by 0s if the number is missing left 0s
 */
@@ -42,7 +36,7 @@ void    ft_printmino(int mino, int sidesize)
         }
         else
         {
-            ft_putendl_nbr(newmino&1);
+            ft_putendl_nbr(newmino & 1);
             newmino = newmino >> 1;
         }
     }
@@ -68,19 +62,19 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     ft_putendl("\nMap empty is");//
     ft_putendl(map);//
     while (--p_qty >= 0)
-    {   
+    {
         ft_putstr("\nPiece : ");//
-        ft_putendl_nbr(p_qty);//    
+        ft_putendl_nbr(p_qty);//
         ft_putstr("X : ");//
-        ft_putendl_nbr(tab[p_qty].pos.x);//    
+        ft_putendl_nbr(tab[p_qty].pos.x);//
         ft_putstr("Y : ");//
         ft_putendl_nbr(tab[p_qty].pos.y);//
         while (k++ < 16)
-        {             
+        {
             if ((tab[p_qty].compbin & (0b1 << k)) != 0)
             {
                 ft_putstr("letter index : ");//
-                ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)); //                   
+                ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
                 map[((tab[p_qty].pos.y + (k + 1) / 4) * (m_size + 1)) + (tab[p_qty].pos.x + (k + 1) % 4)] = p_qty + 'A';
             }
         }

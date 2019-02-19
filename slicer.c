@@ -54,6 +54,37 @@ int			ft_measureheight(uint16_t binsrc, size_t s)
 }
 
 /*
+** Trying to fuse measureheight and measurewidth
+**
+*/
+
+int			ft_measurewidth(uint16_t binsrc, size_t s)
+{
+	int			i;
+	uint16_t	col_mask;
+
+	i = s;
+	while (i-- != 0)
+		col_mask = ft_power(2, s - 1) + (col_mask << s);
+	while ((binsrc & col_mask) == 0 && s--)
+		col_mask = col_mask >> 1;
+	return (s);
+
+	uint16_t	row_mask;
+	int			h;
+	int			k;
+
+	h = s;
+	k = s;
+	row_mask = ft_power(2, s) - 1;
+	while (k-- != 1)
+		row_mask = row_mask << s;
+	while ((binsrc & row_mask) == 0 && h--)
+		row_mask = row_mask >> s;
+	return (h);
+}
+
+/*
 ** bitcompact : compacts a tetriminoin binary :
 ** pushes it up and left
 ** takes a bit and assuming column / row number is sidesize

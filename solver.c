@@ -12,11 +12,10 @@
 
 #include "./includes/fillit.h"
 
-
-
 /*
 ** easier : put the mino into a 64 int
-** this way we just mask over the first 4 lines started at the map first line (int16)
+** this way we just mask over the first
+** 4 lines started at the map first line (int16)
 */
 
 int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
@@ -35,7 +34,6 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 	if (p_id >= p_qty)
 		return (1);
 	ft_putendl("\nentree dans la boucle de backtrack");//
-	// so we don't go one further
 	ft_putstr("tab[p_id].size.y : ");//
 	ft_putendl_nbr(tab[p_id].size.y);//
 	ft_putstr("l : ");//
@@ -56,8 +54,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
-				//can be put here
-				if	(ft_put64piece(tab,  p_id + 1, map, m_size, p_qty))
+				if (ft_put64piece(tab, p_id + 1, map, m_size, p_qty))
 					return (1);
 				else
 				{
@@ -69,7 +66,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 		}
 		l++;
 	}
-	return(0);
+	return (0);
 }
 
 /*
@@ -87,7 +84,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 **	line3 0b1111000000000000
 */
 
-int ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
+int		ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
 {
 	int	mask;
 
@@ -100,19 +97,19 @@ int ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
 		&& tab[p_id].pos.y++) && (mask < 4))
 			if ((((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x)
 			& map[tab[p_id].pos.y + mask] && mask++ <= 3)
-				return(1);//exit if no return
+				return (1);
 			else if ((((0b1111 << mask * 4) & tab[p_id].compbin)
 			<< tab[p_id].pos.x) & map[tab[p_id].pos.y + mask])
 			{
 				tab[p_id].pos.x++;
 				mask = 0;
-				break;
+				break ;
 			}
 		tab[p_id].pos.x = 0;
 	}
 	tab[p_id].pos.x = -1;
 	tab[p_id].pos.y = -1;
-	return (0);// added return
+	return (0);
 }
 
 /*
@@ -126,7 +123,8 @@ void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 
 	mask = 0;
 	while (mask++ < 4)
-		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] | (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
+		| (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
 }
 
 /*
@@ -140,7 +138,8 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 
 	mask = 0;
 	while (mask++ < 4)
-		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] ^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
+		^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
 	tab[p_id].pos.x = 0;
 	tab[p_id].pos.y = 0;
 }
@@ -156,9 +155,10 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
 	ft_putendl("entree dans ft_placer :");//
-	return (ft_put64piece(tab, 0, map, m_size,p_qty));
+	return (ft_put64piece(tab, 0, map, m_size, p_qty));
 }
-	/*
+
+/*
 ** We take the map, and put the pieces inside
 */
 
@@ -171,7 +171,7 @@ uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
 	ft_putendl_nbr(m_size);//
-	while (!(ft_put64piece(tab,  0, map, m_size, p_qty)) && m_size <= 16)
+	while (!(ft_put64piece(tab, 0, map, m_size, p_qty)) && m_size <= 16)
 	{
 		ft_putendl("\nremise a zero de la map");//
 		ft_bzero(map, sizeof(*map) * 16);
