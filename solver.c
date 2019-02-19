@@ -172,8 +172,6 @@ uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 		ft_putendl("\nremise a zero de la map");//
 		ft_bzero(map, sizeof(*map) * 16);
 		m_size++;
-		ft_putendl("augmentation de la taille de map, m_size :");//
-		ft_putendl_nbr(m_size);//
 	}
 	return (map);
 }

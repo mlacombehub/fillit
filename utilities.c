@@ -54,14 +54,15 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     int     k;
 
     k = m_size * (m_size + 1);
-    map[k] = '\0';
-    while (--k >= 0)
+    map[k + 1] = '\0';
+    while (--k >= 1)
     {
         if (k % (m_size + 1) == 0 && k != 0)
-            map[k] = '\n';
+                map[k] = '\n';
         else
-            map[k] = k + '0';
+            map[k] = '.';
     }
+    k--;
     ft_putendl("Map size :");//
     ft_putendl_nbr(m_size);//
     ft_putendl("");
@@ -74,9 +75,7 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
         ft_putstr("X : ");//
         ft_putendl_nbr(tab[p_qty].pos.x);//    
         ft_putstr("Y : ");//
-        ft_putendl_nbr(tab[p_qty].pos.y);//   
-        ft_putstr("tab[p_qty].compbin : ");//
-        ft_putendl_nbr(tab[p_qty].compbin);//
+        ft_putendl_nbr(tab[p_qty].pos.y);//
         while (k++ < 16)
         {             
             if ((tab[p_qty].compbin & (0b1 << k)) != 0)
@@ -90,6 +89,4 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     }
     ft_putendl("\nMap full is");//
     ft_putendl(map);
-    ft_putendl("Map size :");//
-    ft_putendl_nbr(m_size);//
 }
