@@ -6,82 +6,44 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/19 13:57:41 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 15:43:05 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
 
-/*
-** takes a char representing a tetrimino on a map
-** and the horizontal side length of the map
-** return the max size of any row
-*/
-
-int			ft_measurewidth(uint16_t binsrc, size_t s)
-{
-	size_t		k;
-	uint16_t	col_mask;
-
-	k = s;
-	while (k-- != 0)
-		col_mask = ft_power(2, s - 1) + (col_mask << s);
-	while ((binsrc & col_mask) == 0 && s--)
-		col_mask = col_mask >> 1;
-	return (s);
-}
-
-/*
-** takes a char representing a tetrimino on a map
-** and the vertical side length of the map
-** returns the max size of any column
-*/
-
-int			ft_measureheight(uint16_t binsrc, size_t s)
-{
-	uint16_t	row_mask;
-	int			h;
-	int			k;
-
-	h = s;
-	k = s;
-	row_mask = ft_power(2, s) - 1;
-	while (k-- != 1)
-		row_mask = row_mask << s;
-	while ((binsrc & row_mask) == 0 && h--)
-		row_mask = row_mask >> s;
-	return (h);
-}
 
 /*
 ** Trying to fuse measureheight and measurewidth
 **
 */
 
-int			ft_measurewidth(uint16_t binsrc, size_t s)
+int			ft_measure_width_height(uint16_t binsrc, int sizex, int sizey, int sidesize)
 {
-	int			i;
-	uint16_t	col_mask;
-
-	i = s;
-	while (i-- != 0)
-		col_mask = ft_power(2, s - 1) + (col_mask << s);
-	while ((binsrc & col_mask) == 0 && s--)
-		col_mask = col_mask >> 1;
-	return (s);
-
-	uint16_t	row_mask;
-	int			h;
 	int			k;
+	uint16_t	col_mask;
+	uint16_t	row_mask;
 
-	h = s;
-	k = s;
-	row_mask = ft_power(2, s) - 1;
-	while (k-- != 1)
-		row_mask = row_mask << s;
-	while ((binsrc & row_mask) == 0 && h--)
-		row_mask = row_mask >> s;
-	return (h);
+	k = sidesize;
+	if (sizex == 0)
+	{
+		sizex = sidesize;
+		while (sidesize-- != 0)
+			col_mask = ft_power(2, sizex - 1) + (col_mask << sizex);
+		while ((binsrc & col_mask) == 0 && sizex--)
+			col_mask = col_mask >> 1;
+		return (sizex);
+	}
+	else
+	{
+		sizey = sidesize;
+		row_mask = ft_power(2, sidesize) - 1;
+		while (k-- != 1)
+			row_mask = row_mask << sidesize;
+		while ((binsrc & row_mask) == 0 && sizey--)
+			row_mask = row_mask >> sidesize;
+		return (sizey);
+	}
 }
 
 /*
@@ -185,27 +147,26 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
 		ft_putendl("ecriture dans movbin");//
 		tab[k].movbin = ft_bit16to64(tab[k].compbin, 4);
-		ft_putendl("ecriture dans width");//
-		tab[k].width = ft_measurewidth(tab[k].compbin, 4);
-		ft_putendl("ecriture dans height");//
-		tab[k].height = ft_measureheight(tab[k].compbin, 4);
 		ft_putendl("ecriture dans size.x");//
-		tab[k].size.x = ft_measurewidth(tab[k].compbin, 4);
+		tab[k].size.x = 0;
+		tab[k].size.y = 0;
+		tab[k].size.x = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		ft_putendl("ecriture dans size.y");//
-		tab[k].size.y = ft_measureheight(tab[k].compbin, 4);
+		tab[k].size.y = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
 		k++;
 		feed += 21;
 	}
 	//below is debug display, can be removed (or activate with debug 1)
+	ft_putendl("movbin");//
+	ft_putendl_nbr(tab[k].movbin);//
 	while (k-- != 0)
 	{
 		ft_putendl("");//
 		ft_putchar('A' + k);//
 		ft_putendl("");//
 		ft_putendl(tab[k].tetchar);//
-		ft_putendl("movbin");//
-		ft_putendl_nbr(tab[k].movbin);//
+
 	}
 }

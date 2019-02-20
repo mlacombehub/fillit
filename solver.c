@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/19 16:52:30 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 15:48:19 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,23 @@
 ** 4 lines started at the map first line (int16)
 */
 
-int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
+int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, int compteur)
 {
 	int			l;//line
 	int			c;//column
 	uint64_t	map64;
 
 	l = 0;
-	ft_putendl("impression de la map");//
-	ft_printmap(tab, m_size, p_qty);
 	ft_putendl("\np_id :");//
 	ft_putendl_nbr(p_id);//
 	ft_putendl("p_qty :");//
 	ft_putendl_nbr(p_qty);//
-	if (p_id >= p_qty)
+	if (p_id == p_qty - 1)
 		return (1);
-	ft_putendl("\nentree dans la boucle de backtrack");//
+	ft_putstr("\nentree dans la boucle de backtrack ");//
+	ft_putendl_nbr(compteur);//
+	ft_putstr(" piece no :");//
+	ft_putendl_nbr(p_id);//
 	ft_putstr("tab[p_id].size.y : ");//
 	ft_putendl_nbr(tab[p_id].size.y);//
 	ft_putstr("l : ");//
@@ -48,13 +49,18 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 		while ((tab[p_id].size.x + c) <= m_size)
 		{
 			map64 = (uint64_t)map[l];
+			ft_putstr("map has value : ");//
+			ft_putendl_nbr(map64);
 			if (((tab[p_id].movbin << c) & map64) == 0)
 			{
-				ft_putendl("entree dans le test de recursivite");//
+				ft_putstr("we can put the piece down. entree dans le test de recursivite ");//
+				ft_putendl_nbr(compteur);//
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
-				if (ft_put64piece(tab, p_id + 1, map, m_size, p_qty))
+				ft_putstr("after putpiece map has value : ");//
+				ft_putendl_nbr(map64);
+				if (ft_put64piece(tab, p_id + 1, map, m_size, p_qty, compteur + 1))
 					return (1);
 				else
 				{
@@ -124,7 +130,7 @@ void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 	mask = 0;
 	while (mask++ < 4)
 		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		| (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
 }
 
 /*
@@ -139,9 +145,9 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 	mask = 0;
 	while (mask++ < 4)
 		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
-	tab[p_id].pos.x = 0;
-	tab[p_id].pos.y = 0;
+		| (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+	tab[p_id].pos.x = -1;
+	tab[p_id].pos.y = -1;
 }
 
 /*
@@ -155,7 +161,7 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 int			ft_placer(t_piece *tab, int p_qty, size_t m_size, uint16_t *map)
 {
 	ft_putendl("entree dans ft_placer :");//
-	return (ft_put64piece(tab, 0, map, m_size, p_qty));
+	return (ft_put64piece(tab, 0, map, m_size, p_qty, 0));
 }
 
 /*
@@ -171,11 +177,13 @@ uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
 	ft_putendl_nbr(m_size);//
-	while (!(ft_put64piece(tab, 0, map, m_size, p_qty)) && m_size <= 16)
+	while (!(ft_put64piece(tab, 0, map, m_size, p_qty, 0)) && m_size <= 16)
 	{
 		ft_putendl("\nremise a zero de la map");//
 		ft_bzero(map, sizeof(*map) * 16);
 		m_size++;
 	}
+	ft_putendl("impression de la map");//
+	ft_printmap(tab, m_size, p_qty);
 	return (map);
 }

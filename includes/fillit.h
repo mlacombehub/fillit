@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/19 15:24:48 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 14:54:43 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int				ft_checkfeed(char *feed, int feedsize);
 
 uint16_t		ft_rev_chartobit(char *c, char thebitchar);
 int				ft_bitcompact(int bitmino, int sidesize);
-int				ft_measurewidth(uint16_t stuff, size_t s);
-int				ft_measureheight(uint16_t stuff, size_t s);
+int			ft_measure_width_height(uint16_t binsrc, int sizex,int sizey,
+int sidesize);
 void			ft_feedtopieces(t_piece *tab, char *feed);
 uint64_t		ft_bit16to64(int compbit, int sidesize);
 
@@ -76,7 +76,7 @@ int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
 int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map,
-int m_size, int p_qty);
+int m_size, int p_qty, int compteur);
 
 /*
 ** utilities.c functions (for debug)
