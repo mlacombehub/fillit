@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 14:54:43 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 16:48:44 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <fcntl.h>
 # include "../libft/includes/libft.h"
+# include <stdio.h> //
 
 typedef struct	s_point
 {
@@ -84,4 +85,5 @@ int m_size, int p_qty, int compteur);
 
 void			ft_printmino(int mino, int sidesize);
 void			ft_printmap(t_piece *piece, int m_size, int p_qty);
+void			ft_print_bytes(void *ptr, int size);
 #endif

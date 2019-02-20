@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:39:57 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/20 15:43:01 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 17:08:19 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,27 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     }
     ft_putendl("\nMap full is");//
     ft_putendl(map);
+}
+
+void ft_print_bytes(void *ptr, int size)
+{
+    unsigned char *p = ptr;
+    int i;
+    if (ptr)
+    {
+        i=0;
+        while (i < size)
+        {
+            //printf("%02hhX ", p[i]);
+            ft_print_bits(p[i]);
+            ft_putstr(" ");
+            i++;
+        }
+    }
+    else
+    {
+        ft_putstr("[NULL pointer]");
+    }
+
+    ft_putstr("\n");
 }
