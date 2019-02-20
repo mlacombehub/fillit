@@ -54,7 +54,8 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 			ft_putendl("debug1");
 			ft_print_bytes(map64, 32);
 			ft_putendl("debug2");
-			//ft_memcpy(map64, &map[l], 32);
+//			ft_memcpy(map64, &map[l], 32);
+//			ft_putendl("debug3");
 			*map64 = (uint64_t)&map[l];
 			ft_putstr("map has value : ");//
 			ft_putendl_nbr(*map64);//
@@ -136,7 +137,6 @@ void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 	int	mask;
 
 	mask = 0;
-
 	while (mask < 4)
 	{//
 		ft_putnbr(tab[p_id].pos.y + mask);

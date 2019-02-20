@@ -12,37 +12,35 @@
 
 #include "./includes/fillit.h"
 
-
 /*
 ** Trying to fuse measureheight and measurewidth
-**
 */
 
-int			ft_measure_width_height(uint16_t binsrc, int sizex, int sizey, int sidesize)
+int			ft_measure_w_h(uint16_t binsrc, int sx, int sy, int sside)
 {
 	int			k;
 	uint16_t	col_mask;
 	uint16_t	row_mask;
 
-	k = sidesize;
-	if (sizex == 0)
+	k = sside;
+	if (sx == 0)
 	{
-		sizex = sidesize;
-		while (sidesize-- != 0)
-			col_mask = ft_power(2, sizex - 1) + (col_mask << sizex);
-		while ((binsrc & col_mask) == 0 && sizex--)
+		sx = sside;
+		while (sside-- != 0)
+			col_mask = ft_power(2, sx - 1) + (col_mask << sx);
+		while ((binsrc & col_mask) == 0 && sx--)
 			col_mask = col_mask >> 1;
-		return (sizex);
+		return (sx);
 	}
 	else
 	{
-		sizey = sidesize;
-		row_mask = ft_power(2, sidesize) - 1;
+		sy = sside;
+		row_mask = ft_power(2, sside) - 1;
 		while (k-- != 1)
-			row_mask = row_mask << sidesize;
-		while ((binsrc & row_mask) == 0 && sizey--)
-			row_mask = row_mask >> sidesize;
-		return (sizey);
+			row_mask = row_mask << sside;
+		while ((binsrc & row_mask) == 0 && sy--)
+			row_mask = row_mask >> sside;
+		return (sy);
 	}
 }
 
@@ -89,12 +87,12 @@ uint64_t	ft_bit16to64(int compbit, int sidesize)
 	longcomp = (uint64_t)compbit;
 	while (k < sidesize)
 	{
-		longbit = longbit + (((0b1111 << (k * sidesize)) & longcomp ) << ((16 - sidesize) * k));
+		longbit = longbit + (((0b1111 << (k * sidesize))
+		& longcomp) << ((16 - sidesize) * k));
 		k++;
 	}
 	return (longbit);
 }
-
 
 /*
 ** takes a string and for every n-th char thebitchar
@@ -150,15 +148,14 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		ft_putendl("ecriture dans size.x");//
 		tab[k].size.x = 0;
 		tab[k].size.y = 0;
-		tab[k].size.x = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
+		tab[k].size.x = ft_measure_w_h(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		ft_putendl("ecriture dans size.y");//
-		tab[k].size.y = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
+		tab[k].size.y = ft_measure_w_h(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
 		k++;
 		feed += 21;
 	}
-	//below is debug display, can be removed (or activate with debug 1)
 	ft_putendl("movbin");//
 	ft_putendl_nbr(tab[k].movbin);//
 	while (k-- != 0)
@@ -167,6 +164,5 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		ft_putchar('A' + k);//
 		ft_putendl("");//
 		ft_putendl(tab[k].tetchar);//
-
 	}
 }

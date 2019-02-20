@@ -87,7 +87,8 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
             {
                 // ft_putstr("letter index : ");//
                 // ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
-                map[((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
+                map[((tab[p_qty].pos.y + k / 4) * (m_size + 1))
+                + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
             }
             k++;
         }
@@ -97,25 +98,21 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     ft_putendl(map);
 }
 
-void ft_print_bytes(void *ptr, int size)
+void    ft_print_bytes(void *ptr, int size)
 {
     unsigned char *p = ptr;
     int i;
+
     if (ptr)
     {
-        i=0;
-        while (i < size)
+        i = 0;
+        while (i++ < size)
         {
-            //printf("%02hhX ", p[i]);
             ft_print_bits(p[i]);
             ft_putstr(" ");
-            i++;
         }
     }
     else
-    {
         ft_putstr("[NULL pointer]");
-    }
-
     ft_putstr("\n");
 }
