@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 16:06:27 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 16:27:29 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 		ft_putendl_nbr(c);//
 		while ((tab[p_id].size.x + c) <= m_size)
 		{
-			map64 = (uint64_t)map[l];
+			map64 = &map[l];
 			ft_putstr("map has value : ");//
 			ft_putendl_nbr(map64);
 			if (((tab[p_id].movbin << c) & map64) == 0)
@@ -58,7 +58,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
-				map64 = (uint64_t)map[l];
+				map64 = &map[l];
 				ft_putstr("after putpiece map has value : ");//
 				ft_putendl_nbr(map64);
 				if (ft_put64piece(tab, p_id + 1, map, m_size, p_qty, compteur + 1))
