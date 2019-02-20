@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/20 15:43:05 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 23:01:38 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,20 +138,20 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	ft_putendl_nbr(k);//
 	while (feed && *feed)
 	{
-		ft_putendl("arrivee dans feedtopieces, lancement de la creation de tab");//
+		//ft_putendl("arrivee dans feedtopieces, lancement de la creation de tab");//
 		tab[k].p_id = k + 'A';
 		ft_strncpy(tab[k].tetchar, feed, 21);
-		ft_putendl("ecriture dans refbin");//
+		//ft_putendl("ecriture dans refbin");//
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		ft_putendl("ecriture dans compbin");//
+		//ft_putendl("ecriture dans compbin");//
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
-		ft_putendl("ecriture dans movbin");//
+		//ft_putendl("ecriture dans movbin");//
 		tab[k].movbin = ft_bit16to64(tab[k].compbin, 4);
-		ft_putendl("ecriture dans size.x");//
+		//ft_putendl("ecriture dans size.x");//
 		tab[k].size.x = 0;
 		tab[k].size.y = 0;
 		tab[k].size.x = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
-		ft_putendl("ecriture dans size.y");//
+		//ft_putendl("ecriture dans size.y");//
 		tab[k].size.y = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
@@ -159,7 +159,7 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		feed += 21;
 	}
 	//below is debug display, can be removed (or activate with debug 1)
-	ft_putendl("movbin");//
+	//ft_putendl("movbin");//
 	ft_putendl_nbr(tab[k].movbin);//
 	while (k-- != 0)
 	{

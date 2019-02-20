@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:39:57 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/20 20:51:22 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 23:27:10 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,24 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     // ft_putstr(" k ");//
     // ft_putendl_nbr(k);//
 
-    //ft_putendl("\nMap empty is");//
-    //ft_putendl(map);//
+    ft_putendl("\nMap empty is");//
+    ft_putendl(map);//
     while (--p_qty >= 0)
     {
-        // ft_putstr("\nPiece: no = ");//
-        // ft_putnbr(p_qty);//
-        // ft_putstr(" value = ");//
-        // ft_putnbr(tab[p_qty].compbin);//
-        // ft_putstr(" X : ");//
-        // ft_putnbr(tab[p_qty].pos.x);//
-        // ft_putstr(" Y : ");//
-        // ft_putendl_nbr(tab[p_qty].pos.y);//
+        ft_putstr("\nPiece: no = ");//
+        ft_putnbr(p_qty);//
+        ft_putstr(" value = ");//
+        ft_putnbr(tab[p_qty].compbin);//
+        ft_putstr(" X : ");//
+        ft_putnbr(tab[p_qty].pos.x);//
+        ft_putstr(" Y : ");//
+        ft_putendl_nbr(tab[p_qty].pos.y);//
         while (k < 16)
         {
             if ((tab[p_qty].compbin & (0b1 << k)) != 0)
             {
-                // ft_putstr("letter index : ");//
-                // ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
+                ft_putstr("letter index : ");//
+                ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
                 map[((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
             }
             k++;
@@ -96,6 +96,13 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     ft_putendl("\nMap full is");//
     ft_putendl(map);
 }
+
+/*
+** prints the bytes from memory
+** we print from the [ptr] address, [size] bytes grouping by [step] 
+** prefixing with grouping number
+** if step is 0 we juste print separated by space
+*/
 
 void ft_print_bytes(void *ptr, int size, int step)
 {
