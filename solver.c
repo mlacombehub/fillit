@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 17:08:46 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 20:46:30 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,27 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 		ft_putendl_nbr(c);//
 		while ((tab[p_id].size.x + c) <= m_size)
 		{
-			ft_putendl("let's take the map into 64");
-			ft_print_bytes(&map[l], 2);
-			ft_putendl("debug1");
-			ft_print_bytes(map64, 32);
-			ft_putendl("debug2");
+			ft_putendl("let's take the map into 64");//
+			ft_print_bytes(&map[l], 2, 2);//
+			ft_putendl("map64 before");//
+			ft_print_bytes(map64, 4, 2);//
+			ft_putendl("debug2");//
 			//ft_memcpy(map64, &map[l], 32);
-			*map64 = (uint64_t)&map[l];
-			ft_putstr("map has value : ");//
+			map64 = (uint64_t *)(map + l);
+			ft_putstr("map64 has value : ");//
 			ft_putendl_nbr(*map64);//
 			if (((tab[p_id].movbin << c) & *map64) == 0)
 			{
 				ft_putstr("we can put the piece down. entree dans le test de recursivite ");//
 				ft_putendl_nbr(compteur);//
+				ft_putendl("before putpiece map has value : ");//
+				ft_print_bytes(map64, 4, 2);//
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
 				//map64 = &map[l];
-				ft_putstr("after putpiece map has value : ");//
-				ft_putendl_nbr(*map64);//
+				ft_putendl("after putpiece map has value : ");//
+				ft_print_bytes(map64, sizeof(map), 2);// the map64 is 8 bytes long by the way
 				if (ft_put64piece(tab, p_id + 1, map, m_size, p_qty, compteur + 1))
 					return (1);
 				else

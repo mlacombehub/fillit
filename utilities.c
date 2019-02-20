@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:39:57 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/20 17:08:19 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 20:43:39 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     ft_putendl(map);
 }
 
-void ft_print_bytes(void *ptr, int size)
+void ft_print_bytes(void *ptr, int size, int step)
 {
     unsigned char *p = ptr;
     int i;
@@ -106,10 +106,17 @@ void ft_print_bytes(void *ptr, int size)
         i=0;
         while (i < size)
         {
+            if ( step != 0 && i % step == 0)
+            {
+                ft_putnbr(i / step);
+                ft_putstr(" ");
+            }
             //printf("%02hhX ", p[i]);
             ft_print_bits(p[i]);
             ft_putstr(" ");
             i++;
+            if ( step != 0 && i % step == 0)
+                 ft_putstr("\n");
         }
     }
     else

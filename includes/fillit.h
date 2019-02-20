@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 16:48:44 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 20:38:01 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ int m_size, int p_qty, int compteur);
 
 void			ft_printmino(int mino, int sidesize);
 void			ft_printmap(t_piece *piece, int m_size, int p_qty);
-void			ft_print_bytes(void *ptr, int size);
+void			ft_print_bytes(void *ptr, int size, int step);
 #endif
