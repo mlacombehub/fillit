@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 20:46:30 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 21:17:06 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,12 +142,16 @@ void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 	while (mask < 4)
 	{//
 		ft_putnbr(tab[p_id].pos.y + mask);
-		ft_putstr(" line is :");//
+		ft_putstr(" line is : ");//
 		ft_putendl_nbr(map[tab[p_id].pos.y + mask]);//
-		ft_putstr("shifted number is :");//
-		ft_putendl_nbr((((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x));//
+		ft_putstr("number is : ");//
+		ft_print_bytes(&tab[p_id].compbin, 2, 0);//
+		ft_putendl("");//
+		ft_putstr("for this line, number part is : ");//
+		ft_print_bits(((0b1111 << (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);//
+		ft_putendl("");//
 		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		+ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		+ (((0b1111 << (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
 		ft_putstr("line is now:");//
 		ft_putendl_nbr(map[tab[p_id].pos.y + mask]);//
 		mask++;
@@ -166,7 +170,7 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 	mask = 0;
 	while (mask++ < 4)
 		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		^ (((0b1111 << (mask * 4)) & tab[p_id].compbin) << tab[p_id].pos.x);
 	tab[p_id].pos.x = -1;
 	tab[p_id].pos.y = -1;
 }
