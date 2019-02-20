@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 15:48:19 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/20 16:06:27 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
+				map64 = (uint64_t)map[l];
 				ft_putstr("after putpiece map has value : ");//
 				ft_putendl_nbr(map64);
 				if (ft_put64piece(tab, p_id + 1, map, m_size, p_qty, compteur + 1))
@@ -128,9 +129,20 @@ void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 	int	mask;
 
 	mask = 0;
-	while (mask++ < 4)
+
+	while (mask < 4)
+	{//
+		ft_putnbr(tab[p_id].pos.y + mask);
+		ft_putstr(" line is :");//
+		ft_putendl_nbr(map[tab[p_id].pos.y + mask]);//
+		ft_putstr("shifted number is :");//
+		ft_putendl_nbr((((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x));//
 		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		+ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		ft_putstr("line is now:");//
+		ft_putendl_nbr(map[tab[p_id].pos.y + mask]);//
+		mask++;
+	}//
 }
 
 /*
@@ -145,7 +157,7 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 	mask = 0;
 	while (mask++ < 4)
 		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		| (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
+		^ (((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x);
 	tab[p_id].pos.x = -1;
 	tab[p_id].pos.y = -1;
 }
