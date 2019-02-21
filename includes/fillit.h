@@ -16,7 +16,6 @@
 
 # include <fcntl.h>
 # include "../libft/includes/libft.h"
-# include <stdio.h> //
 
 typedef struct	s_point
 {
@@ -62,8 +61,8 @@ int				ft_checkfeed(char *feed, int feedsize);
 
 uint16_t		ft_rev_chartobit(char *c, char thebitchar);
 int				ft_bitcompact(int bitmino, int sidesize);
-int			ft_measure_width_height(uint16_t binsrc, int sizex,int sizey,
-int sidesize);
+int				ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
+, int sidesize);
 void			ft_feedtopieces(t_piece *tab, char *feed);
 uint64_t		ft_bit16to64(int compbit, int sidesize);
 
@@ -77,7 +76,7 @@ int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
 int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map,
-int m_size, int p_qty, int compteur);
+int m_size, int p_qty);
 
 /*
 ** utilities.c functions (for debug)

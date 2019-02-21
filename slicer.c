@@ -12,13 +12,11 @@
 
 #include "./includes/fillit.h"
 
-
 /*
 ** Trying to fuse measureheight and measurewidth
-**
 */
 
-int			ft_measure_width_height(uint16_t binsrc, int sizex, int sizey, int sidesize)
+int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey, int sidesize)
 {
 	int			k;
 	uint16_t	col_mask;
@@ -89,7 +87,8 @@ uint64_t	ft_bit16to64(int compbit, int sidesize)
 	longcomp = (uint64_t)compbit;
 	while (k < sidesize)
 	{
-		longbit = longbit + (((0b1111 << (k * sidesize)) & longcomp ) << ((16 - sidesize) * k));
+		longbit = longbit + (((0b1111 << (k * sidesize))
+		& longcomp) << ((16 - sidesize) * k));
 		k++;
 	}
 	return (longbit);
@@ -132,38 +131,22 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	int k;
 
 	k = 0;
-	//ft_putendl("feed :");//
-	//ft_putendl(feed);//
-	//ft_putendl_nbr(k);//
 	while (feed && *feed)
 	{
-		//ft_putendl("arrivee dans feedtopieces, lancement de la creation de tab");//
 		tab[k].p_id = k + 'A';
 		ft_strncpy(tab[k].tetchar, feed, 21);
-		//ft_putendl("ecriture dans refbin");//
 		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		//ft_putendl("ecriture dans compbin");//
 		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
-		//ft_putendl("ecriture dans movbin");//
 		tab[k].movbin = ft_bit16to64(tab[k].compbin, 4);
-		//ft_putendl("ecriture dans size.x");//
 		tab[k].size.x = 0;
 		tab[k].size.y = 0;
-		tab[k].size.x = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
-		//ft_putendl("ecriture dans size.y");//
-		tab[k].size.y = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
+		tab[k].size.x = ft_measure_w_h(tab[k].compbin,
+		tab[k].size.x, tab[k].size.y, 4);
+		tab[k].size.y = ft_measure_w_h(tab[k].compbin,
+		tab[k].size.x, tab[k].size.y, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
 		k++;
 		feed += 21;
 	}
-	//below is debug display, can be removed (or activate with debug 1)
-	//ft_putendl("movbin");//
-	//ft_putendl_nbr(tab[k].movbin);//
-	// while (k-- != 0)
-	// {
-	// 	ft_putchar('A' + k);//
-	// 	ft_putendl("");//
-	// 	ft_putendl(tab[k].tetchar);//
-	//}
 }
