@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/13 14:40:58 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/21 17:54:52 by mlacombe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ CFLAGS= -Wall -Wextra -Werror
 DFLAGS= -g
 SUFFIX= c
 LIB=ft
-DEPENDANCY= libft.a
-DEP_NAME= ft
+DEPENDANCY= $(DEP_PREFIX)$(DEP_NAME)/$(DEP_PREFIX)$(DEP_NAME)$(DEP_SUFFIX)
 DEP_PREFIX= lib
-DEP_SUFFIX = .a
+DEP_NAME=ft
+DEP_SUFFIX=.a
 
 # resources
 SRC_PATH= ./srcs/

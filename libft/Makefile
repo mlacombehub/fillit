@@ -6,7 +6,7 @@
 #    By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 16:32:14 by mlacombe          #+#    #+#              #
-#    Updated: 2019/02/10 19:17:41 by mlacombe         ###   ########.fr        #
+#    Updated: 2019/02/21 19:46:40 by mlacombe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,8 @@ SRC =	ft_bzero.c\
 		ft_putendl_nbr.c\
 		ft_putendl_nbr_fd.c\
 		ft_power.c\
-		ft_puterror.c
+		ft_puterror.c\
+		ft_print_bytes.c
 
 SRC_DIR = srcs/
 OBJ_DIR = objects/

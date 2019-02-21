@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 20:38:01 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 19:08:56 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <fcntl.h>
 # include "../libft/includes/libft.h"
+# include <time.h>//
 
 typedef struct	s_point
 {
@@ -39,8 +40,6 @@ typedef struct	s_piece
 	int			p_id;
 	t_point		pos;
 	t_point		size;
-	int			width;
-	int			height;
 	uint16_t	compbin;
 	uint16_t	refbin;
 	uint64_t	movbin;
@@ -75,7 +74,7 @@ int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map,
 int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
-int				ft_put64piece(t_piece *tab, int p_id, uint16_t *map,
+int				ft_placer(t_piece *tab, int p_id, uint16_t *map,
 int m_size, int p_qty);
 
 /*

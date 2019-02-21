@@ -6,11 +6,24 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/20 23:31:05 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 19:36:01 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
+
+// void delay(int number_of_seconds) //
+// { //
+//     // Converting time into milli_seconds //
+//     int milli_seconds = 1000 * number_of_seconds;// 
+  
+//     // Stroing start time //
+//     clock_t start_time = clock(); //
+  
+//     // looping till required time is not acheived
+//     while (clock() < start_time + milli_seconds)// 
+//         ;// 
+// } //
 
 /*
 ** easier : put the mino into a 64 int
@@ -25,9 +38,7 @@ int			ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 	uint64_t	*map64;
 
 	l = 0;
-	map64 = NULL;
-	if (p_id >= p_qty)
-		return (1);
+	map64 = NULL;	
 	while ((tab[p_id].size.y + l) <= m_size)
 	{
 		c = 0;
@@ -39,7 +50,7 @@ int			ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
-				if (ft_placer(tab, p_id + 1, map, m_size, p_qty))
+				if (p_id + 1 >= p_qty || ft_placer(tab, p_id + 1, map, m_size, p_qty))
 					return (1);
 				else
 					ft_removepiece(tab, p_id, map);
