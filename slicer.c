@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/20 23:01:38 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 14:15:19 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 ** Trying to fuse measureheight and measurewidth
+** hack : if width is 0, returns width, otherwise returns height
 */
 
 int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey, int sidesize)
@@ -50,8 +51,8 @@ int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey, int sidesize)
 ** takes a bit and assuming column / row number is sidesize
 ** 	if first col empty, shift by 1
 **	if first row empty shift by row size sidesize
-**	we should go max to sidesize loop but can stop before
-**	for size 4 mask col = 0b1000100010001 mask row = 0b1111
+** we should go max to sidesize loop but can stop before
+** for size 4 mask col = 0b1000100010001 mask row = 0b1111
 */
 
 int			ft_bitcompact(int bitmino, int sidesize)
@@ -96,7 +97,7 @@ uint64_t	ft_bit16to64(int compbit, int sidesize)
 
 /*
 ** takes a string and for every n-th char thebitchar
-** sets the reversed n bit as 1.
+** sets the reversed n-th bit as 1.
 ** 1010 gives 5, so does 101
 */
 
