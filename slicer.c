@@ -95,11 +95,10 @@ uint64_t	ft_bit16to64(int compbit, int sidesize)
 	return (longbit);
 }
 
-
 /*
 ** takes a string and for every n-th char thebitchar
 ** sets the reversed n bit as 1.
-** "1010" gives 5, so does "101"
+** 1010 gives 5, so does 101
 */
 
 uint16_t	ft_rev_chartobit(char *src, char thebitchar)
@@ -133,9 +132,9 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	int k;
 
 	k = 0;
-	ft_putendl("\nfeed :");//
-	ft_putendl(feed);//
-	ft_putendl_nbr(k);//
+	//ft_putendl("feed :");//
+	//ft_putendl(feed);//
+	//ft_putendl_nbr(k);//
 	while (feed && *feed)
 	{
 		//ft_putendl("arrivee dans feedtopieces, lancement de la creation de tab");//
@@ -160,13 +159,11 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	}
 	//below is debug display, can be removed (or activate with debug 1)
 	//ft_putendl("movbin");//
-	ft_putendl_nbr(tab[k].movbin);//
-	while (k-- != 0)
-	{
-		ft_putendl("");//
-		ft_putchar('A' + k);//
-		ft_putendl("");//
-		ft_putendl(tab[k].tetchar);//
-
-	}
+	//ft_putendl_nbr(tab[k].movbin);//
+	// while (k-- != 0)
+	// {
+	// 	ft_putchar('A' + k);//
+	// 	ft_putendl("");//
+	// 	ft_putendl(tab[k].tetchar);//
+	//}
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_bits.c                                  :+:      :+:    :+:   */
+/*   ft_reversed_bits.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-unsigned char	ft_reverse_bits(unsigned char octet)
+unsigned char	ft_reversed_bits(unsigned char octet)
 {
 	int				i;
 	unsigned char	last;

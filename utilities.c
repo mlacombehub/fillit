@@ -26,17 +26,17 @@ void    ft_printmino(int mino, int sidesize)
 
     newmino = mino;
     k = 0;
-    ft_putendl("this should print the tetrimino as represented by the bit with a side of square side");
+    //ft_putendl("this should print the tetrimino as represented by the bit with a side of square side");
     while (newmino > 0)
     {
         k++;
         if (k != 0 && k % (sidesize + 1) == 0)
         {
-            ft_putchar('\n');
+       //     ft_putchar('\n');
         }
         else
         {
-            ft_putendl_nbr(newmino & 1);
+         //   ft_putendl_nbr(newmino & 1);
             newmino = newmino >> 1;
         }
     }
@@ -69,31 +69,31 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
     // ft_putstr(" k ");//
     // ft_putendl_nbr(k);//
 
-    ft_putendl("\nMap empty is");//
-    ft_putendl(map);//
+    //ft_putendl("\nMap empty is");//
+   // ft_putendl(map);//
     while (--p_qty >= 0)
     {
-        ft_putstr("\nPiece: no = ");//
-        ft_putnbr(p_qty);//
-        ft_putstr(" value = ");//
-        ft_putnbr(tab[p_qty].compbin);//
-        ft_putstr(" X : ");//
-        ft_putnbr(tab[p_qty].pos.x);//
-        ft_putstr(" Y : ");//
-        ft_putendl_nbr(tab[p_qty].pos.y);//
+        // ft_putstr("\nPiece: no = ");//
+        // ft_putnbr(p_qty);//
+        // ft_putstr(" value = ");//
+        // ft_putnbr(tab[p_qty].compbin);//
+        // ft_putstr(" X : ");//
+        // ft_putnbr(tab[p_qty].pos.x);//
+        // ft_putstr(" Y : ");//
+        // ft_putendl_nbr(tab[p_qty].pos.y);//
         while (k < 16)
         {
             if ((tab[p_qty].compbin & (0b1 << k)) != 0)
             {
-                ft_putstr("letter index : ");//
-                ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
+                // ft_putstr("letter index : ");//
+                // ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
                 map[((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
             }
             k++;
         }
         k = 0;
     }
-    ft_putendl("\nMap full is");//
+    // ft_putendl("\nMap full is");//
     ft_putendl(map);
 }
 
@@ -113,23 +113,19 @@ void ft_print_bytes(void *ptr, int size, int step)
         i=0;
         while (i < size)
         {
-            if ( step != 0 && i % step == 0)
-            {
-                ft_putnbr(i / step);
-                ft_putstr(" ");
-            }
-            //printf("%02hhX ", p[i]);
-            ft_print_bits(p[i]);
+           if ( step != 0 && i % step == 0)
+          {
+                 ft_putnbr(i / step);
+                 ft_putstr("\t");
+          }
+            ft_print_bits(ft_reversed_bits(p[i]));
             ft_putstr(" ");
-            i++;
-            if ( step != 0 && i % step == 0)
-                 ft_putstr("\n");
+          i++;
+           if ( step != 0 && i % step == 0)
+                ft_putstr("\n");
         }
     }
     else
-    {
         ft_putstr("[NULL pointer]");
-    }
-
     ft_putstr("\n");
 }
