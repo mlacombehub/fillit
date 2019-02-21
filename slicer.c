@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/21 14:15:19 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 20:30:50 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ uint64_t	ft_bit16to64(int compbit, int sidesize)
 ** 1010 gives 5, so does 101
 */
 
-uint16_t	ft_rev_chartobit(char *src, char thebitchar)
+uint16_t	ft_rev_atob(char *src, char thebitchar)
 {
 	int			k;
 	uint16_t	intbit;
@@ -136,8 +136,7 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 	{
 		tab[k].p_id = k + 'A';
 		ft_strncpy(tab[k].tetchar, feed, 21);
-		tab[k].refbin = ft_rev_chartobit(tab[k].tetchar, '#');
-		tab[k].compbin = ft_bitcompact(tab[k].refbin, 4);
+		tab[k].compbin = ft_bitcompact(ft_rev_atob(tab[k].tetchar, '#'), 4);
 		tab[k].movbin = ft_bit16to64(tab[k].compbin, 4);
 		tab[k].size.x = 0;
 		tab[k].size.y = 0;
@@ -147,7 +146,9 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		tab[k].size.x, tab[k].size.y, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
+		tab[k].islast = 0;
 		k++;
 		feed += 21;
 	}
+	tab[k - 1].islast = 1;
 }

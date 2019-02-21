@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/21 19:39:54 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 20:03:24 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int		main(int argc, char **argv)
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
 	ft_feedtopieces(tab, feed);
-	ft_mapbuilder(tab, feedsize / 21, map);
+	ft_printmap(tab, ft_mapbuilder(tab, feedsize / 21, map), feedsize / 21);
 	return (0);
 }

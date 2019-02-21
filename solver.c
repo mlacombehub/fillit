@@ -6,24 +6,11 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/21 19:36:01 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 20:36:12 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fillit.h"
-
-// void delay(int number_of_seconds) //
-// { //
-//     // Converting time into milli_seconds //
-//     int milli_seconds = 1000 * number_of_seconds;// 
-  
-//     // Stroing start time //
-//     clock_t start_time = clock(); //
-  
-//     // looping till required time is not acheived
-//     while (clock() < start_time + milli_seconds)// 
-//         ;// 
-// } //
 
 /*
 ** easier : put the mino into a 64 int
@@ -31,18 +18,18 @@
 ** 4 lines started at the map first line (int16)
 */
 
-int			ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
+int		ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
 {
 	int			l;
 	int			c;
 	uint64_t	*map64;
 
-	l = 0;
-	map64 = NULL;	
-	while ((tab[p_id].size.y + l) <= m_size)
+	l = -1;
+	map64 = NULL;
+	while ((tab[p_id].size.y + l++) <= m_size)
 	{
-		c = 0;
-		while ((tab[p_id].size.x + c) <= m_size)
+		c = -1;
+		while ((tab[p_id].size.x + c++) <= m_size)
 		{
 			map64 = (uint64_t *)(map + l);
 			if (((tab[p_id].movbin << c) & *map64) == 0)
@@ -50,14 +37,11 @@ int			ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 				tab[p_id].pos.x = c;
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
-				if (p_id + 1 >= p_qty || ft_placer(tab, p_id + 1, map, m_size, p_qty))
+				if (tab[p_id].islast || ft_placer(tab, p_id + 1, map, m_size))
 					return (1);
-				else
-					ft_removepiece(tab, p_id, map);
+				ft_removepiece(tab, p_id, map);
 			}
-			c++;
 		}
-		l++;
 	}
 	return (0);
 }
@@ -77,7 +61,7 @@ int			ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty)
 **	line3 0b1111000000000000
 */
 
-int			ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
+int		ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
 {
 	int	mask;
 
@@ -110,7 +94,7 @@ int			ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
 ** Adding the bits on the line is made with OR
 */
 
-void		ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
+void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 {
 	int	mask;
 
@@ -129,7 +113,7 @@ void		ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 ** Removing the bits on the line is made with XOR
 */
 
-void		ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
+void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 {
 	int	mask;
 
@@ -149,18 +133,17 @@ void		ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 ** We take the map, and put the pieces inside
 */
 
-uint16_t	*ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
+int		ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 {
 	int	m_size;
 
 	m_size = 2;
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
-	while (!(ft_placer(tab, 0, map, m_size, p_qty)) && m_size <= 16)
+	while (!(ft_placer(tab, 0, map, m_size)) && m_size <= 16)
 	{
 		ft_bzero(map, sizeof(*map) * 16);
 		m_size++;
 	}
-	ft_printmap(tab, m_size, p_qty);
-	return (map);
+	return (m_size);
 }

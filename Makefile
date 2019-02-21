@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/21 17:54:52 by mlacombe         ###   ########.fr        #
+#    Updated: 2019/02/21 20:37:54 by mlacombe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,7 @@ OBJ_PATH= ./objects/
 SRC= 	main.c \
 		checker.c \
 		slicer.c \
-		solver.c \
-		utilities.c \
+		solver.c 
 
 # sources and objects construction
 SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX))
