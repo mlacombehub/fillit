@@ -50,6 +50,7 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 		while ((tab[p_id].size.x + c) <= m_size)
 		{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ft_putendl("let's take the map into 64");
 			ft_print_bytes(&map[l], 2);
 			ft_putendl("debug1");
@@ -61,6 +62,8 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 			ft_putstr("map has value : ");//
 			ft_putendl_nbr(*map64);//
 =======
+=======
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
 			ft_putendl("let's take 4 lines of the map into 64");//
 			ft_print_bytes(&map[l], 8, 2);//
 			//ft_putendl("map64 before");//
@@ -68,6 +71,9 @@ int	ft_put64piece(t_piece *tab, int p_id, uint16_t *map, int m_size, int p_qty, 
 			map64 = (uint64_t *)(map + l);
 			// ft_putendl("map64 after");//
 			// ft_print_bytes(map64, sizeof(map64), 2);//
+<<<<<<< HEAD
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
+=======
 >>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
 			if (((tab[p_id].movbin << c) & *map64) == 0)
 			{

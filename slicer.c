@@ -149,10 +149,13 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		tab[k].size.x = 0;
 		tab[k].size.y = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tab[k].size.x = ft_measure_w_h(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		ft_putendl("ecriture dans size.y");//
 		tab[k].size.y = ft_measure_w_h(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 =======
+=======
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
 		tab[k].size.x = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
 		//ft_putendl("ecriture dans size.y");//
 		tab[k].size.y = ft_measure_width_height(tab[k].compbin, tab[k].size.x, tab[k].size.y, 4);
@@ -163,7 +166,12 @@ void		ft_feedtopieces(t_piece *tab, char *feed)
 		feed += 21;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ft_putendl("movbin");//
+=======
+	//below is debug display, can be removed (or activate with debug 1)
+	//ft_putendl("movbin");//
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
 =======
 	//below is debug display, can be removed (or activate with debug 1)
 	//ft_putendl("movbin");//

@@ -86,11 +86,14 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
             if ((tab[p_qty].compbin & (0b1 << k)) != 0)
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // ft_putstr("letter index : ");//
                 // ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
                 map[((tab[p_qty].pos.y + k / 4) * (m_size + 1))
                 + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
 =======
+=======
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
                 ft_putstr("letter index : ");//
                 ft_putendl_nbr(((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4));//
                 map[((tab[p_qty].pos.y + k / 4) * (m_size + 1)) + (tab[p_qty].pos.x + k % 4)] = p_qty + 'A';
@@ -105,8 +108,11 @@ void    ft_printmap(t_piece *tab, int m_size, int p_qty)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void    ft_print_bytes(void *ptr, int size)
 =======
+=======
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
 /*
 ** prints the bytes from memory
 ** we print from the [ptr] address, [size] bytes grouping by [step] 
@@ -115,6 +121,9 @@ void    ft_print_bytes(void *ptr, int size)
 */
 
 void ft_print_bytes(void *ptr, int size, int step)
+<<<<<<< HEAD
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
+=======
 >>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
 {
     unsigned char *p = ptr;
@@ -126,9 +135,12 @@ void ft_print_bytes(void *ptr, int size, int step)
         while (i++ < size)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             ft_print_bits(p[i]);
             ft_putstr(" ");
 =======
+=======
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
             if ( step != 0 && i % step == 0)
             {
                 ft_putnbr(i / step);
@@ -140,6 +152,9 @@ void ft_print_bytes(void *ptr, int size, int step)
             i++;
             if ( step != 0 && i % step == 0)
                  ft_putstr("\n");
+<<<<<<< HEAD
+>>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
+=======
 >>>>>>> 742a28ae616a68a5a94c46ca37ed1bb339a7c3dc
         }
     }
