@@ -12,8 +12,8 @@ feed :
 ....
 
 .##.
-.#..
-.#..
+##..
+....
 ....
 
 
@@ -22,28 +22,24 @@ arrivee dans feedtopieces, lancement de la creation de tab
 ecriture dans refbin
 ecriture dans compbin
 ecriture dans movbin
-ecriture dans width
-ecriture dans height
 ecriture dans size.x
 ecriture dans size.y
 arrivee dans feedtopieces, lancement de la creation de tab
 ecriture dans refbin
 ecriture dans compbin
 ecriture dans movbin
-ecriture dans width
-ecriture dans height
 ecriture dans size.x
 ecriture dans size.y
+movbin
+0
 
 B
 .##.
-.#..
-.#..
+##..
+....
 ....
 
 
-movbin
-65539
 
 A
 .##.
@@ -52,113 +48,459 @@ A
 ....
 
 
-movbin
-196611
 pas d'erreur, lancement mapbuilder
 
 calcul m_size min :
 3
-impression de la map
-
-PRINTMAP 
-Map size :
-3
-
-Map empty is
-...
-...
-...
-
-Piece: index = 1
- value = 275X : 0 Y : 0
-letter index : 0
-letter index : 1
-letter index : 4
-letter index : 8
-
-Piece: index = 0
- value = 51X : 0 Y : 0
-
-Map full is
-BB.
-B..
-B..
 
 p_id :
 0
 p_qty :
 2
 
-entree dans la boucle de backtrack
+entree dans la boucle de backtrack 0
+ piece no :0
 tab[p_id].size.y : 2
 l : 0
 tab[p_id].size.x : 2
 c : 0
-entree dans le test de recursivite
-impression de la map
+let's take 4 lines of the map into 64
+0 00000000 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
 
-PRINTMAP 
-Map size :
-3
+map64 before
+[NULL pointer]
+debug2
+map64 has value : 0
+we can put the piece down. entree dans le test de recursivite 0
+before putpiece map has value : 
+0 00000000 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
 
-Map empty is
-...
-...
-...
+0 line is : 0
+number is : 00110011 00000000 
 
-Piece: index = 1
- value = 275X : 0 Y : 0
-letter index : 0
-letter index : 1
-letter index : 4
-letter index : 8
+for this line, number part is : 00000011
+line is now:3
+1 line is : 0
+number is : 00110011 00000000 
 
-Piece: index = 0
- value = 51X : 0 Y : 0
+for this line, number part is : 00000011
+line is now:3
+2 line is : 0
+number is : 00110011 00000000 
 
-Map full is
-BB.
-B..
-B..
+for this line, number part is : 00000000
+line is now:0
+3 line is : 0
+number is : 00110011 00000000 
+
+for this line, number part is : 00000000
+line is now:0
+after putpiece map has value : 
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
 
 p_id :
 1
 p_qty :
 2
 
-entree dans la boucle de backtrack
-tab[p_id].size.y : 3
+entree dans la boucle de backtrack 1
+ piece no :1
+tab[p_id].size.y : 2
+l : 0
+tab[p_id].size.x : 3
+c : 0
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+[NULL pointer]
+debug2
+map64 has value : 196611
+tab[p_id].size.x : 3
+c : 0
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 3
+remove piece
+
+map before removal : 0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+4 00000000 00000000 
+5 00000000 00000000 
+6 00000000 00000000 
+7 00000000 00000000 
+8 00000000 00000000 
+9 00000000 00000000 
+10 00000000 00000000 
+11 00000000 00000000 
+12 00000000 00000000 
+13 00000000 00000000 
+14 00000000 00000000 
+15 00000000 00000000 
+
+
+map after removal : 0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+4 00000000 00000000 
+5 00000000 00000000 
+6 00000000 00000000 
+7 00000000 00000000 
+8 00000000 00000000 
+9 00000000 00000000 
+10 00000000 00000000 
+11 00000000 00000000 
+12 00000000 00000000 
+13 00000000 00000000 
+14 00000000 00000000 
+15 00000000 00000000 
+
+
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 3
+tab[p_id].size.x : 2
+c : 0
+let's take 4 lines of the map into 64
+0 00000000 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 0
+we can put the piece down. entree dans le test de recursivite 0
+before putpiece map has value : 
+0 00000000 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+1 line is : 0
+number is : 00110011 00000000 
+
+for this line, number part is : 00000011
+line is now:3
+2 line is : 0
+number is : 00110011 00000000 
+
+for this line, number part is : 00000011
+line is now:3
+3 line is : 0
+number is : 00110011 00000000 
+
+for this line, number part is : 00000000
+line is now:0
+4 line is : 0
+number is : 00110011 00000000 
+
+for this line, number part is : 00000000
+line is now:0
+after putpiece map has value : 
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+
+p_id :
+1
+p_qty :
+2
+
+entree dans la boucle de backtrack 1
+ piece no :1
+tab[p_id].size.y : 2
+l : 0
+tab[p_id].size.x : 3
+c : 0
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000011 00000000 
+3 00000000 00000000 
+
+map64 before
+[NULL pointer]
+debug2
+map64 has value : 196611
+tab[p_id].size.x : 3
+c : 0
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000011 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 196611
+remove piece
+
+map before removal : 0 00000011 00000000 
+1 00000011 00000000 
+2 00000011 00000000 
+3 00000000 00000000 
+4 00000000 00000000 
+5 00000000 00000000 
+6 00000000 00000000 
+7 00000000 00000000 
+8 00000000 00000000 
+9 00000000 00000000 
+10 00000000 00000000 
+11 00000000 00000000 
+12 00000000 00000000 
+13 00000000 00000000 
+14 00000000 00000000 
+15 00000000 00000000 
+
+
+map after removal : 0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+4 00000000 00000000 
+5 00000000 00000000 
+6 00000000 00000000 
+7 00000000 00000000 
+8 00000000 00000000 
+9 00000000 00000000 
+10 00000000 00000000 
+11 00000000 00000000 
+12 00000000 00000000 
+13 00000000 00000000 
+14 00000000 00000000 
+15 00000000 00000000 
+
+
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 3
+
+remise a zero de la map
+
+p_id :
+0
+p_qty :
+2
+
+entree dans la boucle de backtrack 0
+ piece no :0
+tab[p_id].size.y : 2
 l : 0
 tab[p_id].size.x : 2
 c : 0
-entree dans le test de recursivite
-impression de la map
+let's take 4 lines of the map into 64
+0 00000000 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
 
-PRINTMAP 
-Map size :
-3
+map64 before
+[NULL pointer]
+debug2
+map64 has value : 0
+we can put the piece down. entree dans le test de recursivite 0
+before putpiece map has value : 
+0 00000000 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
 
-Map empty is
-...
-...
-...
+0 line is : 0
+number is : 00110011 00000000 
 
-Piece: index = 1
- value = 275X : 0 Y : 0
-letter index : 0
-letter index : 1
-letter index : 4
-letter index : 8
+for this line, number part is : 00000011
+line is now:3
+1 line is : 0
+number is : 00110011 00000000 
 
-Piece: index = 0
- value = 51X : 0 Y : 0
+for this line, number part is : 00000011
+line is now:3
+2 line is : 0
+number is : 00110011 00000000 
 
-Map full is
-BB.
-B..
-B..
+for this line, number part is : 00000000
+line is now:0
+3 line is : 0
+number is : 00110011 00000000 
+
+for this line, number part is : 00000000
+line is now:0
+after putpiece map has value : 
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+
+p_id :
+1
+p_qty :
+2
+
+entree dans la boucle de backtrack 1
+ piece no :1
+tab[p_id].size.y : 2
+l : 0
+tab[p_id].size.x : 3
+c : 0
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+[NULL pointer]
+debug2
+map64 has value : 196611
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 196611
+tab[p_id].size.x : 3
+c : 0
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000011 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 3
+let's take 4 lines of the map into 64
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+map64 before
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+debug2
+map64 has value : 3
+we can put the piece down. entree dans le test de recursivite 1
+before putpiece map has value : 
+0 00000011 00000000 
+1 00000000 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
+1 line is : 3
+number is : 00110110 00000000 
+
+for this line, number part is : 00001100
+line is now:15
+2 line is : 0
+number is : 00110110 00000000 
+
+for this line, number part is : 00000110
+line is now:6
+3 line is : 0
+number is : 00110110 00000000 
+
+for this line, number part is : 00000000
+line is now:0
+4 line is : 0
+number is : 00110110 00000000 
+
+for this line, number part is : 00000000
+line is now:0
+after putpiece map has value : 
+0 00001111 00000000 
+1 00000110 00000000 
+2 00000000 00000000 
+3 00000000 00000000 
+
 
 p_id :
 2
 p_qty :
 2
+impression de la map
+
+Map full is
+AA..
+AABB
+.BB.
+....
