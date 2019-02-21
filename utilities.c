@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:39:57 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/21 19:35:58 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/21 19:59:08 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,39 +37,4 @@ void	ft_printmino(int mino, int sidesize)
 			newmino = newmino >> 1;
 		}
 	}
-}
-
-/*
-** prints the bytes from memory reversed
-** we print from the [ptr] address, [size] bytes grouping by [step]
-** prefixing with grouping number
-** if step is 0 we juste print separated by space
-*/
-
-void	ft_print_bytes(void *ptr, int size, int step)
-{
-	unsigned char	*p;
-	int				i;
-
-	p = ptr;
-	if (ptr)
-	{
-		i = 0;
-		while (i < size)
-		{
-			if (step != 0 && i % step == 0)
-			{
-				ft_putnbr(i / step);
-				ft_putstr("\t");
-			}
-			ft_print_bits(ft_reversed_bits(p[i]));
-			ft_putstr(" ");
-			i++;
-			if (step != 0 && i % step == 0)
-				ft_putstr("\n");
-		}
-	}
-	else
-		ft_putstr("[NULL pointer]");
-	ft_putstr("\n");
 }
