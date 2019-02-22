@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/21 20:36:12 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 09:03:52 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,49 +43,6 @@ int		ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
 			}
 		}
 	}
-	return (0);
-}
-
-/*
-** cut the piece in 4 lines
-** put it on the map
-** (we start at 0,0 for each piece, unless we find another x value
-** because it is a second try)
-** try and put on line 1, then 1 2 3
-** on first fail increment rightwise
-** on end of map (over the side) increment downwise
-** we use these masks for taking only the 4 bits needed
-**	line0 0b1111
-**	line1 0b11110000
-**	line2 0b111100000000
-**	line3 0b1111000000000000
-*/
-
-int		ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map, int m_size)
-{
-	int	mask;
-
-	mask = 0;
-	tab[p_id].pos.x = (tab[p_id].pos.x <= 0 ? 0 : tab[p_id].pos.x);
-	tab[p_id].pos.y = (tab[p_id].pos.y <= 0 ? 0 : tab[p_id].pos.y);
-	while ((tab[p_id].size.y + tab[p_id].pos.y) < m_size)
-	{
-		while (((tab[p_id].size.x + tab[p_id].pos.x) < m_size
-		&& tab[p_id].pos.y++) && (mask < 4))
-			if ((((0b1111 << mask * 4) & tab[p_id].compbin) << tab[p_id].pos.x)
-			& map[tab[p_id].pos.y + mask] && mask++ <= 3)
-				return (1);
-			else if ((((0b1111 << mask * 4) & tab[p_id].compbin)
-			<< tab[p_id].pos.x) & map[tab[p_id].pos.y + mask])
-			{
-				tab[p_id].pos.x++;
-				mask = 0;
-				break ;
-			}
-		tab[p_id].pos.x = 0;
-	}
-	tab[p_id].pos.x = 0;
-	tab[p_id].pos.y = 0;
 	return (0);
 }
 
