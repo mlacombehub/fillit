@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/22 09:57:39 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 13:36:06 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 	while (!(ft_placer(tab, 0, map, m_size)) && m_size++ <= 16)
 	{
 		ft_bzero(map, sizeof(*map) * 16);
-		//m_size++;
+		//m_size++;// try and increment inside test
 	}
-	return (m_size + 1);
+	return (m_size);
 }
