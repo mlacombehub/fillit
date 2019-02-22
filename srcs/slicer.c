@@ -6,11 +6,11 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/21 20:30:50 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:51:20 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fillit.h"
+#include "../includes/fillit.h"
 
 /*
 ** Trying to fuse measureheight and measurewidth
