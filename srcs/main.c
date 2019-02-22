@@ -22,7 +22,7 @@ void	ft_printmap(t_piece *tab, int m_size, int p_qty)
 	while (--k >= 1)
 		map[k - 1] = ((k % (m_size + 1) == 0 && k != 0) ? '\n' : '.');
 	while (--p_qty >= 0)
-	{	
+	{
 		while (k < 16)
 		{
 			if ((tab[p_qty].compbin & (0b1 << k)) != 0)
@@ -50,12 +50,19 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		return (ft_puterror("usage: ./fillit [input_file]"));
 	if ((fd = open(argv[1], O_RDONLY)) <= 0)
-		return (ft_puterror("error"));
+	{
+		ft_putstr("error");
+		return (0);
+	}
 	feedsize = read(fd, feed, FILE_MAX_LENGTH + 1);
 	feed[feedsize] = '\0';
 	if (ft_checkfeed(feed, feedsize) == 0)
-		return (ft_puterror("error"));
+	{
+		ft_putstr("error");
+		return (0);
+	}
 	ft_feedtopieces(tab, feed);
-	ft_printmap(tab, ft_mapbuilder(tab, (feedsize + 1) / 21, map), (feedsize + 1)/ 21);
+	ft_printmap(tab, ft_mapbuilder(tab, (feedsize + 1) / 21, map),
+	(feedsize + 1) / 21);
 	return (0);
 }

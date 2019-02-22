@@ -50,7 +50,7 @@ typedef struct	s_piece
 */
 
 void			ft_printmap(t_piece *piece, int m_size, int p_qty);
-
+int				ft_putabort();
 /*
 ** checker.c functions
 */
