@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/22 13:36:06 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:21:14 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int		ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
 
 	l = -1;
 	map64 = NULL;
-	while ((tab[p_id].size.y + l++) <= m_size)
+	while ((tab[p_id].size.y + l++) < m_size)
 	{
 		c = -1;
-		while ((tab[p_id].size.x + c++) <= m_size)
+		while ((tab[p_id].size.x + c++) < m_size)
 		{
 			map64 = (uint64_t *)(map + l);
 			if (((tab[p_id].movbin << c) & *map64) == 0)
@@ -98,9 +98,6 @@ int		ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 	while (m_size * m_size < 4 * p_qty)
 		m_size++;
 	while (!(ft_placer(tab, 0, map, m_size)) && m_size++ <= 16)
-	{
 		ft_bzero(map, sizeof(*map) * 16);
-		//m_size++;// try and increment inside test
-	}
 	return (m_size);
 }
