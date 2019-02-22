@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/21 20:03:24 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 09:47:31 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	ft_printmap(t_piece *tab, int m_size, int p_qty)
 
 	k = m_size * (m_size + 1);
 	map[k - 1] = '\0';
-	while (--k >= 1)
+	while (--k>= 1)
 		map[k - 1] = ((k % (m_size + 1) == 0 && k != 0) ? '\n' : '.');
+	ft_putendl_nbr(m_size);//
+	ft_putendl(map);//
 	while (--p_qty >= 0)
 	{
 		while (k < 16)
