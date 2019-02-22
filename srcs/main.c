@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/22 14:51:14 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 16:57:02 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_printmap(t_piece *tab, int m_size, int p_qty)
 	while (--k >= 1)
 		map[k - 1] = ((k % (m_size + 1) == 0 && k != 0) ? '\n' : '.');
 	while (--p_qty >= 0)
-	{
+	{	
 		while (k < 16)
 		{
 			if ((tab[p_qty].compbin & (0b1 << k)) != 0)
@@ -44,7 +44,7 @@ int		main(int argc, char **argv)
 	int				fd;
 	int				feedsize;
 	t_piece			tab[26];
-	char			feed[FILE_MAX_LENGTH + 1];
+	char			feed[FILE_MAX_LENGTH];
 	uint16_t		map[16];
 
 	if (argc != 2)
@@ -56,6 +56,6 @@ int		main(int argc, char **argv)
 	if (ft_checkfeed(feed, feedsize) == 0)
 		return (ft_puterror("error"));
 	ft_feedtopieces(tab, feed);
-	ft_printmap(tab, ft_mapbuilder(tab, feedsize / 21, map), feedsize / 21);
+	ft_printmap(tab, ft_mapbuilder(tab, (feedsize + 1) / 21, map), (feedsize + 1)/ 21);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 19:43:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/22 14:51:16 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/22 16:45:59 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int		ft_checkfeed(char *feed, int feedsize)
 	int	k;
 	int hcount;
 
-	if (feedsize / 21 < 1 || (feedsize) / 21 > 26 || feedsize % 21 != 0)
+	if (feedsize / 21 < 1 || (feedsize) / 21 > 26 || (feedsize + 1) % 21 != 0)
 		return (0);
-	while (*feed)
+	while (*feed && feed)
 	{
 		k = 0;
 		hcount = 0;
@@ -68,7 +68,7 @@ int		ft_checkfeed(char *feed, int feedsize)
 				hcount++;
 			k++;
 		}
-		if ((feed[k] != '\n') || (!ft_verification(feed)))
+		if (!ft_verification(feed))
 			return (0);
 		feed += 21;
 	}
