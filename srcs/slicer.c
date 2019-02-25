@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/25 17:46:48 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/25 20:31:18 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 ** hack : if width is 0, returns width, otherwise returns height
 */
 
-int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey, int sidesize)
+int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
+					, int sidesize)
 {
 	int			k;
 	uint16_t	col_mask;
