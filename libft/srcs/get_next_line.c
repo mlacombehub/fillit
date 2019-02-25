@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 13:05:44 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/10 14:44:03 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/25 17:22:54 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ static int		reader(int fd, char **line)
 static int		ft_strcpyfromc(char **dst, char *src, char c)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
-	tmp = *dst;
 	while (src[i] && src[i] != c)
 		i++;
 	if (!(*dst = ft_strndup(src, i)))

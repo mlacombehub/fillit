@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/22 15:44:40 by xbarthe          ###   ########.fr        #
+#    Updated: 2019/02/25 19:09:34 by mlacombe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,14 +50,17 @@ $(NAME): $(DEPENDANCY) $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(DEPENDANCY)
 
 #dependancy
-$(DEPENDANCY):
+$(DEPENDANCY): FORCE
 	$(MAKE) -C $(DEP_FOLDER)
 	@echo "-- Library " $(DEPENDANCY) " generated"
 
 # object creation
 objects/%.o: srcs/%.c
 	$(CC) $(CFLAGS) -c $< $(INCL_PATH)
+	mkdir -p $(OBJ_PATH)
 	mv *.o $(OBJ_PATH)
+
+
 # diagnostic
 test:
 	@echo "--- What will we compile ---"
@@ -70,6 +73,7 @@ test:
 # clean the object files
 clean:
 	rm -f $(OBJ)
+	rm -Rf $(OBJ_PATH)
 	cd $(DEP_FOLDER) && $(MAKE) clean
 
 # clean program and objects
@@ -79,4 +83,6 @@ fclean: clean
 # clean ALL and remake all
 re: fclean all
 
-.PHONY : all clean fclean re test
+FORCE:
+
+.PHONY : all clean fclean re test FORCE

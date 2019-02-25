@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/22 16:57:18 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/25 17:46:48 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey, int sidesize)
 	uint16_t	row_mask;
 
 	k = sidesize;
+	col_mask = 0;
 	if (sizex == 0)
 	{
 		sizex = sidesize;
@@ -61,6 +62,7 @@ int			ft_bitcompact(int bitmino, int sidesize)
 	uint16_t	row_mask;
 	int			k;
 
+	col_mask = 0;
 	row_mask = ft_power(2, sidesize) - 1;
 	k = sidesize;
 	while (k-- != 0)

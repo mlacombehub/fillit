@@ -53,7 +53,8 @@ int		ft_checkfeed(char *feed, int feedsize)
 	int	k;
 	int hcount;
 
-	if (feedsize / 21 < 1 || (feedsize) / 21 > 26 || (feedsize + 1) % 21 != 0)
+	if ((feedsize + 1) / 21 <= 0 || (feedsize + 1) / 21 > 26
+	|| (feedsize + 1) % 21 != 0)
 		return (0);
 	while (*feed && feed)
 	{

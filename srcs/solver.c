@@ -58,9 +58,8 @@ void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 	mask = 0;
 	while (mask < 4)
 	{
-		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		+ (((0b1111 << (mask * 4)) & tab[p_id].compbin)
-		>> (mask * 4) << tab[p_id].pos.x);
+		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] + (((0b1111
+		<< (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
 		mask++;
 	}
 }
@@ -77,9 +76,8 @@ void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 	mask = 0;
 	while (mask < 4)
 	{
-		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask]
-		^ (((0b1111 << (mask * 4)) & tab[p_id].compbin)
-		>> (mask * 4) << tab[p_id].pos.x);
+		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] ^ (((0b1111
+		<< (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
 		mask++;
 	}
 	tab[p_id].pos.x = 0;

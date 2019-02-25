@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 13:21:49 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/09 14:24:49 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/25 17:24:54 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_swap(char *s1, char *s2)
 {
-	char	*tmp;
+	char	tmp;
 
-	tmp = NULL;
-	*tmp = *s1;
+	tmp = *s1;
 	*s1 = *s2;
-	*s2 = *tmp;
+	*s2 = tmp;
 }
