@@ -6,15 +6,20 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/23 15:18:52 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/25 20:17:33 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void	ft_printmap(t_piece *tab, int m_size, int p_qty)
+/*
+** removed the dynamic size of the printed map, replaced by a parameter
+** before we had m_size * (m_size +1) instead of size
+*/
+
+void	ft_printmap(t_piece *tab, int m_size, int p_qty, int size)
 {
-	char	map[m_size * (m_size + 1)];
+	char	map[size];
 	int		k;
 
 	k = m_size * (m_size + 1);
@@ -63,6 +68,6 @@ int		main(int argc, char **argv)
 	}
 	ft_feedtopieces(tab, feed);
 	ft_printmap(tab, ft_mapbuilder(tab, (feedsize + 1) / 21, map),
-	(feedsize + 1) / 21);
+	(feedsize + 1) / 21, (feedsize + 1) / 21 * ((feedsize + 1) / 21 + 1));
 	return (0);
 }

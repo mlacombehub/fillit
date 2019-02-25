@@ -6,13 +6,13 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/21 20:33:32 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/25 20:12:22 by xbarthe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# define FILE_MAX_LENGTH (26 * 21)
+# define FILE_MAX_LENGTH (546)
 
 # include <fcntl.h>
 # include "../libft/includes/libft.h"
@@ -49,7 +49,7 @@ typedef struct	s_piece
 ** main.c functions
 */
 
-void			ft_printmap(t_piece *piece, int m_size, int p_qty);
+void			ft_printmap(t_piece *piece, int m_size, int p_qty, int size);
 
 /*
 ** checker.c functions
@@ -66,7 +66,7 @@ int				ft_checkfeed(char *feed, int feedsize);
 uint16_t		ft_rev_atob(char *c, char thebitchar);
 int				ft_bitcompact(int bitmino, int sidesize);
 int				ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
-, int sidesize);
+				, int sidesize);
 void			ft_feedtopieces(t_piece *tab, char *feed);
 uint64_t		ft_bit16to64(int compbit, int sidesize);
 
@@ -75,8 +75,8 @@ uint64_t		ft_bit16to64(int compbit, int sidesize);
 */
 
 int				ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map);
-int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map,
-int m_size);
+int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map
+				, int m_size);
 void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
 void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
 int				ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size);
