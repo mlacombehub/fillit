@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/25 19:09:34 by mlacombe         ###   ########.fr        #
+#    Updated: 2019/02/25 19:30:27 by xbarthe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,9 +56,8 @@ $(DEPENDANCY): FORCE
 
 # object creation
 objects/%.o: srcs/%.c
-	$(CC) $(CFLAGS) -c $< $(INCL_PATH)
 	mkdir -p $(OBJ_PATH)
-	mv *.o $(OBJ_PATH)
+	$(CC) $(CFLAGS) -c $< $(INCL_PATH) -o $@
 
 
 # diagnostic
