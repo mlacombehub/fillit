@@ -6,11 +6,11 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 19:43:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/22 16:45:59 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/26 18:03:37 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 /*
 ** Function checking that the # have proper neighbours
@@ -18,7 +18,7 @@
 ** (we expect between 6 and 8 'connections' between # )
 */
 
-int		ft_verification(char *buff)
+static int		ft_verification(char *buff)
 {
 	unsigned short int	i;
 	int					n_conn;
@@ -48,14 +48,14 @@ int		ft_verification(char *buff)
 ** typing/overwriting
 */
 
-int		ft_checkfeed(char *feed, int feedsize)
+int				ft_checkfeed(char *feed, int feedsize)
 {
 	int	k;
 	int hcount;
 
 	if ((feedsize + 1) / 21 <= 0 || (feedsize + 1) / 21 > 26
 	|| (feedsize + 1) % 21 != 0)
-		return (0);
+		return (FALSE);
 	while (*feed && feed)
 	{
 		k = 0;
@@ -64,7 +64,7 @@ int		ft_checkfeed(char *feed, int feedsize)
 		{
 			if (((k + 1) % 5 == 0 && feed[k] != '\n') || hcount > 4
 				|| ((k + 1) % 5 != 0 && feed[k] != '#' && feed[k] != '.'))
-				return (0);
+				return (FALSE);
 			if (feed[k] == '#')
 				hcount++;
 			k++;
@@ -73,5 +73,5 @@ int		ft_checkfeed(char *feed, int feedsize)
 			return (0);
 		feed += 21;
 	}
-	return (1);
+	return (TRUE);
 }

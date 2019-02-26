@@ -6,12 +6,14 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:37:37 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 14:21:38 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:00:49 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define TRUE (1)
+# define FALSE (0)
 
 # include <unistd.h>
 # include <stdlib.h>

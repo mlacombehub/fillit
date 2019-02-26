@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 16:37:14 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 14:55:12 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 17:39:30 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 			free(new_lst);
 			return (NULL);
 		}
+		return (new_lst);
 	}
 	return (NULL);
 }

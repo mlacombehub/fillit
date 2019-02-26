@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/25 20:31:37 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/26 18:00:09 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,9 @@ typedef struct	s_piece
 }				t_piece;
 
 /*
-** main.c functions
-*/
-
-void			ft_printmap(t_piece *piece, int m_size, int p_qty, int size);
-
-/*
 ** checker.c functions
 */
 
-int				ft_verification(char *buff);
 int				ft_checkfeed(char *feed, int feedsize);
 
 /*
@@ -63,11 +56,6 @@ int				ft_checkfeed(char *feed, int feedsize);
 ** TODO remove one function, too long
 */
 
-int				ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
-				, int sidesize);
-int				ft_bitcompact(int bitmino, int sidesize);
-uint64_t		ft_bit16to64(int compbit, int sidesize);
-uint16_t		ft_rev_atob(char *c, char thebitchar);
 void			ft_feedtopieces(t_piece *tab, char *feed);
 
 /*
@@ -75,10 +63,4 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 */
 
 int				ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map);
-int				ft_piececanbeput(t_piece *tab, int p_id, uint16_t *map
-				, int m_size);
-void			ft_putpiece(t_piece *tab, int p_id, uint16_t *map);
-void			ft_removepiece(t_piece *tab, int p_id, uint16_t *map);
-int				ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size);
-
 #endif

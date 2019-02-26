@@ -6,19 +6,19 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/25 20:31:18 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/26 18:04:00 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 /*
 ** Trying to fuse measureheight and measurewidth
 ** hack : if width is 0, returns width, otherwise returns height
 */
 
-int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
-					, int sidesize)
+static int		ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
+				, int sidesize)
 {
 	int			k;
 	uint16_t	col_mask;
@@ -57,7 +57,7 @@ int			ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
 ** for size 4 mask col = 0b1000100010001 mask row = 0b1111
 */
 
-int			ft_bitcompact(int bitmino, int sidesize)
+static int		ft_bitcompact(int bitmino, int sidesize)
 {
 	uint16_t	col_mask;
 	uint16_t	row_mask;
@@ -80,7 +80,7 @@ int			ft_bitcompact(int bitmino, int sidesize)
 ** each 4 pix, shift by 12
 */
 
-uint64_t	ft_bit16to64(int compbit, int sidesize)
+static uint64_t	ft_bit16to64(int compbit, int sidesize)
 {
 	uint64_t	longcomp;
 	uint64_t	longbit;
@@ -104,7 +104,7 @@ uint64_t	ft_bit16to64(int compbit, int sidesize)
 ** 1010 gives 5, so does 101
 */
 
-uint16_t	ft_rev_atob(char *src, char thebitchar)
+static uint16_t	ft_rev_atob(char *src, char thebitchar)
 {
 	int			k;
 	uint16_t	intbit;
@@ -130,7 +130,7 @@ uint16_t	ft_rev_atob(char *src, char thebitchar)
 ** TODO remove the debug output
 */
 
-void		ft_feedtopieces(t_piece *tab, char *feed)
+void			ft_feedtopieces(t_piece *tab, char *feed)
 {
 	int k;
 

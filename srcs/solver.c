@@ -6,11 +6,49 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/22 14:51:17 by xbarthe          ###   ########.fr       */
+/*   Updated: 2019/02/26 18:04:29 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
+
+/*
+** Put each line one by one at position shifted by column and line as passed
+** Adding the bits on the line is made with OR
+*/
+
+static void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
+{
+	int	mask;
+
+	mask = 0;
+	while (mask < 4)
+	{
+		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] + (((0b1111
+		<< (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
+		mask++;
+	}
+}
+
+/*
+** Remove each line one by one at position shifted by column and line as passed
+** Removing the bits on the line is made with XOR
+*/
+
+static void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
+{
+	int	mask;
+
+	mask = 0;
+	while (mask < 4)
+	{
+		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] ^ (((0b1111
+		<< (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
+		mask++;
+	}
+	tab[p_id].pos.x = 0;
+	tab[p_id].pos.y = 0;
+}
 
 /*
 ** easier : put the mino into a 64 int
@@ -18,7 +56,7 @@
 ** 4 lines started at the map first line (int16)
 */
 
-int		ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
+static int	ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
 {
 	int			l;
 	int			c;
@@ -38,57 +76,19 @@ int		ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
 				tab[p_id].pos.y = l;
 				ft_putpiece(tab, p_id, map);
 				if (tab[p_id].islast || ft_placer(tab, p_id + 1, map, m_size))
-					return (1);
+					return (TRUE);
 				ft_removepiece(tab, p_id, map);
 			}
 		}
 	}
-	return (0);
-}
-
-/*
-** Put each line one by one at position shifted by column and line as passed
-** Adding the bits on the line is made with OR
-*/
-
-void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
-{
-	int	mask;
-
-	mask = 0;
-	while (mask < 4)
-	{
-		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] + (((0b1111
-		<< (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
-		mask++;
-	}
-}
-
-/*
-** Remove each line one by one at position shifted by column and line as passed
-** Removing the bits on the line is made with XOR
-*/
-
-void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
-{
-	int	mask;
-
-	mask = 0;
-	while (mask < 4)
-	{
-		map[tab[p_id].pos.y + mask] = map[tab[p_id].pos.y + mask] ^ (((0b1111
-		<< (mask * 4)) & tab[p_id].compbin) >> (mask * 4) << tab[p_id].pos.x);
-		mask++;
-	}
-	tab[p_id].pos.x = 0;
-	tab[p_id].pos.y = 0;
+	return (FALSE);
 }
 
 /*
 ** We take the map, and put the pieces inside
 */
 
-int		ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
+int			ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
 {
 	int	m_size;
 
