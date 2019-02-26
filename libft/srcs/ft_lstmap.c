@@ -6,11 +6,12 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 16:37:14 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 17:39:30 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:15:54 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
@@ -24,11 +25,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 			return (NULL);
 		}
 		new_lst = f(lst);
-		if (!(new_lst->next = ft_lstmap(lst->next, f)))
-		{
-			free(new_lst);
-			return (NULL);
-		}
+		new_lst->next = ft_lstmap(lst->next, f);
 		return (new_lst);
 	}
 	return (NULL);

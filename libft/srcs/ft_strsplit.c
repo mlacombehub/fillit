@@ -6,11 +6,12 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:06:40 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 17:55:55 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:25:27 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static size_t	ft_word_count(const char *s, char c)
 {

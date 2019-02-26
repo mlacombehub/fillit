@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 13:39:08 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/06 15:55:18 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:24:24 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

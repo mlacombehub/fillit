@@ -6,11 +6,12 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 12:59:47 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/11/29 14:45:06 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:10:05 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 char	*ft_strctrim(const char *s, char c)
 {

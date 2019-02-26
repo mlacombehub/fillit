@@ -6,11 +6,12 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 13:05:44 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/25 17:22:54 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:52:08 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdlib.h"
 
 static t_list	*line_creator(int fd, t_list **lines)
 {

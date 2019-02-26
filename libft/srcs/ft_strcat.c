@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 20:58:17 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 16:10:30 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:05:56 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strcat(char *s1, const char *s2)
 {

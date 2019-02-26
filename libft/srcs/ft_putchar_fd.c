@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:31:00 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/03 21:40:20 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:03:20 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putchar_fd(char c, int fd)
 {

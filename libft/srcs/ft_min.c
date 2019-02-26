@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 20:16:44 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/04 16:09:18 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:59:24 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_min(int a, int b)
 {

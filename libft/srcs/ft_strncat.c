@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 21:06:08 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 16:13:07 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:20:19 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {

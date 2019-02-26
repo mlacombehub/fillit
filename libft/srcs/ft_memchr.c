@@ -6,11 +6,12 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 19:42:44 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 16:20:54 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:56:29 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <fcntl.h>
+#include <unistd.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

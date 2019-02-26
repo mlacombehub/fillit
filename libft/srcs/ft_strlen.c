@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 13:54:43 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/06 15:51:32 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:19:34 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 size_t	ft_strlen(const char *str)
 {

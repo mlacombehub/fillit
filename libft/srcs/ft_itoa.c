@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:28:30 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/11/28 20:08:46 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:37:47 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,15 @@ char		*ft_itoa(int n)
 	if (tmp_n < 0 || count == 0)
 		count++;
 	if (!(dst = ft_strnew(count)))
-		return (0);
+		return (FALSE);
 	if (tmp_n < 0)
 	{
 		tmp_n = -tmp_n;
 		dst[0] = '-';
 		i++;
 	}
-	while (count > i)
+	while (count-- > i)
 	{
-		count--;
 		dst[count] = (tmp_n % 10) + '0';
 		tmp_n /= 10;
 	}

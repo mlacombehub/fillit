@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:03:56 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 17:15:58 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:31:22 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_atoi(const char *str)
 		if (*str == '-')
 			sign = -1;
 		else if (*str != '+')
-			return (0);
+			return (FALSE);
 		str++;
 	}
 	while (ft_isdigit(*str))

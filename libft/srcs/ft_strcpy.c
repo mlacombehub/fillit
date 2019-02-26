@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 13:55:10 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/08 17:04:49 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:09:14 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 char	*ft_strcpy(char *dst, const char *src)
 {

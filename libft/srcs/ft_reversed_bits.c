@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 15:26:13 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/09 15:42:26 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:04:51 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 unsigned char	ft_reversed_bits(unsigned char octet)
 {

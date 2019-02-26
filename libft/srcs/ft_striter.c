@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:15:00 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/05 12:33:08 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:11:02 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_striter(char *s, void (*f)(char*))
 {

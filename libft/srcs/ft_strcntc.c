@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:31:33 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 16:33:38 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:08:44 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_strcntc(char *str, char c)
 {

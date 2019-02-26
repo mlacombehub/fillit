@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 17:37:03 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/06 15:57:54 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:36:12 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isdigit(int c)
 {

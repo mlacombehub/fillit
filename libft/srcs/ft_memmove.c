@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 19:28:32 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 17:27:52 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:58:18 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

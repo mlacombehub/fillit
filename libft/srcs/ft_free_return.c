@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 14:04:44 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 14:30:50 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:53:31 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 void	*ft_free_return(char *str)
 {

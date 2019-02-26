@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:04:28 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/06 16:09:31 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:27:15 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_tolower(int c)
 {

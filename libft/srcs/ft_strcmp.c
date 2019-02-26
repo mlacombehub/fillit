@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:10:08 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 16:11:13 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:08:24 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

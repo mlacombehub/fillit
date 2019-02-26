@@ -6,11 +6,9 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 13:21:49 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/25 17:24:54 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:26:48 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_swap(char *s1, char *s2)
 {

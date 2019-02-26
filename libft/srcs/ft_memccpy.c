@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 19:09:05 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 16:08:17 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:54:33 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {

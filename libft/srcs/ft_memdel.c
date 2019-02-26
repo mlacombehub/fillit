@@ -6,11 +6,12 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 21:49:22 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/05 12:30:00 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:56:55 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 void	ft_memdel(void **ap)
 {

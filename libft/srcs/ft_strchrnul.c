@@ -6,11 +6,11 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 18:32:06 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 18:53:46 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:07:26 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 char	*ft_strchrnul(const char *s, int c)
 {

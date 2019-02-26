@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 19:54:55 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/01/03 15:48:00 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:57:34 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		c_s2++;
 		n--;
 	}
-	return (0);
+	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:37:37 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 18:00:49 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 18:43:11 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # define FALSE (0)
 
 # include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
+# include <stdint.h>
 
 typedef struct	s_list
 {
