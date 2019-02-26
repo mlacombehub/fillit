@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:06:40 by mlacombe          #+#    #+#             */
-/*   Updated: 2018/12/05 13:01:13 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 14:32:11 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,16 @@ char			**ft_strsplit(const char *s, char c)
 		return (NULL);
 	nb_word = ft_word_count(s, c);
 	if (!(tab = (char **)malloc(sizeof(*tab) * (nb_word + 1))) || !s)
-		return (NULL);
+	{
+		free(tab);
+		return(NULL);
+	}
 	while (nb_word--)
 	{
 		while (*s == c && *s)
 			s++;
 		if (!(tab[i] = ft_strsub(s, 0, ft_word_len(s, c))))
-			return (NULL);
+			ft_free_return(tab[i]);
 		s = s + ft_word_len(s, c);
 		i++;
 	}

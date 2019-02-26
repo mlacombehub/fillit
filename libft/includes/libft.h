@@ -6,7 +6,7 @@
 /*   By: mlacombe <mlacombe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:37:37 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/21 19:47:31 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/26 14:21:38 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void			ft_putendl_nbr_fd(int nbr, int fd);
 uint16_t		ft_power(uint16_t nb, int power);
 int				ft_puterror(char *msg);
 void			ft_print_bytes(void *ptr, int size, int step);
+void			*ft_free_return(char *str);
 #endif
