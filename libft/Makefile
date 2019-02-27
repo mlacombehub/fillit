@@ -13,8 +13,8 @@
 NAME = libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -Rf
+override CFLAGS += -Wall -Wextra -Werror
+ARFLAGS = rs
 
 SRC =	ft_bzero.c\
 		ft_memccpy.c\
@@ -103,25 +103,26 @@ INCLUDES = includes/
 
 OBJ := $(addprefix $(OBJ_DIR),$(SRC:.c=.o))
 
-SRC := $(addprefix $(SRC_DIR),$(SRC))
+SRC := $(SRC:%=$(SRC_DIR)%)
 
 all: $(NAME)
 
 $(OBJ_DIR):
-	mkdir $@
+	mkdir -p $@
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -o $@ -c $< -I $(INCLUDES)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
+	$(CC) -I $(INCLUDES) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	$(AR) $(ARFLAGS) $@ $^
 
 clean:
-	$(RM) $(OBJ) $(OBJ_DIR)
+	$(RM) -R $(OBJ) $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE)
 
 .PHONY: all clean fclean re

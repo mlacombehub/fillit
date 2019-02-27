@@ -15,14 +15,15 @@ NAME= fillit
 
 # compiler
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror
-DFLAGS= -g
+override CFLAGS += -Wall -Wextra -Werror
 LIB=ft
 DEP_PREFIX= lib
 DEP_NAME=ft
 SRC_SUFFIX=.c
 DEP_SUFFIX=.a
 OBJ_SUFFIX=.o
+
+RM= rm -f
 
 # dependancy paths etc.
 DEPENDANCY= $(DEP_FOLDER)/$(DEP_PREFIX)$(DEP_NAME)$(DEP_SUFFIX)
@@ -48,17 +49,19 @@ all: $(NAME)
 
 # program creation
 $(NAME): $(DEPENDANCY) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(DEPENDANCY)
+	$(CC) $(CFLAGS) -o $@ $^
 
 #dependancy
 $(DEPENDANCY): FORCE
 	$(MAKE) -C $(DEP_FOLDER)
 	@echo "-- Library " $(DEPENDANCY) " generated"
 
+$(OBJ_PATH):
+	mkdir -p $@
+
 # object creation
-$(OBJ_PATH)%$(OBJ_SUFFIX): $(SRC_PATH)%$(SRC_SUFFIX)
-	mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) -c $< -I $(INCL_PATH) -o $@
+$(OBJ_PATH)%$(OBJ_SUFFIX): $(SRC_PATH)%$(SRC_SUFFIX) | $(OBJ_PATH)
+	$(CC) -I $(INCL_PATH) $(CFLAGS) -c -o $@ $<
 
 # diagnostic
 test:
@@ -71,17 +74,17 @@ test:
 
 # clean the object files
 clean:
-	rm -f $(OBJ)
-	rm -Rf $(OBJ_PATH)
-	cd $(DEP_FOLDER) && $(MAKE) clean
+	$(RM) -R $(OBJ) $(OBJ_PATH)
+	$(MAKE) clean -C $(DEP_FOLDER)
 
 # clean program and objects
 fclean: clean
-	rm -f $(NAME)
-	cd $(DEP_FOLDER) && $(MAKE) fclean
+	$(RM) $(NAME)
+	$(MAKE) fclean -C $(DEP_FOLDER)
 
 # clean ALL and remake all
-re: fclean all
+re: fclean
+	$(MAKE)
 
 FORCE:
 

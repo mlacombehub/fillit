@@ -40,7 +40,7 @@ static int		ft_verification(char *buff)
 		}
 		i++;
 	}
-	return ((n_conn == 6 || n_conn == 8) ? 1 : 0);
+	return ((n_conn == 6 || n_conn == 8) ? TRUE : FALSE);
 }
 
 /*

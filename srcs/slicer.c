@@ -144,9 +144,9 @@ void			ft_feedtopieces(t_piece *tab, char *feed)
 		tab[k].size.x = 0;
 		tab[k].size.y = 0;
 		tab[k].size.x = ft_measure_w_h(tab[k].compbin,
-		tab[k].size.x, tab[k].size.y, 4);
+			tab[k].size.x, tab[k].size.y, 4);
 		tab[k].size.y = ft_measure_w_h(tab[k].compbin,
-		tab[k].size.x, tab[k].size.y, 4);
+			tab[k].size.x, tab[k].size.y, 4);
 		tab[k].pos.x = 0;
 		tab[k].pos.y = 0;
 		tab[k].islast = 0;
