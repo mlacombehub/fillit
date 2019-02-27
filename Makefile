@@ -6,7 +6,7 @@
 #    By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 17:23:16 by xbarthe           #+#    #+#              #
-#    Updated: 2019/02/27 11:58:44 by mlacombe         ###   ########.fr        #
+#    Updated: 2019/02/27 15:35:22 by mlacombe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,12 @@ NAME= fillit
 CC= gcc
 CFLAGS= -Wall -Wextra -Werror
 DFLAGS= -g
-SUFFIX= c
 LIB=ft
 DEP_PREFIX= lib
 DEP_NAME=ft
+SRC_SUFFIX=.c
 DEP_SUFFIX=.a
+OBJ_SUFFIX=.o
 
 # dependancy paths etc.
 DEPENDANCY= $(DEP_FOLDER)/$(DEP_PREFIX)$(DEP_NAME)$(DEP_SUFFIX)
@@ -29,7 +30,7 @@ DEP_FOLDER= $(DEP_PREFIX)$(DEP_NAME)
 
 # resources
 SRC_PATH= srcs/
-INCL_PATH= -Iincludes/
+INCL_PATH= includes/
 OBJ_PATH= objects/
 
 # files
@@ -39,8 +40,8 @@ SRC= 	main.c \
 		solver.c
 
 # sources and objects construction
-SRCFILES = $(SRC:%.$(SUFFIX)=$(SRC_PATH)%.$(SUFFIX))
-OBJ= $(addprefix $(OBJ_PATH), $(SRC:.$(SUFFIX)=.o))
+SRCFILES = $(SRC:%$(SUFFIX)=$(SRC_PATH)%$(SRC_SUFFIX))
+OBJ = $(addprefix $(OBJ_PATH), $(SRC:$(SRC_SUFFIX)=$(OBJ_SUFFIX)))
 
 # default rule
 all: $(NAME)
@@ -55,10 +56,9 @@ $(DEPENDANCY): FORCE
 	@echo "-- Library " $(DEPENDANCY) " generated"
 
 # object creation
-objects/%.o: srcs/%.c
+$(OBJ_PATH)%$(OBJ_SUFFIX): $(SRC_PATH)%$(SRC_SUFFIX)
 	mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) -c $< $(INCL_PATH) -o $@
-
+	$(CC) $(CFLAGS) -c $< -I $(INCL_PATH) -o $@
 
 # diagnostic
 test:
@@ -79,6 +79,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	cd $(DEP_FOLDER) && $(MAKE) fclean
+
 # clean ALL and remake all
 re: fclean all
 

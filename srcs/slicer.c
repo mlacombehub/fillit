@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:10:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/26 18:04:00 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/27 13:56:34 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static int		ft_measure_w_h(uint16_t binsrc, int sizex, int sizey
 
 static int		ft_bitcompact(int bitmino, int sidesize)
 {
-	uint16_t	col_mask;
-	uint16_t	row_mask;
-	int			k;
+	uint16_t		col_mask;
+	uint16_t		row_mask;
+	unsigned short	k;
 
 	col_mask = 0;
 	row_mask = ft_power(2, sidesize) - 1;
@@ -82,9 +82,9 @@ static int		ft_bitcompact(int bitmino, int sidesize)
 
 static uint64_t	ft_bit16to64(int compbit, int sidesize)
 {
-	uint64_t	longcomp;
-	uint64_t	longbit;
-	int			k;
+	uint64_t		longcomp;
+	uint64_t		longbit;
+	unsigned short	k;
 
 	k = 0;
 	longbit = 0;
@@ -106,9 +106,9 @@ static uint64_t	ft_bit16to64(int compbit, int sidesize)
 
 static uint16_t	ft_rev_atob(char *src, char thebitchar)
 {
-	int			k;
-	uint16_t	intbit;
-	int			power;
+	unsigned short	k;
+	uint16_t		intbit;
+	unsigned short	power;
 
 	intbit = 0;
 	k = 0;
@@ -132,7 +132,7 @@ static uint16_t	ft_rev_atob(char *src, char thebitchar)
 
 void			ft_feedtopieces(t_piece *tab, char *feed)
 {
-	int k;
+	unsigned short k;
 
 	k = 0;
 	while (feed && *feed)

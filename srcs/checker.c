@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 19:43:53 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/26 18:03:37 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/27 13:56:19 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 static int		ft_verification(char *buff)
 {
-	unsigned short int	i;
-	int					n_conn;
+	unsigned short	i;
+	unsigned short	n_conn;
 
 	n_conn = 0;
 	i = 0;
@@ -48,10 +48,10 @@ static int		ft_verification(char *buff)
 ** typing/overwriting
 */
 
-int				ft_checkfeed(char *feed, int feedsize)
+int				ft_checkfeed(char *feed, size_t feedsize)
 {
-	int	k;
-	int hcount;
+	size_t			k;
+	unsigned short	hcount;
 
 	if ((feedsize + 1) / 21 <= 0 || (feedsize + 1) / 21 > 26
 	|| (feedsize + 1) % 21 != 0)
@@ -70,7 +70,7 @@ int				ft_checkfeed(char *feed, int feedsize)
 			k++;
 		}
 		if (!ft_verification(feed))
-			return (0);
+			return (FALSE);
 		feed += 21;
 	}
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 17:22:38 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 18:04:29 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/27 13:57:01 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ** Adding the bits on the line is made with OR
 */
 
-static void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
+static void	ft_putpiece(t_piece *tab, unsigned short p_id, uint16_t *map)
 {
-	int	mask;
+	unsigned short	mask;
 
 	mask = 0;
 	while (mask < 4)
@@ -35,9 +35,9 @@ static void	ft_putpiece(t_piece *tab, int p_id, uint16_t *map)
 ** Removing the bits on the line is made with XOR
 */
 
-static void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
+static void	ft_removepiece(t_piece *tab, unsigned short p_id, uint16_t *map)
 {
-	int	mask;
+	unsigned short	mask;
 
 	mask = 0;
 	while (mask < 4)
@@ -56,7 +56,8 @@ static void	ft_removepiece(t_piece *tab, int p_id, uint16_t *map)
 ** 4 lines started at the map first line (int16)
 */
 
-static int	ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
+static int	ft_placer(t_piece *tab, unsigned short p_id, uint16_t *map
+			, unsigned short m_size)
 {
 	int			l;
 	int			c;
@@ -88,9 +89,9 @@ static int	ft_placer(t_piece *tab, int p_id, uint16_t *map, int m_size)
 ** We take the map, and put the pieces inside
 */
 
-int			ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map)
+int			ft_mapbuilder(t_piece *tab, unsigned short p_qty, uint16_t *map)
 {
-	int	m_size;
+	unsigned short	m_size;
 
 	m_size = 2;
 	while (m_size * m_size < 4 * p_qty)

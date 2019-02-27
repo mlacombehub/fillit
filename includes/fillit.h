@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 14:23:20 by mlacombe          #+#    #+#             */
-/*   Updated: 2019/02/26 18:00:09 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/27 15:44:44 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,20 @@ typedef struct	s_point
 
 typedef struct	s_piece
 {
-	int			p_id;
-	int			islast;
-	t_point		pos;
-	t_point		size;
-	uint16_t	compbin;
-	uint64_t	movbin;
-	char		tetchar[22];
+	char			tetchar[22];
+	uint64_t		movbin;
+	uint16_t		compbin;
+	t_point			pos;
+	t_point			size;
+	unsigned short	islast;
+	unsigned short	p_id;
 }				t_piece;
 
 /*
 ** checker.c functions
 */
 
-int				ft_checkfeed(char *feed, int feedsize);
+int				ft_checkfeed(char *feed, size_t feedsize);
 
 /*
 ** slicer.c functions
@@ -62,5 +62,6 @@ void			ft_feedtopieces(t_piece *tab, char *feed);
 ** solver.c functions
 */
 
-int				ft_mapbuilder(t_piece *tab, int p_qty, uint16_t *map);
+int				ft_mapbuilder(t_piece *tab, unsigned short p_qty
+				, uint16_t *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: xbarthe <xbarthe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:15:30 by xbarthe           #+#    #+#             */
-/*   Updated: 2019/02/26 18:25:24 by mlacombe         ###   ########.fr       */
+/*   Updated: 2019/02/27 15:44:28 by mlacombe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 static void	ft_printmap(t_piece *tab, int m_size, int p_qty, int size)
 {
-	char	map[size];
-	int		k;
+	char				map[size];
+	unsigned short		k;
 
 	k = m_size * (m_size + 1);
 	map[k - 1] = '\0';
@@ -46,8 +46,8 @@ static void	ft_printmap(t_piece *tab, int m_size, int p_qty, int size)
 
 int			main(int argc, char **argv)
 {
-	int				fd;
-	int				feedsize;
+	unsigned short	fd;
+	size_t			feedsize;
 	t_piece			tab[26];
 	char			feed[FILE_MAX_LENGTH];
 	uint16_t		map[16];
